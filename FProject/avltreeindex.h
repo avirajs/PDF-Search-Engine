@@ -1,7 +1,7 @@
 //citation http://www.sanfoundry.com/cpp-program-implement-avl-trees/
 #ifndef AVLTreeIndex_H
 #define AVLTreeIndex_H
-#include "IndexInterface.cpp"
+#include "indexinterface.cpp"
 #include <iostream>
 using namespace std;
 struct AVLIndexNode

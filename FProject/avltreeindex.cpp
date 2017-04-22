@@ -1,4 +1,4 @@
-#include "AVLTreeIndex.h"
+#include "avltreeindex.h"
 
 AVLTreeIndex::AVLTreeIndex()
 {

@@ -7,7 +7,8 @@ SOURCES += main.cpp \
     documentparser.cpp \
     indexhandler.cpp \
     indexinterface.cpp \
-    avltreeindex.cpp
+    avltreeindex.cpp \
+    searchengine.cpp
 
 LIBS += -lpodofo
 
@@ -22,4 +23,5 @@ HEADERS += \
     utilities.h \
     safe_math.h \
     indexhandler.h \
-    avltreeindex.h
+    avltreeindex.h \
+    searchengine.h

@@ -7,15 +7,15 @@ using namespace std;
 int main()
 {
 
-   // DocumentParser a("stopwords.txt");
+    //DocumentParser a("stopwords.txt");
     IndexHandler ex;
     //a.frequentTerm("cs",5);
-    ex.addIndex("cs",45);//parse into index handler
+    ex.addIndex("cs","asdf");//parse into index handler
     //a.frequentTerm("cs",3);
-    ex.addIndex("cs",3);//parse into index handler
+    ex.addIndex("cs","asdf");//parse into index handler
 
     cout<<"set:"<<endl;
-    for(int doc: (ex.getDocs("cs")))
+    for(string doc: (ex.getDocs("cs")))
     {
         cout<<doc<<endl;
     }

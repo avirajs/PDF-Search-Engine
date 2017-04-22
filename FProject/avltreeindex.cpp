@@ -17,16 +17,16 @@ void AVLTreeIndex::ClearTree(AVLIndexNode *n)
       delete n;         // Delete this node
    }
 }
-void  AVLTreeIndex::addIndex(string word, int doc)
+void  AVLTreeIndex::addIndex(string word, string doc)
 {
     //new Index make a new node with that one doc
-    set<int>* found=findIndex(word);
+    set<string>* found=findIndex(word);
     if (found==nullptr)
         root=insert(root,word,doc);
     else//add to set
         found->insert(doc);
 }
-AVLIndexNode *AVLTreeIndex::insert(AVLIndexNode *root, string value,int docnum)
+AVLIndexNode *AVLTreeIndex::insert(AVLIndexNode *root, string value,string docnum)
 {
 
     if (root == NULL)
@@ -51,7 +51,7 @@ AVLIndexNode *AVLTreeIndex::insert(AVLIndexNode *root, string value,int docnum)
     return root;
 
 }
-set<int>* AVLTreeIndex::findIndex(string wordkey)
+set<string>* AVLTreeIndex::findIndex(string wordkey)
 {
 
     AVLIndexNode *temp=root;      //'head' is pointer to root node

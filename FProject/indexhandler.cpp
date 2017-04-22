@@ -5,11 +5,11 @@ IndexHandler::IndexHandler()
     //add other option using arguments
     index=new AVLTreeIndex;
 }
-void IndexHandler::addIndex(string word,int docnum)
+void IndexHandler::addIndex(string word,string docname)
 {
-    index->addIndex(word,docnum);
+    index->addIndex(word,docname);
 }
-set<int>& IndexHandler::getDocs(string word)
+set<string>& IndexHandler::getDocs(string word)
 {
     return *index->findIndex(word);
 }

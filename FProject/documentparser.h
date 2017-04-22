@@ -32,7 +32,7 @@ public:
     DocumentParser(string);
     void useStopWords(string);
     bool isStopWord(string);
-    void frequentTerm(string,int);//important
+    void frequentTerm(string,int);//later make return * to vector
     void displayTermFrequency();
     void docFrequency(string,int);
     void allDocFrequency(string word);

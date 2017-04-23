@@ -8,7 +8,9 @@ SOURCES += main.cpp \
     indexhandler.cpp \
     indexinterface.cpp \
     avltreeindex.cpp \
-    searchengine.cpp
+    searchengine.cpp \
+    textextractor.cpp \
+    fileextractor.cpp
 
 LIBS += -lpodofo
 
@@ -24,4 +26,5 @@ HEADERS += \
     safe_math.h \
     indexhandler.h \
     avltreeindex.h \
-    searchengine.h
+    searchengine.h \
+    fileextractor.h

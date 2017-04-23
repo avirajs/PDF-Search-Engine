@@ -7,7 +7,8 @@ class SearchEngine
 {
 private:
     DocumentParser *dp;
-    IndexHandler ih;
+    IndexHandler* ih;
+    ifstream * read;
 
 public:
     SearchEngine(string docpath);

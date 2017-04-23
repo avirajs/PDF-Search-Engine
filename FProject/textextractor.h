@@ -40,6 +40,7 @@ using namespace std;
  */
 class TextExtractor {
  public:
+    vector<string> a;
     TextExtractor();
     virtual ~TextExtractor();
 
@@ -58,11 +59,12 @@ class TextExtractor {
     int v = 0;
     int chV =0;
     int chV2 =0;
+    int chV3 =0;
     int chVEnd =0;
     int tjToken = 0;
-    vector<string> a;
     int fTJ =0;
     int prevLenPszData =0;
+    int kHasBeenChangedAready =0;
 
     void ConvertToVectorOfString(char* c);
 

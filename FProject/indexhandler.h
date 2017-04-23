@@ -17,7 +17,7 @@ private:
 public:
     IndexHandler();//add argument to decide which data structure to create but for now avl tree
     void addIndex(string,string);
-    set<string>& getDocs(string);
+    set<string>* getDocs(string);
     void displayIndices();
 };
 

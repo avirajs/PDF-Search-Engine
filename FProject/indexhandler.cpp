@@ -9,9 +9,9 @@ void IndexHandler::addIndex(string word,string docname)
 {
     index->addIndex(word,docname);
 }
-set<string>& IndexHandler::getDocs(string word)
+set<string>* IndexHandler::getDocs(string word)
 {
-    return *index->findIndex(word);
+   return index->findIndex(word);
 }
 void IndexHandler::displayIndices()
 {

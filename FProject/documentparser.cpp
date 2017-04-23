@@ -30,12 +30,12 @@ bool DocumentParser::isStopWord(string word)
 
       if ( got == stopwords.end() )
       {
-        cout << "not a stop word"<<endl;
+        //cout << "not a stop word"<<endl;
         return false;
       }
       else
       {
-        cout << *got << " is a stop word"<<endl;
+        //cout << *got << " is a stop word"<<endl;
         return true;
       }
 }

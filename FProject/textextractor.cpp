@@ -23,7 +23,6 @@
 #include "textextractor.h"
 #include <iostream>
 #include <stack>
-//#include "dsstring.h"
 #include <string>
 #include <vector>
 #include <iomanip>
@@ -41,7 +40,7 @@ TextExtractor::~TextExtractor()
 
 void TextExtractor::Init( const char* pszInput )
 {
-    cout << "Start of init" << endl;
+   // cout << "Start of init" << endl;
     if( !pszInput )
     {
        // cout << "!pszInput error" << endl;
@@ -60,13 +59,35 @@ void TextExtractor::Init( const char* pszInput )
 
         this->ExtractText( &document, pPage );
     }
-/*
-    for (int i=0; i < a.size(); i++)
+
+    int g=0;
+    //reset everything else
+    num =0;
+    lenPszData =0;
+    k = 0;
+    kk=0;
+    v = 0;
+    chV =0;
+    chV2 =0;
+    chV3 =0;
+    chVEnd =0;
+    tjToken = 0;
+    fTJ =0;
+    prevLenPszData =0;
+    kHasBeenChangedAready =0;
+
+    while (*bb)
     {
-        cout << "The word number is: " << i << " the word is: " << a[i] << endl;
+        bb++;
     }
-*/
-    int check =0;
+    for (int i =0; i < 2000000; i++)
+    {
+         b[i] = conP[0];
+    }
+ \
+    int m =0;
+
+
 }
 
 void TextExtractor::ExtractText( PdfMemDocument* pDocument, PdfPage* pPage )
@@ -87,6 +108,7 @@ void TextExtractor::ExtractText( PdfMemDocument* pDocument, PdfPage* pPage )
 
     while( tokenizer.ReadNext( eType, pszToken, var ) )
     {
+       // cout <<pszToken << endl;
         if( eType == ePdfContentsType_Keyword )
         {
 
@@ -100,7 +122,7 @@ void TextExtractor::ExtractText( PdfMemDocument* pDocument, PdfPage* pPage )
             }
             else if( strcmp( pszToken, "BT" ) == 0 )
             {
-             //   cout << "The token is: " << pszToken << endl;
+              //  cout << "The token is: " << pszToken << endl;
                 bTextBlock   = true;
                 // BT does not reset font
                 // pCurFont     = NULL;
@@ -127,15 +149,15 @@ void TextExtractor::ExtractText( PdfMemDocument* pDocument, PdfPage* pPage )
                     pCurFont = pDocument->GetFont( pFont );
                     if( !pCurFont )
                     {
-                        fprintf( stderr, "WARNING: Unable to create font for object %i %i R\n",
-                                 pFont->Reference().ObjectNumber(),
-                                 pFont->Reference().GenerationNumber() );
+                       // fprintf( stderr, "WARNING: Unable to create font for object %i %i R\n",
+                               //  pFont->Reference().ObjectNumber(),
+                               //  pFont->Reference().GenerationNumber() );
                     }
                 }
                 else if( strcmp( pszToken, "Tj" ) == 0 || strcmp( pszToken, "'" ) == 0 )
                 {
 
-                   cout << "The token is: " << pszToken << endl;
+                 //  cout << "The token is: " << pszToken << endl;
                     //set tjToken flag and reset prevLenPszData for every new Tj tag
                     prevLenPszData =0;
                     tjToken = 99;
@@ -143,20 +165,20 @@ void TextExtractor::ExtractText( PdfMemDocument* pDocument, PdfPage* pPage )
                     AddTextElement( dCurPosX, dCurPosY, pCurFont, stack.top().GetString() );
                     stack.pop();
                     //Checks if bb array is greater than 2, if so gets ASCII values of second char and third char and last char
-                    if(strlen(bb) > 2)
+                    if(strlen(bb) > 3)
                     {
                         chV = (int)bb[1];
                         chV2 = (int)bb[2];
-                        for (int i=0; i < strlen(bb); i++)
-                        {
-                            chVEnd = (int)bb[i];
-                        }
+                        chV3 = (int)bb[3];
+                        int end = strlen(bb);
+                        chVEnd = (int)bb[end-1];
+
                     }
                     //Checks to see if the length of the char* data is not one or was two and a number
                     if (lenPszData != 1 && (lenPszData != 2 || ((v > 47) || (v < 58))))
                     {
                         //Checks to see if the second char is not a . or is (a . and not a space)
-                        if (chV != 46 || (chV == 46 && chV2 != 32))
+                        if (chV != 46 || (chV == 46 && (chV2 != 32 && chV3 > 64)))
                         {
                             //Checks to see if bb is not three or is (three and not uppercase)
                             if(strlen(bb) != 3 || (strlen(bb) == 3 && ((chV < 64) || (chV > 91))))
@@ -197,7 +219,7 @@ void TextExtractor::ExtractText( PdfMemDocument* pDocument, PdfPage* pPage )
                     //set flag TJ and reset prevLenPszData for every new TJ flag
                     fTJ = 99;
                     prevLenPszData = 0;
-                    cout << "The token is: " << pszToken << endl;
+                  //  cout << "The token is: " << pszToken << endl;
                     PdfArray array = stack.top().GetArray();
                     stack.pop();
                     for( int i=0; i<static_cast<int>(array.GetSize()); i++ )
@@ -216,10 +238,9 @@ void TextExtractor::ExtractText( PdfMemDocument* pDocument, PdfPage* pPage )
                     {
                         chV = (int)bb[1];
                         chV2 = (int)bb[2];
-                        for (int i=0; i < strlen(bb); i++)
-                        {
-                            chVEnd = (int)bb[i];
-                        }
+                        int end = strlen(bb);
+                        chVEnd = (int)bb[end-1];
+
                      }
                     //Checks to see if bb is not one, may need to switch to Tj check might be better
                     if (strlen(bb) != 1)
@@ -236,7 +257,7 @@ void TextExtractor::ExtractText( PdfMemDocument* pDocument, PdfPage* pPage )
                                 while(*bb)
                                {
                                 ++bb;
-                                }
+                               }
                                 k=0;
                             }
                       }
@@ -253,7 +274,8 @@ void TextExtractor::ExtractText( PdfMemDocument* pDocument, PdfPage* pPage )
         {
             // Impossible; type must be keyword or variant
             //THIS IS NON OCR ERROR
-            PODOFO_RAISE_ERROR( ePdfError_InternalLogic );
+            //PODOFO_RAISE_ERROR( ePdfError_InternalLogic );
+            stack.push(var);
         }
     }
 }
@@ -265,31 +287,32 @@ void TextExtractor::AddTextElement( double dCurPosX, double dCurPosY,
 {
     if( !pCurFont )
     {
-        fprintf( stderr, "WARNING: Found text but do not have a current font: %s\n", rString.GetString() );
+       // cout << num << endl;
+       // fprintf( stderr, "WARNING: Found text but do not have a current font: %s\n", rString.GetString() );
         return;
     }
 
     if( !pCurFont->GetEncoding() )
     {
-        fprintf( stderr, "WARNING: Found text but do not have a current encoding: %s\n", rString.GetString() );
+      //  fprintf( stderr, "WARNING: Found text but do not have a current encoding: %s\n", rString.GetString() );
         return;
     }
 
     // For now just write to console
-    cout << "Num is: " << num << endl;
+  //  cout << "Num is: " << num << endl;
     PdfString unicode = pCurFont->GetEncoding()->ConvertToUnicode( rString, pCurFont );
     //stores txt info in pszData
-   const char* pszData = unicode.GetStringUtf8().c_str();
+    const char* pszData = unicode.GetStringUtf8().c_str();
     //sets length of pszData
     lenPszData = strlen(pszData);
     num++;
-    if (num == 12485)
+    if (num == 15)
     {
         int hahahah =9;
     }
     //sets v flag to be the ASCII value of the first element of pszData
     v = (int)pszData[0];
-    cout << pszData << endl;
+  //  cout << pszData << endl;
     //loops through pszData and adds each element to bb array based of off the starting index k
     //uses kk to store the next location for
     for (int i =0; pszData[i] != '\0'; i++)
@@ -305,9 +328,20 @@ void TextExtractor::AddTextElement( double dCurPosX, double dCurPosY,
         //may need to change to index that you are adding in!!!!!!!!!!!!!!!!!!!!!1
         //stores first index of bb as an ASCII value, sets chVEnd to the ASCII value of the last txt extracted
         chV = (int)bb[0];
-        for (int i=0; i < strlen(bb); i++)
+
+        int end = strlen(bb);
+        chVEnd = (int)bb[end-1];
+
+        //if it is TJ and ends in a space, write next element where the space is
+        if (fTJ == 99)
         {
-            chVEnd = (int)bb[i];
+            if ((lenPszData == 2 || lenPszData == 3) && chVEnd == 32)
+            {
+                k += kk-1;
+                kHasBeenChangedAready = 99;
+
+            }
+
         }
         //if the last text extracted is uppercase
         if(chVEnd > 64 && chVEnd < 91)
@@ -325,14 +359,24 @@ void TextExtractor::AddTextElement( double dCurPosX, double dCurPosY,
             //set position k to write over next after the space
             k += kk;
         }
-        //if pszData two or more and not any of the above conditions
-        else
+        //if pszData two or more and not any of the above conditions and doesnt already end in a space
+        else if (chVEnd != 32)
         {
             //add a space to end, add null terminator after space, increase k to reflect the changes
             bb[leng] = lll[0];
             bb[leng+1] = conP[0];
             k++;
             k+= kk;
+        }
+        else
+        {
+            bb[leng] = conP[0];
+            if (kHasBeenChangedAready != 99)
+            {
+                 k += kk;
+            }
+            //reset kHasBeenChangedAlready
+            kHasBeenChangedAready =0;
         }
     }
     //if pszData was equal to one
@@ -359,15 +403,18 @@ void TextExtractor::ConvertToVectorOfString(char*c)
     int h =0;
     const char* p = "||||||||||||||||||||||||||||||";
     const char* null = "\0";
+    int l = strlen(c)-1;
 
 
-    for (int i =0; i < strlen(c); i++)
+
+    for (int i =0; i < l+1; i++)
     {
         char nn[200];
 
         char* n = nn;
         int value = (int)c[i];
-        if(i != strlen(c)-1)
+
+        if(i != l)
         {
             int valueA = (int)c[i+1];
             //if lower than upper convert to string from 0 to i
@@ -383,7 +430,10 @@ void TextExtractor::ConvertToVectorOfString(char*c)
                 h = i+1;
                 //convert n to string method
                 string f = string(n);
-                this->a.push_back(f);
+                if (f != " ")
+                {
+                    this->a.push_back(f);
+                }
                 //reset n
                 for (int u =0; u < 200; u++)
                 {
@@ -403,7 +453,10 @@ void TextExtractor::ConvertToVectorOfString(char*c)
                 h = i+1;
                 //convert n to string method
                 string f = string(n);
-                this->a.push_back(f);
+                if (f != " " && f != "")
+                {
+                    this->a.push_back(f);
+                }
                 //reset n
                 for (int u =0; u < 200; u++)
                 {
@@ -424,7 +477,10 @@ void TextExtractor::ConvertToVectorOfString(char*c)
                 h = i+1;
                 //convert n to string method
                 string f = string(n);
-                this->a.push_back(f);
+                if (f != " ")
+                {
+                    this->a.push_back(f);
+                }
                 //reset n
                 for (int u =0; u < 200; u++)
                 {
@@ -434,7 +490,7 @@ void TextExtractor::ConvertToVectorOfString(char*c)
 
         }
         //get rest of char*
-        if(i == strlen(c)-1)
+        if(i == l)
         {
             for(int j =h; j < i+1; j++)
             {
@@ -442,13 +498,57 @@ void TextExtractor::ConvertToVectorOfString(char*c)
                 x++;
             }
             n[x] = null[0];
+            if(((int)n[0]> 64 && (int)n[0] < 91) || ((int)n[0]> 39 && (int)n[0] < 58))
+            {
+                if((((int)n[2]> 64 && (int)n[2] < 91) || ((int)n[2]> 47 && (int)n[2] < 58)))
+                {
+                    k=0;
+                    return;
+                }
+                else if ((((int)n[3]> 64 && (int)n[3] < 91) || ((int)n[3]> 47 && (int)n[3] < 58)))
+                {
+                    k =0;
+                    return;
+                }
+            }
+
+            if (x > 1)
+            {
+                if (((int)n[0]> 64 && (int)n[0] < 91) || ((int)n[0]> 39 && (int)n[0] < 58))
+                {
+                    if((((int)n[1]> 64 && (int)n[1] < 91) || ((int)n[1]> 47 && (int)n[1] < 58)))
+                    {
+                        k=0;
+                        return;
+                    }
+                }
+                if ((int)n[0] < 65)
+                {
+
+                    k =0;
+                    return;
+                }
+            }
+            if ((int)n[0] == 91)
+            {
+                k=0;
+                return;
+            }
+
             //convert n to string method
             string f = string(n);
-            this->a.push_back(f);
+            if (f != " ")
+            {
+                this->a.push_back(f);
+            }
         }
         x = 0;
+        /*
+        for (int i=0; i < a.size(); i++)
+        {
+          //  cout << "The word number is: " << i << " the word is: " << a[i] << endl;
+        }*/
     }
-    int check =0;
 
 }
 

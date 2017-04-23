@@ -1,31 +1,52 @@
-#include "english_stem.h"
 #include <string>
 #include <iostream>
-#include "documentparser.h"
-#include "indexhandler.h"
+#include "searchengine.h"
+#include "fileextractor.h"
 using namespace std;
 int main()
 {
+    cout << "Hello World!" << endl;
 
-    //DocumentParser a("stopwords.txt");
-    IndexHandler ex;
-    //a.frequentTerm("cs",5);
-    ex.addIndex("cs","asdf");//parse into index handler
-    //a.frequentTerm("cs",3);
-    ex.addIndex("cs","asdf");//parse into index handler
 
-    cout<<"set:"<<endl;
-    for(string doc: (ex.getDocs("cs")))
-    {
-        cout<<doc<<endl;
-    }
-    //cout<<"corpus frequency:"<<endl;
-    //a.corpusFrequency("cs");
-    //cout<<"document frequency:"<<endl;
-    //a.allDocFrequency("cs");
-    //make a while loop menu
+    SearchEngine se("/home/coder/Documents/sampleCorpus/");
 
+
+    cout<<"search 1\n\n"<<endl;
+    se.search("Educators");
+    se.search("fontenot");
+    se.search("in");
+    se.search("uncertainty");
+    se.search("results");
+    se.search("respond");
+     se.search("correspond");
+             // se.search("respond")
+    //se.search("self-efficacy");
 }
+
+
+//#include "english_stem.h"
+
+//#include "documentparser.h"
+//include "indexhandler.h"
+//DocumentParser a("stopwords.txt");
+/*
+IndexHandler ex;
+//a.frequentTerm("cs",5);
+ex.addIndex("cs","asdf");//parse into index handler
+//a.frequentTerm("cs",3);
+ex.addIndex("cs","asdf");//parse into index handler
+
+cout<<"set:"<<endl;
+for(string doc: (ex.getDocs("cs")))
+{
+    cout<<doc<<endl;
+}
+//cout<<"corpus frequency:"<<endl;
+//a.corpusFrequency("cs");
+//cout<<"document frequency:"<<endl;
+//a.allDocFrequency("cs");
+//make a while loop menu
+*/
 /*
     AVLTreeIndex ex;
     ex.addIndex("cs",3);

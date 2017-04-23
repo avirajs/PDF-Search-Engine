@@ -52,7 +52,7 @@ void TextExtractor::Init( const char* pszInput )
    // cout << "After PdfMemDocument" << endl;
     int nCount = document.GetPageCount();
     //shows page count
-    cout << "Page count is: " << nCount << endl;
+  //  cout << "Page count is: " << nCount << endl;
     for( int i=0; i<nCount; i++ )
     {
         PdfPage* pPage = document.GetPage( i );

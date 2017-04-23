@@ -18,20 +18,20 @@ SearchEngine::SearchEngine(string docpath)
     for (int i =0; i < extractor.m.size(); i++)
     {
         //The file name is
-        string pdfName = extractor.k[i];
+       string pdfName = extractor.k[i];
         for (int j =0; j < extractor.m[i].a.size();j++)
         {
             //each word in the pdf is
             string word = extractor.m[i].a[j];
 
             if(!(dp->isStopWord(word)))
+            {
                 ih->addIndex(dp->getStemmed(word),pdfName);
+            }
         }
-        if (i = 38)
-        {
-            int helpme = 0;
-        }
+      //  cout << "Got here: " << i << endl;
     }
+
 
 
 

@@ -4,23 +4,24 @@
 #include "fileextractor.h"
 using namespace std;
 int main()
-{
+{   //check out self-efficacy in the stemmer it appears on pdf 2 with a space at the end but the stemmer
+    //messes it up and changes it to self-efficaci
     cout << "Hello World!" << endl;
 
 
     SearchEngine se("/home/coder/Documents/sampleCorpus/");
 
 
-    cout<<"search 1\n\n"<<endl;
-    se.search("Educators");
+    cout<<" In mainNow"<<endl;
+    se.search("variables");
     se.search("fontenot");
-    se.search("in");
-    se.search("uncertainty");
+    se.search("self-efficacy");
+    se.search("openness");
     se.search("results");
     se.search("respond");
-     se.search("correspond");
+     se.search("uncertainty");
              // se.search("respond")
-    //se.search("self-efficacy");
+    se.search("Japanese");
 }
 
 

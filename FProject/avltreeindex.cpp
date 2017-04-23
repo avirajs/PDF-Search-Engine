@@ -28,7 +28,7 @@ void  AVLTreeIndex::addIndex(string word, string doc)
 }
 AVLIndexNode *AVLTreeIndex::insert(AVLIndexNode *root, string value,string docnum)
 {
-
+//cout<< "Inserting: " << value << "  In file:  "<<docnum<<endl;
     if (root == NULL)
     {
         root = new AVLIndexNode;

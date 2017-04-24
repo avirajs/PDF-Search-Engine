@@ -57,8 +57,8 @@ void FileExtractor::extract(string fileStream)
     }
     closedir(pdir);
 
-//change back to k.size()
-    for (int i =0; i < k.size(); i++)
+
+    for (int i = 0; i < k.size(); i++)
     {
       TextExtractor extractor;
       string names = fileStream;

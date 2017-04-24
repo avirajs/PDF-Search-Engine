@@ -52,7 +52,7 @@ void TextExtractor::Init( const char* pszInput )
    // cout << "After PdfMemDocument" << endl;
     int nCount = document.GetPageCount();
     //shows page count
-  //  cout << "Page count is: " << nCount << endl;
+    cout << "Page count is: " << nCount << endl;
     for( int i=0; i<nCount; i++ )
     {
         PdfPage* pPage = document.GetPage( i );
@@ -60,7 +60,7 @@ void TextExtractor::Init( const char* pszInput )
         this->ExtractText( &document, pPage );
     }
 
-    int g=0;
+
     //reset everything else
     num =0;
     lenPszData =0;
@@ -84,9 +84,6 @@ void TextExtractor::Init( const char* pszInput )
     {
          b[i] = conP[0];
     }
- \
-    int m =0;
-
 
 }
 
@@ -122,6 +119,7 @@ void TextExtractor::ExtractText( PdfMemDocument* pDocument, PdfPage* pPage )
             }
             else if( strcmp( pszToken, "BT" ) == 0 )
             {
+
               //  cout << "The token is: " << pszToken << endl;
                 bTextBlock   = true;
                 // BT does not reset font
@@ -129,6 +127,16 @@ void TextExtractor::ExtractText( PdfMemDocument* pDocument, PdfPage* pPage )
             }
             else if( strcmp( pszToken, "ET" ) == 0 )
             {
+                if( strlen(bb) > 0)
+                {
+                    //convert bb to a string adding it to the vector, reset bb, reset k
+                    ConvertToVectorOfString(bb);
+                    while(*bb)
+                    {
+                    ++bb;
+                    }
+                     k=0;
+                }
               //  cout << "The token is: " << pszToken << endl;
                 if( !bTextBlock )
                     fprintf( stderr, "WARNING: Found ET without BT!\n" );
@@ -157,7 +165,7 @@ void TextExtractor::ExtractText( PdfMemDocument* pDocument, PdfPage* pPage )
                 else if( strcmp( pszToken, "Tj" ) == 0 || strcmp( pszToken, "'" ) == 0 )
                 {
 
-                 //  cout << "The token is: " << pszToken << endl;
+               //   cout << "The token is: " << pszToken << endl;
                     //set tjToken flag and reset prevLenPszData for every new Tj tag
                     prevLenPszData =0;
                     tjToken = 99;
@@ -188,7 +196,7 @@ void TextExtractor::ExtractText( PdfMemDocument* pDocument, PdfPage* pPage )
                                 {
                                    k--;
                                 }
-                                else
+                                else if (chP != 32 && spaceIsSeperate != 99)
                                 {
                                     //convert bb to a string adding it to the vector, reset bb, reset k
                                     ConvertToVectorOfString(bb);
@@ -208,7 +216,7 @@ void TextExtractor::ExtractText( PdfMemDocument* pDocument, PdfPage* pPage )
                 else if( strcmp( pszToken, "\"" ) == 0 )
                 {
 
-                    cout << "The token is: " << pszToken << endl;
+                 //   cout << "The token is: " << pszToken << endl;
                     AddTextElement( dCurPosX, dCurPosY, pCurFont, stack.top().GetString() );
                     stack.pop();
                     stack.pop(); // remove char spacing from stack
@@ -219,7 +227,7 @@ void TextExtractor::ExtractText( PdfMemDocument* pDocument, PdfPage* pPage )
                     //set flag TJ and reset prevLenPszData for every new TJ flag
                     fTJ = 99;
                     prevLenPszData = 0;
-                  //  cout << "The token is: " << pszToken << endl;
+                //    cout << "The token is: " << pszToken << endl;
                     PdfArray array = stack.top().GetArray();
                     stack.pop();
                     for( int i=0; i<static_cast<int>(array.GetSize()); i++ )
@@ -285,6 +293,7 @@ void TextExtractor::ExtractText( PdfMemDocument* pDocument, PdfPage* pPage )
 void TextExtractor::AddTextElement( double dCurPosX, double dCurPosY,
         PdfFont* pCurFont, const PdfString & rString )
 {
+
     if( !pCurFont )
     {
        // cout << num << endl;
@@ -299,17 +308,18 @@ void TextExtractor::AddTextElement( double dCurPosX, double dCurPosY,
     }
 
     // For now just write to console
-  //  cout << "Num is: " << num << endl;
+ //   cout << "Num is: " << num << endl;
     PdfString unicode = pCurFont->GetEncoding()->ConvertToUnicode( rString, pCurFont );
     //stores txt info in pszData
     const char* pszData = unicode.GetStringUtf8().c_str();
     //sets length of pszData
     lenPszData = strlen(pszData);
     num++;
-    if (num == 15)
+    /*
+    if (num == 12544)
     {
         int hahahah =9;
-    }
+    }*/
     //sets v flag to be the ASCII value of the first element of pszData
     v = (int)pszData[0];
   //  cout << pszData << endl;
@@ -322,61 +332,90 @@ void TextExtractor::AddTextElement( double dCurPosX, double dCurPosY,
     }
     //sets leng to current length of bb array
     int leng = strlen(bb);
-    //Checks to see if length of PszData  is more than one
-    if (lenPszData != 1 )
+    chP = pszData[0];
+
+    if(chP == 32)
     {
-        //may need to change to index that you are adding in!!!!!!!!!!!!!!!!!!!!!1
-        //stores first index of bb as an ASCII value, sets chVEnd to the ASCII value of the last txt extracted
-        chV = (int)bb[0];
-
-        int end = strlen(bb);
-        chVEnd = (int)bb[end-1];
-
-        //if it is TJ and ends in a space, write next element where the space is
-        if (fTJ == 99)
+        //no adding spaces tag
+        spaceAtFront= 99;
+    }
+    if(lenPszData == 1 && chP ==32)
+    {
+        spaceIsSeperate =99;
+    }
+    //Checks to see if length of PszData  is more than one
+    if (lenPszData != 1 && (spaceAtFront != 99 || tjToken == 99))
+    {
+        if(spaceIsSeperate != 99 )
         {
-            if ((lenPszData == 2 || lenPszData == 3) && chVEnd == 32)
+            //may need to change to index that you are adding in!!!!!!!!!!!!!!!!!!!!!1
+            //stores first index of bb as an ASCII value, sets chVEnd to the ASCII value of the last txt extracted
+            chV = (int)bb[0];
+            //may need to add a begining of pszData...
+            int end = strlen(bb);
+            chVEnd = (int)bb[end-1];
+
+            //if it is TJ and ends in a space, write next element where the space is
+            if (fTJ == 99)
             {
-                k += kk-1;
-                kHasBeenChangedAready = 99;
+                if ((lenPszData == 2 || lenPszData == 3) && chVEnd == 32)
+                {
+                    k += kk-1;
+                    kHasBeenChangedAready = 99;
+
+                }
 
             }
-
-        }
-        //if the last text extracted is uppercase
-        if(chVEnd > 64 && chVEnd < 91)
-        {
-            //add a space to the end bb
-            bb[leng] = conP[0];
-            //set position k to write over next after the space
-            k += kk;
-        }
-        //if bb is larger than 2 and the ASCII value of the third to last character is lowercase and part of Tj command
-        else if (strlen(bb) > 2 && ((int)bb[leng-3] > 96) && tjToken == 99)
-        {
-            //add a space to the end of bb
-            bb[leng] = conP[0];
-            //set position k to write over next after the space
-            k += kk;
-        }
-        //if pszData two or more and not any of the above conditions and doesnt already end in a space
-        else if (chVEnd != 32)
-        {
-            //add a space to end, add null terminator after space, increase k to reflect the changes
-            bb[leng] = lll[0];
-            bb[leng+1] = conP[0];
-            k++;
-            k+= kk;
-        }
-        else
-        {
-            bb[leng] = conP[0];
-            if (kHasBeenChangedAready != 99)
+            //if the last text extracted is uppercase
+            if(chVEnd > 64 && chVEnd < 91)
             {
-                 k += kk;
+                //add a space to the end bb
+                bb[leng] = conP[0];
+                //set position k to write over next after the space
+                k += kk;
             }
-            //reset kHasBeenChangedAlready
-            kHasBeenChangedAready =0;
+            //if bb is larger than 2 and the ASCII value of the third to last character is lowercase and part of Tj command
+            else if (strlen(bb) > 2 && ((int)bb[leng-3] > 96) && tjToken == 99)
+            {
+                if(chP ==32)
+                {
+                    //add space to end, have k write over the space
+                    bb[leng] = conP[0];
+                    k = leng;
+                }
+                else
+                {
+                //add a space to the end of bb
+                bb[leng] = conP[0];
+                //set position k to write over next after the space
+                k += kk;
+                }
+            }
+            //if pszData two or more and not any of the above conditions and doesnt already end in a space
+            else if (chVEnd != 32 && chP!=32)
+            {
+                //add a space to end, add null terminator after space, increase k to reflect the changes
+                bb[leng] = lll[0];
+                bb[leng+1] = conP[0];
+                k++;
+                k+= kk;
+            }
+            else
+            {
+                bb[leng] = conP[0];
+                if (kHasBeenChangedAready != 99)
+                {
+                     k += kk;
+                }
+                //reset kHasBeenChangedAlready
+                kHasBeenChangedAready =0;
+            }
+        }
+
+        if (spaceIsSeperate == 99)
+        {
+            bb[leng] = conP[0];
+            k += kk;
         }
     }
     //if pszData was equal to one
@@ -409,7 +448,7 @@ void TextExtractor::ConvertToVectorOfString(char*c)
 
     for (int i =0; i < l+1; i++)
     {
-        char nn[200];
+        char nn[200000];
 
         char* n = nn;
         int value = (int)c[i];
@@ -543,11 +582,6 @@ void TextExtractor::ConvertToVectorOfString(char*c)
             }
         }
         x = 0;
-        /*
-        for (int i=0; i < a.size(); i++)
-        {
-          //  cout << "The word number is: " << i << " the word is: " << a[i] << endl;
-        }*/
     }
 
 }

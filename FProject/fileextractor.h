@@ -11,6 +11,7 @@
 class FileExtractor
 {
 private:
+
     int cDot;
     int cP;
     DIR *pdir = nullptr;
@@ -18,8 +19,8 @@ private:
     char *nn = name;
 
 public:
-    vector <string> k;
     vector<TextExtractor> m;
+    vector <string> k;
     FileExtractor();
     void extract(string);
 };

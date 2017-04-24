@@ -8,8 +8,10 @@ int main()
     //messes it up and changes it to self-efficaci
     cout << "Hello World!" << endl;
 
-
-    SearchEngine se("/home/coder/Documents/sampleCorpus/");
+  //  FileExtractor extractor;
+  //  string path = "/home/coder/Documents/Corpus01/sampleCorpus/";
+  //  extractor.extract(path);
+    SearchEngine se("/home/coder/Documents/Corpus01/sampleCorpus/");
 
 
     cout<<" In mainNow"<<endl;

@@ -47,6 +47,7 @@ class TextExtractor {
     void Init( const char* pszInput );
 
  private:
+    int chP = 0;
     int num =0;
     int lenPszData =0;
     const char* p = "|";
@@ -65,6 +66,8 @@ class TextExtractor {
     int fTJ =0;
     int prevLenPszData =0;
     int kHasBeenChangedAready =0;
+    int spaceAtFront =0;
+    int spaceIsSeperate =0;
 
     void ConvertToVectorOfString(char* c);
 

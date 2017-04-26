@@ -1,8 +1,7 @@
 #ifndef SEARCHENGINE_H
 #define SEARCHENGINE_H
 #include "indexhandler.h"
-#include "documentparser.h"
-
+#include "DocumentParser.h"
 class SearchEngine
 {
 private:

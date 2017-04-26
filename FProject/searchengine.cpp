@@ -1,28 +1,33 @@
 #include "searchengine.h"
-#include "fileextractor.h"
+#include "DocumentParser.h"
 SearchEngine::SearchEngine(string docpath)
 {
     //inialize
-    dp = new DocumentParser("stopwords.txt");
     ih= new IndexHandler;
+    dp = new DocumentParser(ih);
+
     read=new ifstream(docpath);
 
 
+    dp->extract(docpath);
 
 
-    FileExtractor extractor;
-    string path = docpath;
-    extractor.extract(path);
+    /*
+            if(!(dp->isStopWord(word)))
+            {
+                ih->addIndex(dp->getStemmed(word),pdfName);
+            }
+    */
 
-
-    for (int i =0; i < extractor.m.size(); i++)
+/*
+    for (int i =0; i < dp->m.size(); i++)
     {
         //The file name is
-       string pdfName = extractor.k[i];
-        for (int j =0; j < extractor.m[i].a.size();j++)
+       string pdfName = dp->k[i];
+        for (int j =0; j < dp->m[i].a.size();j++)
         {
             //each word in the pdf is
-            string word = extractor.m[i].a[j];
+            string word = dp->m[i].a[j];
 
             if(!(dp->isStopWord(word)))
             {
@@ -32,7 +37,7 @@ SearchEngine::SearchEngine(string docpath)
       //  cout << "Got here: " << i << endl;
     }
 
-
+*/
 
 
 }

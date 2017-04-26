@@ -1,7 +1,7 @@
 #include <string>
 #include <iostream>
 #include "searchengine.h"
-#include "fileextractor.h"
+#include "DocumentParser.h"
 using namespace std;
 int main()
 {   //check out self-efficacy in the stemmer it appears on pdf 2 with a space at the end but the stemmer
@@ -11,12 +11,13 @@ int main()
   //  FileExtractor extractor;
   //  string path = "/home/coder/Documents/Corpus01/sampleCorpus/";
   //  extractor.extract(path);
-    SearchEngine se("/home/coder/Documents/Corpus01/sampleCorpus/");
+    SearchEngine se("/home/coder/Documents/large-corpus/");
 
 
     cout<<" In mainNow"<<endl;
-    se.search("variables");
-    se.search("fontenot");
+    se.search("innovation");
+    se.search("Kalichman");
+
     se.search("self-efficacy");
     se.search("openness");
     se.search("results");
@@ -24,6 +25,7 @@ int main()
      se.search("uncertainty");
              // se.search("respond")
     se.search("Japanese");
+
 }
 
 

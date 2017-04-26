@@ -28,9 +28,10 @@
 #include <iomanip>
 
 using namespace std;
-TextExtractor::TextExtractor()
+TextExtractor::TextExtractor(IndexHandler*ih,indexextractor*ie )
 {
-
+    this->ih=ih;
+    this->ie=ie;
 }
 
 TextExtractor::~TextExtractor()
@@ -38,8 +39,9 @@ TextExtractor::~TextExtractor()
 }
 
 
-void TextExtractor::Init( const char* pszInput )
+void TextExtractor::Init( const char* pszInput)
 {
+    mm=pszInput;
    // cout << "Start of init" << endl;
     if( !pszInput )
     {
@@ -445,6 +447,7 @@ void TextExtractor::ConvertToVectorOfString(char*c)
     int l = strlen(c)-1;
 
 
+    string docname=mm;
 
     for (int i =0; i < l+1; i++)
     {
@@ -471,7 +474,8 @@ void TextExtractor::ConvertToVectorOfString(char*c)
                 string f = string(n);
                 if (f != " ")
                 {
-                    this->a.push_back(f);
+                    ih->addIndex(ie->getStemmed(f),docname);
+                    //this->a.push_back(f);
                 }
                 //reset n
                 for (int u =0; u < 200; u++)
@@ -494,7 +498,8 @@ void TextExtractor::ConvertToVectorOfString(char*c)
                 string f = string(n);
                 if (f != " " && f != "")
                 {
-                    this->a.push_back(f);
+                    ih->addIndex(ie->getStemmed(f),docname);
+                    //this->a.push_back(f);
                 }
                 //reset n
                 for (int u =0; u < 200; u++)
@@ -518,7 +523,8 @@ void TextExtractor::ConvertToVectorOfString(char*c)
                 string f = string(n);
                 if (f != " ")
                 {
-                    this->a.push_back(f);
+                    ih->addIndex(ie->getStemmed(f),docname);
+                    //this->a.push_back(f);
                 }
                 //reset n
                 for (int u =0; u < 200; u++)
@@ -578,7 +584,8 @@ void TextExtractor::ConvertToVectorOfString(char*c)
             string f = string(n);
             if (f != " ")
             {
-                this->a.push_back(f);
+                ih->addIndex(ie->getStemmed(f),docname);
+                //this->a.push_back(f);
             }
         }
         x = 0;

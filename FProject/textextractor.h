@@ -38,13 +38,18 @@ using namespace std;
  *  a PDF file and to write all text it finds
  *  in this PDF document to stdout.
  */
+#include "indexhandler.h"
+#include "indexextractor.h"
 class TextExtractor {
  public:
+    IndexHandler* ih;
+    indexextractor* ie;
+    string mm;
     vector<string> a;
-    TextExtractor();
+    TextExtractor(IndexHandler*,indexextractor*);
     virtual ~TextExtractor();
 
-    void Init( const char* pszInput );
+    void Init( const char* pszInput);
 
  private:
     int chP = 0;

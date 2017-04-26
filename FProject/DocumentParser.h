@@ -1,17 +1,19 @@
-#ifndef FILEEXTRACTOR_H
-#define FILEEXTRACTOR_H
-#include "fileextractor.h"
+#ifndef DocumentParser_H
+#define DocumentParser_H
+
 #include "textextractor.h"
 #include <dirent.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <cstdio>
+#include "indexhandler.h"
+#include "indexextractor.h"
 
-
-class FileExtractor
+class DocumentParser
 {
 private:
-
+    IndexHandler* ih;
+    indexextractor* ie;
     int cDot;
     int cP;
     DIR *pdir = nullptr;
@@ -21,8 +23,10 @@ private:
 public:
     vector<TextExtractor> m;
     vector <string> k;
-    FileExtractor();
+    DocumentParser(IndexHandler*);
+    string getStemmed(string);
+    bool isStopWord(string);
     void extract(string);
 };
 
-#endif // FILEEXTRACTOR_H
+#endif // DocumentParser_H

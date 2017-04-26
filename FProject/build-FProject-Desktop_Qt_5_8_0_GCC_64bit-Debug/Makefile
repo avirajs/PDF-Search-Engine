@@ -49,19 +49,19 @@ OBJECTS_DIR   = ./
 ####### Files
 
 SOURCES       = ../main.cpp \
-		../documentparser.cpp \
 		../indexhandler.cpp \
 		../avltreeindex.cpp \
 		../searchengine.cpp \
 		../textextractor.cpp \
-		../fileextractor.cpp 
+		../DocumentParser.cpp \
+		../indexextractor.cpp 
 OBJECTS       = main.o \
-		documentparser.o \
 		indexhandler.o \
 		avltreeindex.o \
 		searchengine.o \
 		textextractor.o \
-		fileextractor.o
+		DocumentParser.o \
+		indexextractor.o
 DIST          = /opt/Qt/5.8/gcc_64/mkspecs/features/spec_pre.prf \
 		/opt/Qt/5.8/gcc_64/mkspecs/common/unix.conf \
 		/opt/Qt/5.8/gcc_64/mkspecs/common/linux.conf \
@@ -204,7 +204,6 @@ DIST          = /opt/Qt/5.8/gcc_64/mkspecs/features/spec_pre.prf \
 		/opt/Qt/5.8/gcc_64/mkspecs/features/yacc.prf \
 		/opt/Qt/5.8/gcc_64/mkspecs/features/lex.prf \
 		../../FProject.pro textextractor.h \
-		documentparser.h \
 		english_stem.h \
 		stemming.h \
 		common_lang_constants.h \
@@ -215,13 +214,14 @@ DIST          = /opt/Qt/5.8/gcc_64/mkspecs/features/spec_pre.prf \
 		indexhandler.h \
 		avltreeindex.h \
 		searchengine.h \
-		fileextractor.h ../main.cpp \
-		../documentparser.cpp \
+		indexextractor.h \
+		DocumentParser.h ../main.cpp \
 		../indexhandler.cpp \
 		../avltreeindex.cpp \
 		../searchengine.cpp \
 		../textextractor.cpp \
-		../fileextractor.cpp
+		../DocumentParser.cpp \
+		../indexextractor.cpp
 QMAKE_TARGET  = FProject
 DESTDIR       = 
 TARGET        = FProject
@@ -565,25 +565,17 @@ main.o: ../main.cpp ../searchengine.h \
 		../indexhandler.h \
 		../avltreeindex.h \
 		../indexinterface.cpp \
-		../documentparser.h \
+		../indexextractor.h \
 		../english_stem.h \
 		../stemming.h \
 		../string_util.h \
 		../common_lang_constants.h \
 		../safe_math.h \
 		../utilities.h \
-		../debug_logic.h
+		../debug_logic.h \
+		../DocumentParser.h \
+		../textextractor.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o main.o ../main.cpp
-
-documentparser.o: ../documentparser.cpp ../documentparser.h \
-		../english_stem.h \
-		../stemming.h \
-		../string_util.h \
-		../common_lang_constants.h \
-		../safe_math.h \
-		../utilities.h \
-		../debug_logic.h
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o documentparser.o ../documentparser.cpp
 
 indexhandler.o: ../indexhandler.cpp ../indexhandler.h \
 		../avltreeindex.h \
@@ -598,7 +590,33 @@ searchengine.o: ../searchengine.cpp ../searchengine.h \
 		../indexhandler.h \
 		../avltreeindex.h \
 		../indexinterface.cpp \
-		../documentparser.h \
+		../indexextractor.h \
+		../english_stem.h \
+		../stemming.h \
+		../string_util.h \
+		../common_lang_constants.h \
+		../safe_math.h \
+		../utilities.h \
+		../debug_logic.h \
+		../DocumentParser.h \
+		../textextractor.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o searchengine.o ../searchengine.cpp
+
+textextractor.o: ../textextractor.cpp ../textextractor.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o textextractor.o ../textextractor.cpp
+
+DocumentParser.o: ../DocumentParser.cpp ../indexextractor.h \
+		../english_stem.h \
+		../stemming.h \
+		../string_util.h \
+		../common_lang_constants.h \
+		../safe_math.h \
+		../utilities.h \
+		../debug_logic.h \
+		../textextractor.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o DocumentParser.o ../DocumentParser.cpp
+
+indexextractor.o: ../indexextractor.cpp ../indexextractor.h \
 		../english_stem.h \
 		../stemming.h \
 		../string_util.h \
@@ -606,14 +624,7 @@ searchengine.o: ../searchengine.cpp ../searchengine.h \
 		../safe_math.h \
 		../utilities.h \
 		../debug_logic.h
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o searchengine.o ../searchengine.cpp
-
-textextractor.o: ../textextractor.cpp ../textextractor.h
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o textextractor.o ../textextractor.cpp
-
-fileextractor.o: ../fileextractor.cpp ../fileextractor.h \
-		../textextractor.h
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o fileextractor.o ../fileextractor.cpp
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o indexextractor.o ../indexextractor.cpp
 
 ####### Install
 

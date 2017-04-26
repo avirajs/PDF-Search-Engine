@@ -1,21 +1,21 @@
-#include "fileextractor.h"
+#include "indexextractor.h"
 #include "textextractor.h"
 #include <dirent.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <cstdio>
-
-#ifdef _HAVE_CONFIG
-#include <config.h>
-#endif // _HAVE_CONFIG
+#include "DocumentParser.h"
+//#include <config.h>
 
 
-FileExtractor::FileExtractor()
+
+DocumentParser::DocumentParser(IndexHandler* i)
 {
-
+ih=i;
+ie= new indexextractor("stopwords.txt");
 }
 
-void FileExtractor::extract(string fileStream)
+void DocumentParser::extract(string fileStream)
 {
 
 
@@ -60,7 +60,7 @@ void FileExtractor::extract(string fileStream)
 
     for (int i = 0; i < k.size(); i++)
     {
-      TextExtractor extractor;
+      TextExtractor extractor(ih,ie);
       string names = fileStream;
       string ne = names + k[i];
       const char * mm = ne.c_str();
@@ -76,3 +76,11 @@ void FileExtractor::extract(string fileStream)
 
 }
 
+string DocumentParser::getStemmed(string word)
+{
+    return ie->getStemmed(word);
+}
+bool DocumentParser::isStopWord(string word)
+{
+    return ie->isStopWord(word);
+}

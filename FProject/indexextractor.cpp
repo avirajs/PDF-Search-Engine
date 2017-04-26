@@ -1,11 +1,11 @@
-#include "documentparser.h"
+#include "indexextractor.h"
 
-DocumentParser::DocumentParser(string stoptxt)
+indexextractor::indexextractor(string stoptxt)
 {
     useStopWords(stoptxt);
     (*read).close();
 }
-void DocumentParser::useStopWords(string stoptxt)
+void indexextractor::useStopWords(string stoptxt)
 {
 
     string word;
@@ -24,7 +24,7 @@ void DocumentParser::useStopWords(string stoptxt)
         stopwords.insert(word);
     }
 }
-bool DocumentParser::isStopWord(string word)
+bool indexextractor::isStopWord(string word)
 {
     unordered_set<string>::const_iterator got = stopwords.find (word);
 
@@ -39,7 +39,7 @@ bool DocumentParser::isStopWord(string word)
         return true;
       }
 }
-void DocumentParser::frequentTerm(string word,int docnum)
+void indexextractor::frequentTerm(string word,int docnum)
 {
     if (termfrequencies.find(word) == termfrequencies.end())
     {
@@ -58,7 +58,7 @@ void DocumentParser::frequentTerm(string word,int docnum)
     }
 
 }
-void DocumentParser::displayTermFrequency()
+void indexextractor::displayTermFrequency()
 {
     for(auto ii=termfrequencies.begin(); ii!=termfrequencies.end(); ++ii)
     {
@@ -71,18 +71,18 @@ void DocumentParser::displayTermFrequency()
        cout << endl;
     }
 }
-void DocumentParser::docFrequency(string word,int docnum)
+void indexextractor::docFrequency(string word,int docnum)
 {
      vector<documentCount> *v= &termfrequencies[word];
     auto it = find_if(v->begin(), v->end(), [docnum](const documentCount& obj) {return obj.docnum == docnum;});
     cout<<(*it).docnum<<" "<<(*it).count<<endl;
 }
-void DocumentParser::allDocFrequency(string word)
+void indexextractor::allDocFrequency(string word)
 {
     for(documentCount doc:termfrequencies[word])
         cout<<"doc num: "<<doc.docnum<<" doc count:"<<doc.count<<endl;
 }
-void DocumentParser::corpusFrequency(string word)
+void indexextractor::corpusFrequency(string word)
 {
     vector<documentCount> *v= &termfrequencies[word];
 
@@ -94,7 +94,7 @@ void DocumentParser::corpusFrequency(string word)
        cout<<"num of words in corpus: "<<sum<<endl;
 
 }
-string DocumentParser::getStemmed(string w)
+string indexextractor::getStemmed(string w)
 {
     wstring word(w.begin(),w.end());
     english_stem<> StemEnglish;

@@ -1,5 +1,5 @@
-#ifndef DOCUMENTPARSER_H
-#define DOCUMENTPARSER_H
+#ifndef indexextractor_H
+#define indexextractor_H
 #include <iostream>
 #include <fstream>
 #include <unordered_set>
@@ -12,7 +12,7 @@
 
 using namespace std;
 using namespace stemming;
-class DocumentParser
+class indexextractor
 {
 private:
     unordered_set<string>stopwords;
@@ -29,7 +29,7 @@ private:
     ifstream *read;
 
 public:
-    DocumentParser(string);
+    indexextractor(string);
     void useStopWords(string);
     bool isStopWord(string);
     void frequentTerm(string,int);//later make return * to vector
@@ -40,4 +40,4 @@ public:
     string getStemmed(string);
 };
 
-#endif // DOCUMENTPARSER_H
+#endif // indexextractor_H

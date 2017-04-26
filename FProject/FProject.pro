@@ -4,19 +4,18 @@ CONFIG -= app_bundle
 CONFIG -= qt
 
 SOURCES += main.cpp \
-    documentparser.cpp \
     indexhandler.cpp \
     indexinterface.cpp \
     avltreeindex.cpp \
     searchengine.cpp \
     textextractor.cpp \
-    fileextractor.cpp
+    DocumentParser.cpp \
+    indexextractor.cpp
 
 LIBS += -lpodofo
 
 HEADERS += \
     textextractor.h \
-    documentparser.h \
     english_stem.h \
     stemming.h \
     common_lang_constants.h \
@@ -27,4 +26,5 @@ HEADERS += \
     indexhandler.h \
     avltreeindex.h \
     searchengine.h \
-    fileextractor.h
+    indexextractor.h \
+    DocumentParser.h

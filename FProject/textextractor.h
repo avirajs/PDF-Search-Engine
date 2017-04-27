@@ -49,7 +49,7 @@ class TextExtractor {
     TextExtractor(IndexHandler*,indexextractor*);
     virtual ~TextExtractor();
 
-    void Init( const char* pszInput);
+    void Init( const char* pszInput,string docName);
 
  private:
     int chP = 0;

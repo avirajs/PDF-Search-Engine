@@ -39,9 +39,9 @@ TextExtractor::~TextExtractor()
 }
 
 
-void TextExtractor::Init( const char* pszInput)
+void TextExtractor::Init( const char* pszInput,string docName)
 {
-    mm=pszInput;
+    mm=docName;
    // cout << "Start of init" << endl;
     if( !pszInput )
     {
@@ -55,6 +55,7 @@ void TextExtractor::Init( const char* pszInput)
     int nCount = document.GetPageCount();
     //shows page count
     cout << "Page count is: " << nCount << endl;
+    cout << endl;
     for( int i=0; i<nCount; i++ )
     {
         PdfPage* pPage = document.GetPage( i );
@@ -508,6 +509,107 @@ void TextExtractor::ConvertToVectorOfString(char*c)
                 }
 
             }
+
+            if (value == 46)
+            {
+                for (int o = h; o < i; o++)
+                {
+                    n[x] = c[o];
+                    x++;
+                }
+                n[x] = null[0];
+                //set h to next element
+                h = i+1;
+                //convert n to string method
+                string f = string(n);
+                if (f != " " && f != "")
+                {
+                    ih->addIndex(ie->getStemmed(f),docname);
+                    //this->a.push_back(f);
+                }
+                //reset n
+                for (int u =0; u < 200; u++)
+                {
+                    n[u] = p[u];
+                }
+
+            }
+
+            if (value == 47)
+            {
+                for (int o = h; o < i; o++)
+                {
+                    n[x] = c[o];
+                    x++;
+                }
+                n[x] = null[0];
+                //set h to next element
+                h = i+1;
+                //convert n to string method
+                string f = string(n);
+                if (f != " " && f != "")
+                {
+                    ih->addIndex(ie->getStemmed(f),docname);
+                    //this->a.push_back(f);
+                }
+                //reset n
+                for (int u =0; u < 200; u++)
+                {
+                    n[u] = p[u];
+                }
+
+            }
+
+            if (value == 44)
+            {
+                for (int o = h; o < i; o++)
+                {
+                    n[x] = c[o];
+                    x++;
+                }
+                n[x] = null[0];
+                //set h to next element
+                h = i+1;
+                //convert n to string method
+                string f = string(n);
+                if (f != " " && f != "")
+                {
+                    ih->addIndex(ie->getStemmed(f),docname);
+                    //this->a.push_back(f);
+                }
+                //reset n
+                for (int u =0; u < 200; u++)
+                {
+                    n[u] = p[u];
+                }
+
+            }
+
+            if (value == 58)
+            {
+                for (int o = h; o < i; o++)
+                {
+                    n[x] = c[o];
+                    x++;
+                }
+                n[x] = null[0];
+                //set h to next element
+                h = i+1;
+                //convert n to string method
+                string f = string(n);
+                if (f != " " && f != "")
+                {
+                    ih->addIndex(ie->getStemmed(f),docname);
+                    //this->a.push_back(f);
+                }
+                //reset n
+                for (int u =0; u < 200; u++)
+                {
+                    n[u] = p[u];
+                }
+
+            }
+
             //if letter upper or lower and a number
             if (((value > 96 && value < 123) || (value > 64 && value <91)) && (valueA > 47 && valueA < 58))
             {
@@ -592,10 +694,3 @@ void TextExtractor::ConvertToVectorOfString(char*c)
     }
 
 }
-
-
-
-
-
-
-

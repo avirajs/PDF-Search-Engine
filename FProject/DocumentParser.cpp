@@ -65,7 +65,7 @@ void DocumentParser::extract(string fileStream)
       string ne = names + k[i];
       const char * mm = ne.c_str();
       try {
-         extractor.Init(mm);
+         extractor.Init(mm,k[i]);
          m.push_back(extractor);
       } catch( PdfError & e ) {
           fprintf( stderr, "Error: An error %i ocurred during processing the pdf file.\n", e.GetError() );

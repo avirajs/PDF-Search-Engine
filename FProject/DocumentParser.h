@@ -24,8 +24,8 @@ public:
     vector<TextExtractor> m;
     vector <string> k;
     DocumentParser(IndexHandler*);
-    string getStemmed(string);
-    bool isStopWord(string);
+    string getStemmed(string&);
+    bool isStopWord(string&);
     void extract(string);
 };
 

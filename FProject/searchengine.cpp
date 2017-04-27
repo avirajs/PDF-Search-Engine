@@ -50,7 +50,7 @@ void SearchEngine::search(string word)
     }
     else
     {
-        string stem=dp->getStemmed(word);
+        string stem=(dp->getStemmed(word));
         set<string>* found= ih->getDocs(stem);
         if(found!=nullptr &&found->size()>0)
         {

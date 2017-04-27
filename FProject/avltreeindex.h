@@ -1,42 +1,54 @@
-//citation http://www.sanfoundry.com/cpp-program-implement-avl-trees/
-#ifndef AVLTreeIndex_H
-#define AVLTreeIndex_H
-#include "indexinterface.cpp"
-#include <iostream>
+#ifndef AVLTREEINDEX_H
+#define AVLTREEINDEX_H
+
+#endif // AVLTREEINDEX_H
+#include<iostream>
+#include<set>
+#include<iostream>
+#include "indexinterface.cpp";
 using namespace std;
-struct AVLIndexNode
+struct index_node
 {
-   string wordkey="";
-   set<string>docnums;
-   // Other data fields can be inserted here
-   AVLIndexNode *left=nullptr;
-   AVLIndexNode *right=nullptr;
+    string word_key;
+    index_node* left;
+    index_node* right;
+    set<string>docnames;
+    int height;
 };
-
-class AVLTreeIndex: public IndexInterface
+class AVLTreeIndex : public IndexInterface
 {
-   private:
-      AVLIndexNode   *root;
+private:
 
-   public:
-        int height(AVLIndexNode *);
-        int diff(AVLIndexNode *);
-        virtual set<string>* findIndex(string key);
-        virtual void addIndex(string word, string doc);
-        AVLTreeIndex();
-        ~AVLTreeIndex();
-        AVLIndexNode *rr_rotation(AVLIndexNode *);
-        AVLIndexNode *ll_rotation(AVLIndexNode *);
-        AVLIndexNode *lr_rotation(AVLIndexNode *);
-        AVLIndexNode *rl_rotation(AVLIndexNode *);
-        AVLIndexNode* balance(AVLIndexNode *);
-        AVLIndexNode* insert(AVLIndexNode *,string,string);
-        virtual void display();
-        void inorder(AVLIndexNode *tree);
 
-   private:
-        void ClearTree(AVLIndexNode *n);
+    index_node* root;
 
+    void makeEmpty(index_node* t);
+
+    index_node* insert(string& x,string& docname, index_node* t);
+
+    index_node* singleRightRotate(index_node* &t);
+
+    index_node* singleLeftRotate(index_node* &t);
+
+    index_node* doubleLeftRotate(index_node* &t);
+
+    index_node* doubleRightRotate(index_node* &t);
+
+    index_node* findMin(index_node* t);
+
+    index_node* findMax(index_node* t);
+
+    index_node* remove(string x, index_node* t);
+
+    int height(index_node* t);
+    int getBalance(index_node* t);
+    void inorder(index_node* t);
+
+public:
+    AVLTreeIndex();
+    virtual set<string>* findIndex(string key) ; // Pure virtual function makes
+    virtual void addIndex(string& word, string& doc);
+    void insert(string& x,string& docname);
+    void remove(string x);
+    virtual void display();
 };
-
-#endif // AVLTreeIndexIndex_H

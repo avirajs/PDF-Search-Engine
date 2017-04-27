@@ -76,11 +76,11 @@ void DocumentParser::extract(string fileStream)
 
 }
 
-string DocumentParser::getStemmed(string word)
+string DocumentParser::getStemmed(string& word)
 {
     return ie->getStemmed(word);
 }
-bool DocumentParser::isStopWord(string word)
+bool DocumentParser::isStopWord(string& word)
 {
     return ie->isStopWord(word);
 }

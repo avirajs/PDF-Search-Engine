@@ -565,6 +565,8 @@ main.o: ../main.cpp ../searchengine.h \
 		../indexhandler.h \
 		../avltreeindex.h \
 		../indexinterface.cpp \
+		../DocumentParser.h \
+		../textextractor.h \
 		../indexextractor.h \
 		../english_stem.h \
 		../stemming.h \
@@ -572,9 +574,7 @@ main.o: ../main.cpp ../searchengine.h \
 		../common_lang_constants.h \
 		../safe_math.h \
 		../utilities.h \
-		../debug_logic.h \
-		../DocumentParser.h \
-		../textextractor.h
+		../debug_logic.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o main.o ../main.cpp
 
 indexhandler.o: ../indexhandler.cpp ../indexhandler.h \
@@ -590,6 +590,8 @@ searchengine.o: ../searchengine.cpp ../searchengine.h \
 		../indexhandler.h \
 		../avltreeindex.h \
 		../indexinterface.cpp \
+		../DocumentParser.h \
+		../textextractor.h \
 		../indexextractor.h \
 		../english_stem.h \
 		../stemming.h \
@@ -597,12 +599,21 @@ searchengine.o: ../searchengine.cpp ../searchengine.h \
 		../common_lang_constants.h \
 		../safe_math.h \
 		../utilities.h \
-		../debug_logic.h \
-		../DocumentParser.h \
-		../textextractor.h
+		../debug_logic.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o searchengine.o ../searchengine.cpp
 
-textextractor.o: ../textextractor.cpp ../textextractor.h
+textextractor.o: ../textextractor.cpp ../textextractor.h \
+		../indexhandler.h \
+		../avltreeindex.h \
+		../indexinterface.cpp \
+		../indexextractor.h \
+		../english_stem.h \
+		../stemming.h \
+		../string_util.h \
+		../common_lang_constants.h \
+		../safe_math.h \
+		../utilities.h \
+		../debug_logic.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o textextractor.o ../textextractor.cpp
 
 DocumentParser.o: ../DocumentParser.cpp ../indexextractor.h \
@@ -613,7 +624,11 @@ DocumentParser.o: ../DocumentParser.cpp ../indexextractor.h \
 		../safe_math.h \
 		../utilities.h \
 		../debug_logic.h \
-		../textextractor.h
+		../textextractor.h \
+		../indexhandler.h \
+		../avltreeindex.h \
+		../indexinterface.cpp \
+		../DocumentParser.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o DocumentParser.o ../DocumentParser.cpp
 
 indexextractor.o: ../indexextractor.cpp ../indexextractor.h \

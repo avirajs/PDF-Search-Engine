@@ -475,8 +475,9 @@ void TextExtractor::ConvertToVectorOfString(char*c)
                 string f = string(n);
                 if (f != " ")
                 {
-                    ih->addIndex(ie->getStemmed(f),docname);
-                    //this->a.push_back(f);
+
+                    if(!ie->isStopWord(f))
+                        ih->addIndex(ie->getStemmed(f),docname);
                 }
                 //reset n
                 for (int u =0; u < 200; u++)
@@ -499,8 +500,8 @@ void TextExtractor::ConvertToVectorOfString(char*c)
                 string f = string(n);
                 if (f != " " && f != "")
                 {
-                    ih->addIndex(ie->getStemmed(f),docname);
-                    //this->a.push_back(f);
+                    if(!ie->isStopWord(f))
+                        ih->addIndex(ie->getStemmed(f),docname);
                 }
                 //reset n
                 for (int u =0; u < 200; u++)
@@ -524,8 +525,8 @@ void TextExtractor::ConvertToVectorOfString(char*c)
                 string f = string(n);
                 if (f != " " && f != "")
                 {
-                    ih->addIndex(ie->getStemmed(f),docname);
-                    //this->a.push_back(f);
+                    if(!ie->isStopWord(f))
+                        ih->addIndex(ie->getStemmed(f),docname);
                 }
                 //reset n
                 for (int u =0; u < 200; u++)
@@ -549,8 +550,8 @@ void TextExtractor::ConvertToVectorOfString(char*c)
                 string f = string(n);
                 if (f != " " && f != "")
                 {
-                    ih->addIndex(ie->getStemmed(f),docname);
-                    //this->a.push_back(f);
+                    if(!ie->isStopWord(f))
+                        ih->addIndex(ie->getStemmed(f),docname);
                 }
                 //reset n
                 for (int u =0; u < 200; u++)
@@ -574,8 +575,8 @@ void TextExtractor::ConvertToVectorOfString(char*c)
                 string f = string(n);
                 if (f != " " && f != "")
                 {
-                    ih->addIndex(ie->getStemmed(f),docname);
-                    //this->a.push_back(f);
+                    if(!ie->isStopWord(f))
+                        ih->addIndex(ie->getStemmed(f),docname);
                 }
                 //reset n
                 for (int u =0; u < 200; u++)
@@ -599,8 +600,8 @@ void TextExtractor::ConvertToVectorOfString(char*c)
                 string f = string(n);
                 if (f != " " && f != "")
                 {
-                    ih->addIndex(ie->getStemmed(f),docname);
-                    //this->a.push_back(f);
+                    if(!ie->isStopWord(f))
+                        ih->addIndex(ie->getStemmed(f),docname);
                 }
                 //reset n
                 for (int u =0; u < 200; u++)
@@ -625,8 +626,8 @@ void TextExtractor::ConvertToVectorOfString(char*c)
                 string f = string(n);
                 if (f != " ")
                 {
-                    ih->addIndex(ie->getStemmed(f),docname);
-                    //this->a.push_back(f);
+                    if(!ie->isStopWord(f))
+                        ih->addIndex(ie->getStemmed(f),docname);
                 }
                 //reset n
                 for (int u =0; u < 200; u++)
@@ -686,7 +687,8 @@ void TextExtractor::ConvertToVectorOfString(char*c)
             string f = string(n);
             if (f != " ")
             {
-                ih->addIndex(ie->getStemmed(f),docname);
+                if(!ie->isStopWord(f))
+                    ih->addIndex(ie->getStemmed(f),docname);
                 //this->a.push_back(f);
             }
         }

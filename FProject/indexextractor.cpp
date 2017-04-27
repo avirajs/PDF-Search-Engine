@@ -24,7 +24,7 @@ void indexextractor::useStopWords(string stoptxt)
         stopwords.insert(word);
     }
 }
-bool indexextractor::isStopWord(string word)
+bool indexextractor::isStopWord(string& word)
 {
     unordered_set<string>::const_iterator got = stopwords.find (word);
 
@@ -94,10 +94,12 @@ void indexextractor::corpusFrequency(string word)
        cout<<"num of words in corpus: "<<sum<<endl;
 
 }
-string indexextractor::getStemmed(string w)
+string indexextractor::getStemmed(string& w)
 {
+
     wstring word(w.begin(),w.end());
     english_stem<> StemEnglish;
     StemEnglish(word);
-    return string( word.begin(), word.end() );
+    w=string( word.begin(), word.end() );
+    return w;
 }

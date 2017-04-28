@@ -1,5 +1,6 @@
 #include "searchengine.h"
 #include "DocumentParser.h"
+#include <iomanip>
 SearchEngine::SearchEngine(string docpath)
 {
     //inialize
@@ -51,12 +52,12 @@ void SearchEngine::search(string word)
     else
     {
         string stem=(dp->getStemmed(word));
-        set<string>* found= ih->getDocs(stem);
+        vector<document>* found= ih->getDocs(stem);
         if(found!=nullptr &&found->size()>0)
         {
-            for(string docs:*( ih->getDocs(stem)))
+            for(document doc: *(found))
             {
-                cout<<docs<<endl;
+                cout<<"name: "<<setw(60)<<doc.docname<<"count: "<<doc.count<<endl;
             }
         }
         else

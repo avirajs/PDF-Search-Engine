@@ -17,7 +17,9 @@ private:
 public:
     IndexHandler();//add argument to decide which data structure to create but for now avl tree
     void addIndex(string,string);
-    set<string>* getDocs(string);
+    vector<document>* getDocs(string);
+    int getDocumentFrequency(string word, string docname);
+    int getCorpusFrequency(string word);
     void displayIndices();
 };
 

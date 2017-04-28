@@ -3,18 +3,18 @@
 
 #endif // AVLTREEINDEX_H
 #include<iostream>
-#include<set>
-#include<iostream>
-#include "indexinterface.cpp";
+#include "indexinterface.cpp"
+#include <algorithm>
 using namespace std;
 struct index_node
 {
     string word_key;
     index_node* left;
     index_node* right;
-    set<string>docnames;
+    vector<document>documents;
     int height;
 };
+
 class AVLTreeIndex : public IndexInterface
 {
 private:
@@ -24,7 +24,7 @@ private:
 
     void makeEmpty(index_node* t);
 
-    index_node* insert(string& x,string& docname, index_node* t);
+    index_node* insert(string x,string docname, index_node* t);
 
     index_node* singleRightRotate(index_node* &t);
 
@@ -46,9 +46,9 @@ private:
 
 public:
     AVLTreeIndex();
-    virtual set<string>* findIndex(string key) ; // Pure virtual function makes
+    virtual vector<document>* findIndex(string key) ; // Pure virtual function makes
     virtual void addIndex(string& word, string& doc);
-    void insert(string& x,string& docname);
+    void insert(string x,string docname);
     void remove(string x);
     virtual void display();
 };

@@ -39,25 +39,6 @@ bool indexextractor::isStopWord(string& word)
         return true;
       }
 }
-void indexextractor::frequentTerm(string word,int docnum)
-{
-    if (termfrequencies.find(word) == termfrequencies.end())
-    {
-        vector<documentCount> doccount;
-        doccount.push_back(documentCount(docnum));
-        termfrequencies[word]=doccount;
-    }
-    else//add word
-    {
-      vector<documentCount> *v= &termfrequencies[word];
-      auto it = find_if(v->begin(), v->end(), [docnum](const documentCount& obj) {return obj.docnum == docnum;});
-      if (it != v->end())
-        (*it).count++;
-      else//add document number
-          v->push_back(documentCount(docnum));
-    }
-
-}
 void indexextractor::displayTermFrequency()
 {
     for(auto ii=termfrequencies.begin(); ii!=termfrequencies.end(); ++ii)
@@ -70,12 +51,6 @@ void indexextractor::displayTermFrequency()
        }
        cout << endl;
     }
-}
-void indexextractor::docFrequency(string word,int docnum)
-{
-     vector<documentCount> *v= &termfrequencies[word];
-    auto it = find_if(v->begin(), v->end(), [docnum](const documentCount& obj) {return obj.docnum == docnum;});
-    cout<<(*it).docnum<<" "<<(*it).count<<endl;
 }
 void indexextractor::allDocFrequency(string word)
 {

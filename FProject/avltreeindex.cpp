@@ -1,7 +1,7 @@
 
 #include "avltreeindex.h"
 using namespace std;
-set<string>*  AVLTreeIndex:: findIndex(string word_key)
+vector<document>*  AVLTreeIndex:: findIndex(string word_key)
 {
 
     index_node *temp=root;      //'head' is pointer to root node
@@ -14,13 +14,13 @@ set<string>*  AVLTreeIndex:: findIndex(string word_key)
         else if(word_key<temp->word_key)
             temp=temp->left;
         else if(temp->word_key==word_key)
-            return &temp->docnames;
+            return &temp->documents;
 
       }
       if(temp==nullptr)
           return nullptr;
       else if(temp->word_key==word_key)
-          return &(temp->docnames);
+          return &(temp->documents);
 }
 void  AVLTreeIndex::addIndex(string& word, string& docname)
 {
@@ -41,13 +41,13 @@ void AVLTreeIndex::display()
         delete t;
     }
 
-    index_node* AVLTreeIndex:: insert(string& x,string& docname, index_node* t)
+    index_node* AVLTreeIndex:: insert(string x,string docname, index_node* t)
     {
         if(t == NULL)
         {
             t = new index_node;
             t->word_key = x;
-            t->docnames.insert(docname);
+            t->documents.push_back(document(docname));
             t->height = 0;
             t->left = t->right = NULL;
         }
@@ -75,7 +75,12 @@ void AVLTreeIndex::display()
         }
         else
         {
-            t->docnames.insert(docname);
+            vector<document> *v= &t->documents;
+            auto it = find_if(v->begin(), v->end(), [docname](const document& obj) {return obj.docname == docname;});
+            if (it != v->end())
+              (*it).count++;
+            else//add document number
+                v->push_back(document(docname));
         }
 
         t->height = max(height(t->left), height(t->right))+1;
@@ -214,8 +219,8 @@ void AVLTreeIndex::display()
             return;
         inorder(t->left);
         cout << t->word_key << ":";
-        for(string doc: t->docnames)
-            cout<<doc<<" ";
+        for(document doc: t->documents)
+            cout<<doc.docname<<" "<<doc.count<<" ";
 
         inorder(t->right);
     }
@@ -226,7 +231,7 @@ void AVLTreeIndex::display()
         root = NULL;
     }
 
-    void  AVLTreeIndex::insert(string& x,string& docname)
+    void  AVLTreeIndex::insert(string x,string docname)
     {
         root = insert(x,docname, root);
     }

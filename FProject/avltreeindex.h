@@ -19,7 +19,6 @@ class AVLTreeIndex : public IndexInterface
 {
 private:
 
-
     index_node* root;
 
     void makeEmpty(index_node* t);

@@ -6,25 +6,41 @@ using namespace std;
 int main()
 {   //check out self-efficacy in the stemmer it appears on pdf 2 with a space at the end but the stemmer
     //messes it up and changes it to self-efficaci
-    cout << "Hello World!" << endl;
+    //cout << "Hello World!" << endl;
 
-  //  FileExtractor extractor;
-  //  string path = "/home/coder/Documents/Corpus01/sampleCorpus/";
-  //  extractor.extract(path);
-    SearchEngine se("/home/coder/Documents/large-corpus/");
+    //  FileExtractor extractor;
+    //  string path = "/home/coder/Documents/Corpus01/sampleCorpus/";
+    //  extractor.extract(path);
+    SearchEngine se("/home/coder/Documents/sampleCorpus/");
 
 
+    se.querySearch("Boston");
+    se.querySearch("Seattle");
+    se.querySearch("OR Boston Seattle");
+    se.querySearch("AND Boston Seattle");
+    se.querySearch("Boston NOT Seattle");
+    se.querySearch("Boston NOT Seattle Bandura");
+    se.querySearch("AND Boston Seattle NOT Bandura");
+
+    // se.querySearch("AND Boston Seattle");
+    // se.querySearch("AND Boston Seattle Altemeyer");
+
+
+
+    //se.querySearch("hi how a are you");
+
+    /*
     cout<<" In mainNow"<<endl;
     se.search("innovation");
     se.search("Kalichman");
 
-   // se.search("self-efficacy");
-    //se.search("openness");
-    //se.search("results");
-    //se.search("respond");
-     //se.search("uncertainty");
-             // se.search("respond")
-    se.search("Japanese");
+    se.search("self-efficacy");
+    se.search("openness");
+    se.search("results");
+    se.search("lose");
+   se.search("uncertainty");
+    se.search("situation");
+    se.search("Japanese");*/
 
 }
 
@@ -58,15 +74,15 @@ for(string doc: (ex.getDocs("cs")))
     ex.addIndex("cs",4);
     ex.addIndex("cs",5);
     ex.addIndex("beasds",3);*/
-    //ex.display();
-    //cout<<(ex.findIndex("cs")==nullptr);
-    /*
+//ex.display();
+//cout<<(ex.findIndex("cs")==nullptr);
+/*
     for(int doc: *(ex.findIndex("cs")))
     {
         cout<<doc<<endl;
     }*/
-    //ex.findIndex("yes");
-    //ex.display(1);
+//ex.findIndex("yes");
+//ex.display(1);
 /*
  *  DocumentParser a("stopwords.txt");
     cout<<a.getStemmed("documentation");
@@ -82,4 +98,24 @@ for(string doc: (ex.getDocs("cs")))
 
     a.docFrequency("yes",2);
     a.corpusFrequency("yes");
+    vector<document>l;
+    document temp("doc2");
+    temp.count++;
+    l.push_back(temp);
+
+    document tem("doc4");
+    tem.count++;
+    l.push_back(tem);
+
+    vector<document>r;
+
+    document tm("doc2");
+    tm.count++;
+    r.push_back(tm);
+
+
+for(document doc: se.getDifference(l,r))
+{
+    cout<<doc.docname;
+}
 */

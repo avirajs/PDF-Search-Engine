@@ -11,7 +11,11 @@ private:
 
 public:
     SearchEngine(string docpath);
-    void search(string);
+    vector<document> querySearch(string);
+    vector<document> getIntersection(vector<document>,vector<document>);
+    vector<document> getUnion(vector<document>,vector<document>);
+    vector<document> getDifference(vector<document>,vector<document>);
+    vector<document> search(string);
 
 };
 

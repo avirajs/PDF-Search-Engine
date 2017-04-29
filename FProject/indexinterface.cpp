@@ -14,8 +14,6 @@ struct document
     {
         return docname;
     }
-
-
 };
 class IndexInterface
 {

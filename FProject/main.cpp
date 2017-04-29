@@ -13,14 +13,14 @@ int main()
     //  extractor.extract(path);
     SearchEngine se("/home/coder/Documents/sampleCorpus/");
 
-
-    se.querySearch("Boston");
-    se.querySearch("Seattle");
-    se.querySearch("OR Boston Seattle");
-    se.querySearch("AND Boston Seattle");
-    se.querySearch("Boston NOT Seattle");
-    se.querySearch("Boston NOT Seattle Bandura");
-    se.querySearch("AND Boston Seattle NOT Bandura");
+    se.querySearch("OR Boston results");
+    //se.querySearch("Boston");
+    //se.querySearch("Seattle");
+    //se.querySearch("OR Boston Seattle");
+    //se.querySearch("AND Boston Seattle");
+    //se.querySearch("Boston NOT Seattle");
+    //se.querySearch("Boston NOT Seattle Bandura");
+    //se.querySearch("AND Boston Seattle NOT Bandura");
 
     // se.querySearch("AND Boston Seattle");
     // se.querySearch("AND Boston Seattle Altemeyer");

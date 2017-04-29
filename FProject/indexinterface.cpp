@@ -5,6 +5,7 @@ struct document
 {
     string docname;
     int count=1;
+    double tdif=0;
     document(string name)
     {
         int count=1;

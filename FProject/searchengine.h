@@ -16,7 +16,8 @@ public:
     vector<document> getUnion(vector<document>,vector<document>);
     vector<document> getDifference(vector<document>,vector<document>);
     vector<document> search(string);
-
+    void relevencySort(vector<document>& );
+void findTDIFs(vector<document>& currdocs);
 };
 
 #endif // SEARCHENGINE_H

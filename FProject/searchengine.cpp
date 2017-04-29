@@ -35,13 +35,11 @@ vector<document> SearchEngine::querySearch(string query)
     if(words.size()==1)
     {
        currdocs= search(words[0]);
-       sort( currdocs.begin( ), currdocs.end( ), [ ]( const document& lhs, const document& rhs )
-       {
-          return lhs.count < rhs.count;
-       });
+       findTDIFs(currdocs);
+       relevencySort(currdocs);
        cout<<"\nQuery results:"<<endl;
        for(document doc: currdocs)
-          cout<<"name: "<<doc.docname<<" count: "<<doc.count<<endl;
+          cout<<"name: "<<doc.docname<<" count: "<<doc.count<<" tdif: "<<doc.tdif<<endl;
        return currdocs;
     }
 
@@ -112,14 +110,11 @@ vector<document> SearchEngine::querySearch(string query)
             searches.pop();
        }
     }
-    sort( currdocs.begin( ), currdocs.end( ), [ ]( const document& lhs, const document& rhs )
-    {
-       return lhs.count < rhs.count;
-    });
+    relevencySort(currdocs);
 
     cout<<"\nQuery results:"<<endl;
     for(document doc: currdocs)
-        cout<<"name: "<<doc.docname<<" count: "<<doc.count<<endl;
+        cout<<"name: "<<doc.docname<<" count: "<<doc.count<<" tdif: "<<doc.tdif<<endl;
 
     return currdocs;
 
@@ -179,6 +174,8 @@ vector<document> SearchEngine::search(string word)
 }
 vector<document>  SearchEngine::getIntersection(vector<document> l,vector<document> r)
 {
+    findTDIFs(l);
+    findTDIFs(r);
     vector<document> doc_intersection;
     for(document doc:r)
     {
@@ -187,6 +184,7 @@ vector<document>  SearchEngine::getIntersection(vector<document> l,vector<docume
         if (it != l.end())
         {
             doc.count+=(*it).count;
+            doc.tdif+=(*it).tdif;
             doc_intersection.push_back(doc);
         }
     }
@@ -197,7 +195,8 @@ vector<document> SearchEngine::getUnion(vector<document> l,vector<document> r)
 {
 
     //searches for rhs words in left vector
-
+    findTDIFs(l);
+    findTDIFs(r);
     for(document doc:r)
     {
         auto it = find_if(l.begin(), l.end(), [&doc]( document& obj) {return obj.getName() == doc.docname;});
@@ -208,13 +207,15 @@ vector<document> SearchEngine::getUnion(vector<document> l,vector<document> r)
         if (it != l.end())
         {
             (*it).count+=doc.count;
+            (*it).tdif+=doc.tdif;
         }
     }
     return l;
 }
 vector<document> SearchEngine::getDifference(vector<document> r,vector<document> l)
 {
-
+    findTDIFs(l);
+    findTDIFs(r);
     vector<document> doc_diff;
     for(document doc:r)
     {
@@ -226,4 +227,26 @@ vector<document> SearchEngine::getDifference(vector<document> r,vector<document>
         }
     }
     return doc_diff;
+}
+void SearchEngine::findTDIFs(vector<document>& currdocs)
+{
+    int corpus_sum=0;
+    for (unsigned j=0; j<currdocs.size(); j++)
+    {
+       corpus_sum+= currdocs.at(j).count;
+    }
+    for(document &doc: currdocs)
+    {
+        doc.tdif=(1.*doc.count)/corpus_sum;
+    }
+
+}
+void SearchEngine::relevencySort(vector<document>& currdocs)
+{
+
+    sort( currdocs.begin( ), currdocs.end( ), [ ]( const document& lhs, const document& rhs )
+    {
+       return lhs.tdif> rhs.tdif;
+    });
+
 }

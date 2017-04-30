@@ -7,6 +7,7 @@
 #include <algorithm>
 #include "indexhandler.h"
 #include "avltreeindex.h"
+#include "hash.h"
 using namespace std;
 
 class IndexHandler

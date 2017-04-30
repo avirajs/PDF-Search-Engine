@@ -5,12 +5,12 @@ CONFIG -= qt
 
 SOURCES += main.cpp \
     indexhandler.cpp \
-    indexinterface.cpp \
     avltreeindex.cpp \
     searchengine.cpp \
     textextractor.cpp \
     DocumentParser.cpp \
-    indexextractor.cpp
+    indexextractor.cpp \
+    hash.cpp
 
 LIBS += -lpodofo
 
@@ -27,4 +27,6 @@ HEADERS += \
     avltreeindex.h \
     searchengine.h \
     indexextractor.h \
-    DocumentParser.h
+    DocumentParser.h \
+    indexinterface.h \
+    hash.h

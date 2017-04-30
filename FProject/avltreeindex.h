@@ -3,7 +3,7 @@
 
 #endif // AVLTREEINDEX_H
 #include<iostream>
-#include "indexinterface.cpp"
+#include "indexinterface.h"
 #include <algorithm>
 using namespace std;
 struct index_node

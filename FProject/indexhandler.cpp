@@ -4,6 +4,7 @@ IndexHandler::IndexHandler()
 {
     //add other option using arguments
     index=new AVLTreeIndex;
+    //index=new hashy;
 }
 void IndexHandler::addIndex(string word,string docname)
 {

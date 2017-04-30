@@ -1,3 +1,5 @@
+#ifndef INDEXINTERFACE_H
+#define INDEXINTERFACE_H
 #include <string>
 #include <vector>
 using namespace std;
@@ -15,6 +17,18 @@ struct document
     {
         return docname;
     }
+    void setName(string name)
+    {
+        docname= name;
+    }
+    void setCount (int num)
+    {
+        count =num;
+    }
+    int getCount()
+    {
+        return count;
+    }
 };
 class IndexInterface
 {
@@ -23,3 +37,4 @@ public:
   virtual void addIndex(string& word, string& doc) = 0;
   virtual void display()=0;
 };
+#endif // INDEXINTERFACE_H

@@ -54,14 +54,16 @@ SOURCES       = ../main.cpp \
 		../searchengine.cpp \
 		../textextractor.cpp \
 		../DocumentParser.cpp \
-		../indexextractor.cpp 
+		../indexextractor.cpp \
+		../hash.cpp 
 OBJECTS       = main.o \
 		indexhandler.o \
 		avltreeindex.o \
 		searchengine.o \
 		textextractor.o \
 		DocumentParser.o \
-		indexextractor.o
+		indexextractor.o \
+		hash.o
 DIST          = /opt/Qt/5.8/gcc_64/mkspecs/features/spec_pre.prf \
 		/opt/Qt/5.8/gcc_64/mkspecs/common/unix.conf \
 		/opt/Qt/5.8/gcc_64/mkspecs/common/linux.conf \
@@ -215,13 +217,16 @@ DIST          = /opt/Qt/5.8/gcc_64/mkspecs/features/spec_pre.prf \
 		avltreeindex.h \
 		searchengine.h \
 		indexextractor.h \
-		DocumentParser.h ../main.cpp \
+		DocumentParser.h \
+		indexinterface.h \
+		hash.h ../main.cpp \
 		../indexhandler.cpp \
 		../avltreeindex.cpp \
 		../searchengine.cpp \
 		../textextractor.cpp \
 		../DocumentParser.cpp \
-		../indexextractor.cpp
+		../indexextractor.cpp \
+		../hash.cpp
 QMAKE_TARGET  = FProject
 DESTDIR       = 
 TARGET        = FProject
@@ -564,7 +569,7 @@ compiler_clean:
 main.o: ../main.cpp ../searchengine.h \
 		../indexhandler.h \
 		../avltreeindex.h \
-		../indexinterface.cpp \
+		../indexinterface.h \
 		../DocumentParser.h \
 		../textextractor.h \
 		../indexextractor.h \
@@ -579,17 +584,17 @@ main.o: ../main.cpp ../searchengine.h \
 
 indexhandler.o: ../indexhandler.cpp ../indexhandler.h \
 		../avltreeindex.h \
-		../indexinterface.cpp
+		../indexinterface.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o indexhandler.o ../indexhandler.cpp
 
 avltreeindex.o: ../avltreeindex.cpp ../avltreeindex.h \
-		../indexinterface.cpp
+		../indexinterface.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o avltreeindex.o ../avltreeindex.cpp
 
 searchengine.o: ../searchengine.cpp ../searchengine.h \
 		../indexhandler.h \
 		../avltreeindex.h \
-		../indexinterface.cpp \
+		../indexinterface.h \
 		../DocumentParser.h \
 		../textextractor.h \
 		../indexextractor.h \
@@ -605,7 +610,7 @@ searchengine.o: ../searchengine.cpp ../searchengine.h \
 textextractor.o: ../textextractor.cpp ../textextractor.h \
 		../indexhandler.h \
 		../avltreeindex.h \
-		../indexinterface.cpp \
+		../indexinterface.h \
 		../indexextractor.h \
 		../english_stem.h \
 		../stemming.h \
@@ -627,7 +632,7 @@ DocumentParser.o: ../DocumentParser.cpp ../indexextractor.h \
 		../textextractor.h \
 		../indexhandler.h \
 		../avltreeindex.h \
-		../indexinterface.cpp \
+		../indexinterface.h \
 		../DocumentParser.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o DocumentParser.o ../DocumentParser.cpp
 
@@ -640,6 +645,10 @@ indexextractor.o: ../indexextractor.cpp ../indexextractor.h \
 		../utilities.h \
 		../debug_logic.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o indexextractor.o ../indexextractor.cpp
+
+hash.o: ../hash.cpp ../hash.h \
+		../indexinterface.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o hash.o ../hash.cpp
 
 ####### Install
 

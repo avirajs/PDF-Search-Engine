@@ -2,7 +2,6 @@
 #include <math.h>
 
 
-
 hashy::hashy()
 {
     //sets elements of has table to default valuse
@@ -13,7 +12,6 @@ hashy::hashy()
         HashTable[i]->count = 0;
         HashTable[i]->docName = "empty";
         HashTable[i]->word_key = "empty";
-        HashTable[i]->next = nullptr;
     }
 }
 
@@ -26,16 +24,13 @@ int hashy::Hashy(string key)
             hash = hash * 101  +  *s++;
         }
         return abs(hash%tableSize);
-
-
 }
 
 void hashy::addIndex(string &word, string &name)
 {
     int index = Hashy(word);
-    bool alreadyOn = false;
-    item* alreadyOnPtr;
     item* Ptr = HashTable[index];
+    //If the index is empty
     if (HashTable[index]->word_key == "empty")
     {
         HashTable[index]->word_key = word;
@@ -46,41 +41,33 @@ void hashy::addIndex(string &word, string &name)
     //check to see if word already on index and has same doc name, increase count if so
     else
     {
-        while (Ptr != nullptr)
+        int i =0;
+        int j = Ptr->vec.size();
+        while (i != j)
         {
-            string cword = Ptr->word_key;
-            string cdocName = Ptr->docName;
+            string cword = Ptr->vec[i].word_key;
+            string cdocName = Ptr->vec[i].docName;
             if (cword.compare(word) == 0)
             {
                 if(cdocName.compare(name) == 0)
                 {
                     //increase the count for repeat words in the same document
-                    alreadyOn = true;
-                    alreadyOnPtr = Ptr;
+                    Ptr->vec[i].count++;
+                    return;
                 }
             }
-            Ptr = Ptr->next;
+            i++;
         }
     }
-    //if already on, increase the count
-    if (alreadyOn)
-    {
-        alreadyOnPtr->count++;
-    }
-    else
-    {
-        Ptr = HashTable[index];
-        while (Ptr->next != nullptr)
-        {
-            Ptr = Ptr->next;
-        }
-        item* n = new item;
-        n->count++;
-        n->docName = name;
-        n->word_key = word;
-        n->next = nullptr;
-        Ptr->next = n;
-    }
+    //If none of the above add new element to the vector
+    Ptr = HashTable[index];
+    item* n = new item;
+    n->count = 0;
+    n->count++;
+    n->docName = name;
+    n->word_key = word;
+    Ptr->vec.push_back(*n);
+
 }
 
 int hashy::NumItemsInIndex(int index)
@@ -93,12 +80,8 @@ int hashy::NumItemsInIndex(int index)
     else
     {
         counts++;
-        item* Ptr = HashTable[index]->next;
-        while(Ptr != nullptr)
-        {
-            counts++;
-            Ptr = Ptr->next;
-        }
+        item* Ptr = HashTable[index];
+        counts+= Ptr->vec.size();
     }
     return counts;
 }
@@ -131,14 +114,15 @@ void hashy::displayIndex(int index)
     {
         cout << "The index is: " << index << endl;
         cout << "The number of words in the index is: " << NumItemsInIndex(index) << endl;
-        while(Ptr != nullptr)
+        int i =0;
+        while(i < Ptr->vec.size())
         {
             cout << "------------------------" << endl;
             cout << "------------------------" << endl;
-            cout << "The word is: " << Ptr->word_key << endl;
-            cout << "The doc name is: " << Ptr->docName << endl;
-            cout << "The count is: " << Ptr->count << endl;
-            Ptr = Ptr->next;
+            cout << "The word is: " << Ptr->vec[i].word_key << endl;
+            cout << "The doc name is: " << Ptr->vec[i].docName << endl;
+            cout << "The count is: " << Ptr->vec[i].count << endl;
+            i++;
         }
     }
 }
@@ -146,29 +130,43 @@ void hashy::displayIndex(int index)
 vector<document>* hashy::findIndex(string word)
 {
     int index = Hashy(word);
-    vector<document>* data;
-    vector<document> list;
+    vector<document>* data = new vector<document>;
     bool found = false;
     item* Ptr = HashTable[index];
-    while(Ptr != nullptr)
+    string cword = Ptr->word_key;
+    if (cword.compare(word) == 0)
     {
-        string cword = Ptr->word_key;
+         string d = "empty";
+         document docs(d);
+         int num = Ptr->count;
+         string name = Ptr->docName;
+         docs.setCount(num);
+         docs.setName(name);
+         data->push_back(docs);
+         found = true;
+    }
+    int i =0;
+    int j = Ptr->vec.size();
+    while(i < j)
+    {
+        string cword = Ptr->vec[i].word_key;
         if (cword.compare(word) == 0)
         {
              string d = "empty";
-             document* docs = new document(d);
-             int num = Ptr->count;
-             string name = Ptr->docName;
-             docs->setCount(num);
-             docs->setName(name);
-             list.push_back(*docs);
+             document docs(d);
+             int num = Ptr->vec[i].count;
+             string name = Ptr->vec[i].docName;
+             docs.setCount(num);
+             docs.setName(name);
+             data->push_back(docs);
              found = true;
         }
-        Ptr = Ptr->next;
+        i++;
     }
     if (found)
     {
-        return &list;
+        //data = &list;
+        return data;
     }
     else
     {
@@ -177,34 +175,5 @@ vector<document>* hashy::findIndex(string word)
     }
 
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 

@@ -1,3 +1,4 @@
+
 #ifndef HASH_H
 #define HASH_H
 #include <string>
@@ -6,14 +7,13 @@
 #include "indexinterface.h"
 
 
-
 struct item
 {
     string word_key;
     //document has count and name variables
     int count;
     string docName;
-    item* next;
+    vector<item> vec;
 };
 
 class hashy : public IndexInterface
@@ -29,7 +29,6 @@ public:
 private:
     static const int tableSize = 1000000;
     item* HashTable[tableSize];
-
 
 };
 

@@ -1,4 +1,4 @@
-#include "searchengine.h"
+﻿#include "searchengine.h"
 #include "DocumentParser.h"
 #include <algorithm>
 #include <iomanip>
@@ -7,6 +7,9 @@
 SearchEngine::SearchEngine()
 {
     ih= new IndexHandler;
+
+   dp=new DocumentParser();
+
 }
 
 SearchEngine::SearchEngine(string docpath)
@@ -14,7 +17,7 @@ SearchEngine::SearchEngine(string docpath)
     //inialize
     ih= new IndexHandler;
     dp = new DocumentParser(ih);
-    read=new ifstream(docpath);
+
     dp->extract(docpath);
 
 }
@@ -263,4 +266,13 @@ void SearchEngine::relevencySort(vector<document>& currdocs)
 void SearchEngine::readIndex()
 {
     ih->readIndex();
+}
+void SearchEngine::clearIndex()
+{
+    ofstream fout("inverted_index.txt",ios::out);
+    if(!fout)
+    {
+        cout<<"clear file cant be opened"<<endl;
+        exit(EXIT_FAILURE);
+    }
 }

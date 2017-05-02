@@ -12,12 +12,14 @@ int main()
     //  FileExtractor extractor;
     //  string path = "/home/coder/Documents/Corpus01/sampleCorpus/";
     //  extractor.extract(path);
-   // SearchEngine se("/home/coder/Documents/pdfs/");
-    SearchEngine tester;
-   // se.writeIndex();
+
+   //SearchEngine se("/home/coder/Documents/sampleCorpus/");
+//se.clearIndex();
+   SearchEngine tester;
+    //se.writeIndex();
    tester.readIndex();
     //cout << "It might have worked." << endl;
-    //se.querySearch("OR Boston results");
+   tester.querySearch("OR Boston results");
     //se.writeIndex();
     //se.querySearch("Boston");
     //se.querySearch("Seattle");

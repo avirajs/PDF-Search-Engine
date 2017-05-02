@@ -3,8 +3,8 @@
 IndexHandler::IndexHandler()
 {
     //add other option using arguments
-    index=new AVLTreeIndex;
-    //index=new hashy;
+    //index=new AVLTreeIndex;
+    index=new hashy;
     //index->writeIndex();
 
 }

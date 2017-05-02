@@ -7,7 +7,6 @@ class SearchEngine
 private:
     DocumentParser *dp;
     IndexHandler* ih;
-    ifstream * read;
 
 public:
     SearchEngine();
@@ -20,6 +19,8 @@ public:
     void relevencySort(vector<document>& );
     void writeIndex();
     void readIndex();
+    void clearIndex();
+
 void findTDIFs(vector<document>& currdocs);
 };
 

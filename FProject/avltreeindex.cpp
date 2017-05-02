@@ -346,7 +346,7 @@ vector<string> tokens=split(line.substr(line.find("-")+1),'|');
         {
             docname=tokens[i];
             count=std::stoi(tokens[i+1]);
-            cout<<"word: "<<wordkey<<" doc name: "<<docname<<" count: "<<count<<endl;
+            //cout<<"word: "<<wordkey<<" doc name: "<<docname<<" count: "<<count<<endl;
             insert(wordkey,docname,count);
         }
     }

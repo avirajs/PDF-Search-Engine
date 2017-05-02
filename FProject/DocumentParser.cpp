@@ -14,7 +14,10 @@ DocumentParser::DocumentParser(IndexHandler* i)
 ih=i;
 ie= new indexextractor("stopwords.txt");
 }
-
+DocumentParser::DocumentParser()
+{
+ie= new indexextractor("stopwords.txt");
+}
 void DocumentParser::extract(string fileStream)
 {
 

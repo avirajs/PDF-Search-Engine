@@ -10,7 +10,8 @@ SOURCES += main.cpp \
     textextractor.cpp \
     DocumentParser.cpp \
     indexextractor.cpp \
-    hash.cpp
+    hash.cpp \
+    queryengine.cpp
 
 LIBS += -lpodofo
 
@@ -29,4 +30,5 @@ HEADERS += \
     indexextractor.h \
     DocumentParser.h \
     indexinterface.h \
-    hash.h
+    hash.h \
+    queryengine.h

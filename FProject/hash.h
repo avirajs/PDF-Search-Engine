@@ -5,7 +5,14 @@
 #include <vector>
 #include <iostream>
 #include "indexinterface.h"
-
+#include <math.h>
+#include <fstream>
+#include <regex.h>
+#include <algorithm>
+#include <fstream>
+#include <string>
+#include <sstream>
+#include <iterator>
 
 struct item
 {
@@ -23,11 +30,14 @@ public:
     int Hashy(string key);
     void addIndex(string &word, string &name);
     int NumItemsInIndex(int index);
-    virtual void readIndex();
-    virtual void writeIndex();
     void display();
     void displayIndex(int index);
     vector<document>* findIndex(string word);
+    virtual void readIndex();
+    virtual void writeIndex();
+    virtual void insertFromFile(string& word, string& doc, int &count);
+    vector<std::string> split(const std::string &s, char delim);
+
 private:
     static const int tableSize = 1000000;
     item* HashTable[tableSize];

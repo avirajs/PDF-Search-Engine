@@ -5,6 +5,10 @@
 #include<iostream>
 #include "indexinterface.h"
 #include <algorithm>
+#include <fstream>
+#include <string>
+#include <sstream>
+#include <iterator>
 using namespace std;
 struct index_node
 {
@@ -25,6 +29,8 @@ private:
 
     index_node* insert(string x,string docname, index_node* t);
 
+    index_node* insert(string x,string docname,int doc_count, index_node* t);
+
     index_node* singleRightRotate(index_node* &t);
 
     index_node* singleLeftRotate(index_node* &t);
@@ -42,12 +48,18 @@ private:
     int height(index_node* t);
     int getBalance(index_node* t);
     void inorder(index_node* t);
+    void write_inorder(index_node* t);
 
 public:
     AVLTreeIndex();
+    ~AVLTreeIndex();
     virtual vector<document>* findIndex(string key) ; // Pure virtual function makes
     virtual void addIndex(string& word, string& doc);
     void insert(string x,string docname);
+    void insert(string x,string docname,int count);
     void remove(string x);
     virtual void display();
+    virtual void readIndex();
+    virtual void writeIndex();
+    vector<std::string> split(const std::string &s, char delim);
 };

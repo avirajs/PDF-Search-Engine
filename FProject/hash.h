@@ -23,6 +23,8 @@ public:
     int Hashy(string key);
     void addIndex(string &word, string &name);
     int NumItemsInIndex(int index);
+    virtual void readIndex();
+    virtual void writeIndex();
     void display();
     void displayIndex(int index);
     vector<document>* findIndex(string word);

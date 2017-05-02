@@ -17,11 +17,13 @@ private:
     //index interface pointer
 public:
     IndexHandler();//add argument to decide which data structure to create but for now avl tree
+    void writeIndex();
     void addIndex(string,string);
     vector<document>* getDocs(string);
     int getDocumentFrequency(string word, string docname);
     int getCorpusFrequency(string word);
     void displayIndices();
+    void readIndex();
 };
 
 #endif // INDEXHANDLER_H

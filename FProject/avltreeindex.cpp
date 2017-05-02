@@ -1,5 +1,5 @@
-
 #include "avltreeindex.h"
+#include <regex.h>
 using namespace std;
 vector<document>*  AVLTreeIndex:: findIndex(string word_key)
 {
@@ -225,6 +225,71 @@ void AVLTreeIndex::display()
         inorder(t->right);
     }
 
+    //inserts the doccument to the word witht the correct doc count
+    index_node* AVLTreeIndex:: insert(string x,string docname, int doc_count, index_node* t)
+    {
+        if(t == NULL)
+        {
+            t = new index_node;
+            t->word_key = x;
+            document a(docname);
+                    a.count=doc_count;
+            t->documents.push_back(a);
+            t->height = 0;
+            t->left = t->right = NULL;
+        }
+        else if(x < t->word_key)
+        {
+            t->left = insert(x,docname,doc_count ,t->left);
+            if(height(t->left) - height(t->right) == 2)
+            {
+                if(x < t->left->word_key)
+                    t = singleRightRotate(t);
+                else
+                    t = doubleRightRotate(t);
+            }
+        }
+        else if(x > t->word_key)
+        {
+            t->right = insert(x,docname, doc_count,t->right);
+            if(height(t->right) - height(t->left) == 2)
+            {
+                if(x > t->right->word_key)
+                    t = singleLeftRotate(t);
+                else
+                    t = doubleLeftRotate(t);
+            }
+        }
+        else
+        {
+            document a(docname);
+                    a.count=doc_count;
+            t->documents.push_back(a);
+        }
+
+        t->height = max(height(t->left), height(t->right))+1;
+        return t;
+    }
+
+    void  AVLTreeIndex::write_inorder(index_node* t)
+    {
+        ofstream ifi;
+        ifi.open("inverted_index.txt",fstream::app);
+
+
+        if(t == NULL)
+            return;
+        write_inorder(t->left);
+
+
+        ifi << t->word_key << "-";
+        for(document doc: t->documents)
+            ifi<<doc.docname<<"|"<<doc.count<<"|";
+        ifi<<endl;
+
+
+        write_inorder(t->right);
+    }
 
      AVLTreeIndex::AVLTreeIndex()
     {
@@ -236,6 +301,10 @@ void AVLTreeIndex::display()
         root = insert(x,docname, root);
     }
 
+    void AVLTreeIndex::insert(string x,string docname, int count)
+    {
+        root = insert(x,docname,count,root);
+    }
     void AVLTreeIndex:: remove(string x)
     {
         root = remove(x, root);
@@ -243,3 +312,57 @@ void AVLTreeIndex::display()
 
 
 
+void AVLTreeIndex::readIndex()
+{
+
+
+    ifstream read("inverted_index.txt");
+    if (!read)
+    {
+        cout << "file could not be opened" << endl;
+        exit(EXIT_FAILURE);
+    }
+    cout << "File was opened" << endl;
+   string line;
+
+   string wordkey;
+   string docname;
+   int count=0;
+//statck overflow citation hwe
+    while(!(read.eof()))
+    {
+        getline(read,line);
+        wordkey=line.substr(0,line.find("-"));
+        /*
+        istringstream iss(line.substr(line.find("-")+1));
+        vector<string> tokens;
+        copy(istream_iterator<string>(iss),
+             istream_iterator<string>(),
+             back_inserter(tokens));
+*/
+
+vector<string> tokens=split(line.substr(line.find("-")+1),'|');
+        for(int i=0;i<tokens.size();i+=2)
+        {
+            docname=tokens[i];
+            count=std::stoi(tokens[i+1]);
+            cout<<"word: "<<wordkey<<" doc name: "<<docname<<" count: "<<count<<endl;
+            insert(wordkey,docname,count);
+        }
+    }
+}
+void AVLTreeIndex::writeIndex()
+{
+    write_inorder((root));
+}
+std::vector<std::string> AVLTreeIndex:: split(const std::string &s, char delim)
+{
+    std::stringstream ss(s);
+    std::string item;
+    std::vector<std::string> elems;
+    while (std::getline(ss, item, delim)) {
+      elems.push_back(item);
+      // elems.push_back(std::move(item)); // if C++11 (based on comment from @mchiasson)
+    }
+    return elems;
+  }

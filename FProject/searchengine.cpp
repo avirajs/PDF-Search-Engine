@@ -3,6 +3,12 @@
 #include <algorithm>
 #include <iomanip>
 #include <stack>
+
+SearchEngine::SearchEngine()
+{
+    ih= new IndexHandler;
+}
+
 SearchEngine::SearchEngine(string docpath)
 {
     //inialize
@@ -11,6 +17,10 @@ SearchEngine::SearchEngine(string docpath)
     read=new ifstream(docpath);
     dp->extract(docpath);
 
+}
+void SearchEngine::writeIndex()
+{
+ ih->writeIndex();
 }
 vector<document> SearchEngine::querySearch(string query)
 {
@@ -249,4 +259,8 @@ void SearchEngine::relevencySort(vector<document>& currdocs)
        return lhs.tdif> rhs.tdif;
     });
 
+}
+void SearchEngine::readIndex()
+{
+    ih->readIndex();
 }

@@ -175,5 +175,13 @@ vector<document>* hashy::findIndex(string word)
     }
 
 }
+void hashy::readIndex()
+{
+
+}
+void hashy::writeIndex()
+{
+
+}
 
 

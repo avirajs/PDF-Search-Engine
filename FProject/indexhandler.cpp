@@ -20,3 +20,11 @@ void IndexHandler::displayIndices()
 {
     index->display();
 }
+void IndexHandler::writeIndex()
+{
+    index->writeIndex();
+}
+void IndexHandler::readIndex()
+{
+    index->readIndex();
+}

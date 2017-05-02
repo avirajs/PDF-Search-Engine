@@ -10,7 +10,11 @@ struct document
     double tdif=0;
     document(string name)
     {
-        int count=1;
+        docname=name;
+    }
+    document(string name,string docname, int count)
+    {
+        this->count=count;
         docname=name;
     }
     string getName()
@@ -36,6 +40,8 @@ public:
   virtual vector<document>* findIndex(string key) = 0; // Pure virtual function makes
   virtual void addIndex(string& word, string& doc) = 0;
   virtual void display()=0;
+  virtual void readIndex()=0;
+  virtual void writeIndex()=0;
 
 };
 #endif // INDEXINTERFACE_H

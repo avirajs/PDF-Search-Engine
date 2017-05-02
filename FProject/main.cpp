@@ -7,13 +7,18 @@ int main()
 {   //check out self-efficacy in the stemmer it appears on pdf 2 with a space at the end but the stemmer
     //messes it up and changes it to self-efficaci
     //cout << "Hello World!" << endl;
+//keep track of document names if new document is not in add it to inverted file index
 
     //  FileExtractor extractor;
     //  string path = "/home/coder/Documents/Corpus01/sampleCorpus/";
     //  extractor.extract(path);
-    SearchEngine se("/home/coder/Documents/sampleCorpus/");
-
-    se.querySearch("OR Boston results");
+   // SearchEngine se("/home/coder/Documents/pdfs/");
+    SearchEngine tester;
+   // se.writeIndex();
+   tester.readIndex();
+    //cout << "It might have worked." << endl;
+    //se.querySearch("OR Boston results");
+    //se.writeIndex();
     //se.querySearch("Boston");
     //se.querySearch("Seattle");
     //se.querySearch("OR Boston Seattle");

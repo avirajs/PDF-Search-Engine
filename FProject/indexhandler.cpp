@@ -1,11 +1,14 @@
 #include "indexhandler.h"
 
-IndexHandler::IndexHandler()
+IndexHandler::IndexHandler(char type)
 {
     //add other option using arguments
-    //index=new AVLTreeIndex;
-    index=new hashy;
-    //index->writeIndex();
+    if(type=='A')
+    {
+    index=new AVLTreeIndex;
+    }
+    else if(type=='H')
+        index=new hashy;
 
 }
 void IndexHandler::addIndex(string word,string docname)

@@ -2,20 +2,18 @@
 #define SEARCHENGINE_H
 #include "indexhandler.h"
 #include "DocumentParser.h"
+#include "queryengine.h"
 class SearchEngine
 {
 private:
     DocumentParser *dp;
     IndexHandler* ih;
+    QueryEngine* qe;
 
 public:
-    SearchEngine();
-    SearchEngine(string docpath);
-    vector<document> querySearch(string);
-    vector<document> getIntersection(vector<document>,vector<document>);
-    vector<document> getUnion(vector<document>,vector<document>);
-    vector<document> getDifference(vector<document>,vector<document>);
-    vector<document> search(string);
+    SearchEngine(char);
+    SearchEngine(string docpath,char);
+    void search(string word);
     void relevencySort(vector<document>& );
     void writeIndex();
     void readIndex();

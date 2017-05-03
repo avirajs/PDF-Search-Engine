@@ -16,7 +16,7 @@ private:
     IndexInterface *index;
     //index interface pointer
 public:
-    IndexHandler();//add argument to decide which data structure to create but for now avl tree
+    IndexHandler(char type);//add argument to decide which data structure to create but for now avl tree
     void writeIndex();
     void addIndex(string,string);
     vector<document>* getDocs(string);

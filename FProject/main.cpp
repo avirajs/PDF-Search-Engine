@@ -15,11 +15,11 @@ int main()
 
    //SearchEngine se("/home/coder/Documents/sampleCorpus/");
 //se.clearIndex();
-   SearchEngine tester;
+   SearchEngine tester('H');
     //se.writeIndex();
    tester.readIndex();
     //cout << "It might have worked." << endl;
-   tester.querySearch("OR Boston results");
+   tester.search("OR Boston results");
     //se.writeIndex();
     //se.querySearch("Boston");
     //se.querySearch("Seattle");

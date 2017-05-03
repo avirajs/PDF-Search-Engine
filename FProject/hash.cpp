@@ -206,7 +206,7 @@ void hashy::readIndex()
         {
             docname=tokens[i];
             count=std::stoi(tokens[i+1]);
-            cout<<"word: "<<wordkey<<" doc name: "<<docname<<" count: "<<count<<endl;
+            //cout<<"word: "<<wordkey<<" doc name: "<<docname<<" count: "<<count<<endl;
             insertFromFile(wordkey,docname,count);
         }
     }
@@ -337,14 +337,14 @@ void hashy::writeIndex()
 
                 //at each element write the word vector<documents> and the word to the
                 fout << wordCheck[i] <<  "-";
-                cout << wordCheck[i] <<  "-";
+                //cout << wordCheck[i] <<  "-";
                 for (int j = 0; j < wordSet[i].size(); j++)
                 {
                     fout << wordSet[i][j].docname << "|" << wordSet[i][j].count << "|";
-                    cout <<  wordSet[i][j].docname << "|" << wordSet[i][j].count << "|";
+                    //cout <<  wordSet[i][j].docname << "|" << wordSet[i][j].count << "|";
                 }
                 fout << endl;
-                cout << endl;
+                //cout << endl;
             }
         }
         //reset all vectors

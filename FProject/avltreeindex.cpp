@@ -333,20 +333,13 @@ void AVLTreeIndex::readIndex()
     {
         getline(read,line);
         wordkey=line.substr(0,line.find("-"));
-        /*
-        istringstream iss(line.substr(line.find("-")+1));
-        vector<string> tokens;
-        copy(istream_iterator<string>(iss),
-             istream_iterator<string>(),
-             back_inserter(tokens));
-*/
 
-vector<string> tokens=split(line.substr(line.find("-")+1),'|');
+        vector<string> tokens=split(line.substr(line.find("-")+1),'|');
         for(int i=0;i<tokens.size();i+=2)
         {
             docname=tokens[i];
             count=std::stoi(tokens[i+1]);
-            //cout<<"word: "<<wordkey<<" doc name: "<<docname<<" count: "<<count<<endl;
+            // cout<<"word: "<<wordkey<<" doc name: "<<docname<<" count: "<<count<<endl;
             insert(wordkey,docname,count);
         }
     }

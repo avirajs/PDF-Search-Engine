@@ -22,6 +22,7 @@ struct index_node
 class AVLTreeIndex : public IndexInterface
 {
 private:
+    vector<document> topwords;
 
     index_node* root;
 

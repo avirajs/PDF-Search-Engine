@@ -1,7 +1,7 @@
 #ifndef QUERYENGINE_H
 #define QUERYENGINE_H
 #include <vector>
-
+#include <math.h>
 #include "indexhandler.h"
 #include "DocumentParser.h"
 
@@ -11,6 +11,7 @@ private:
     IndexHandler *ih;
     DocumentParser*dp;
 public:
+    int fileSize=0;
     QueryEngine(IndexHandler *,DocumentParser*);
 
     vector<document> querySearch(string query);

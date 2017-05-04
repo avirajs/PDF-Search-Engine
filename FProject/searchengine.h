@@ -11,13 +11,15 @@ private:
     QueryEngine* qe;
 
 public:
+    int totalPages;
     SearchEngine(char);
     SearchEngine(string docpath,char);
-    void search(string word);
+    void display_search_results(string word);
     void relevencySort(vector<document>& );
     void writeIndex();
     void readIndex();
     void clearIndex();
+    int getTotalPages();
 
 void findTDIFs(vector<document>& currdocs);
 };

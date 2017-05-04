@@ -40,6 +40,7 @@ using namespace std;
  */
 #include "indexhandler.h"
 #include "indexextractor.h"
+#include "map"
 class TextExtractor {
  public:
     IndexHandler* ih;
@@ -48,10 +49,15 @@ class TextExtractor {
     vector<string> a;
     TextExtractor(IndexHandler*,indexextractor*);
     virtual ~TextExtractor();
-
-    void Init( const char* pszInput,string docName);
+    int getTotalPages();
+    int wordCount;
+    string docsName;
+    string getDocName();
+    int getWordCount();
+    void Init( const char* pszInput, string docName);
 
  private:
+    int totalPages = 0;
     int chP = 0;
     int num =0;
     int lenPszData =0;

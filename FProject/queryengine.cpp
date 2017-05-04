@@ -32,9 +32,6 @@ vector<document> QueryEngine::querySearch(string query)
        relevencySort(currdocs);
        cout<<"\nQuery results:"<<endl;
 
-       //CHANGE TO TOP 15
-       for(document doc: currdocs)
-          cout<<"name: "<<doc.docname<<" count: "<<doc.count<<" tdif: "<<doc.tdif<<endl;
        return currdocs;
     }
 
@@ -109,9 +106,7 @@ vector<document> QueryEngine::querySearch(string query)
 
     cout<<"\nQuery results:"<<endl;
 
-    //CHANGE TO 15
-    for(document doc: currdocs)
-        cout<<"name: "<<doc.docname<<" count: "<<doc.count<<" tdif: "<<doc.tdif<<endl;
+
 
     return currdocs;
 
@@ -210,7 +205,7 @@ void QueryEngine::findTDIFs(vector<document>& currdocs)
     }
     for(document &doc: currdocs)
     {
-        doc.tdif=(1.*doc.count)/corpus_sum;
+        doc.tdif=log(1.*dp->numOfDocs()/currdocs.size())*(1.*doc.count/dp->wordy[doc.docname]);
     }
 
 }

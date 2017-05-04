@@ -38,6 +38,10 @@ TextExtractor::~TextExtractor()
 {
 }
 
+int TextExtractor::getTotalPages()
+{
+    return totalPages;
+}
 
 void TextExtractor::Init( const char* pszInput,string docName)
 {
@@ -56,6 +60,7 @@ void TextExtractor::Init( const char* pszInput,string docName)
     //shows page count
     cout << "Page count is: " << nCount << endl;
     cout << endl;
+    totalPages += nCount;
     for( int i=0; i<nCount; i++ )
     {
         PdfPage* pPage = document.GetPage( i );
@@ -449,7 +454,7 @@ void TextExtractor::ConvertToVectorOfString(char*c)
 
 
     string docname=mm;
-
+    docsName = mm;
     for (int i =0; i < l+1; i++)
     {
         char nn[200000];
@@ -478,6 +483,7 @@ void TextExtractor::ConvertToVectorOfString(char*c)
 
                     if(!ie->isStopWord(f))
                         ih->addIndex(ie->getStemmed(f),docname);
+                    wordCount++;
                 }
                 //reset n
                 for (int u =0; u < 200; u++)
@@ -502,6 +508,7 @@ void TextExtractor::ConvertToVectorOfString(char*c)
                 {
                     if(!ie->isStopWord(f))
                         ih->addIndex(ie->getStemmed(f),docname);
+                    wordCount++;
                 }
                 //reset n
                 for (int u =0; u < 200; u++)
@@ -527,6 +534,7 @@ void TextExtractor::ConvertToVectorOfString(char*c)
                 {
                     if(!ie->isStopWord(f))
                         ih->addIndex(ie->getStemmed(f),docname);
+                    wordCount++;
                 }
                 //reset n
                 for (int u =0; u < 200; u++)
@@ -552,6 +560,7 @@ void TextExtractor::ConvertToVectorOfString(char*c)
                 {
                     if(!ie->isStopWord(f))
                         ih->addIndex(ie->getStemmed(f),docname);
+                    wordCount++;
                 }
                 //reset n
                 for (int u =0; u < 200; u++)
@@ -577,6 +586,7 @@ void TextExtractor::ConvertToVectorOfString(char*c)
                 {
                     if(!ie->isStopWord(f))
                         ih->addIndex(ie->getStemmed(f),docname);
+                    wordCount++;
                 }
                 //reset n
                 for (int u =0; u < 200; u++)
@@ -602,6 +612,7 @@ void TextExtractor::ConvertToVectorOfString(char*c)
                 {
                     if(!ie->isStopWord(f))
                         ih->addIndex(ie->getStemmed(f),docname);
+                    wordCount++;
                 }
                 //reset n
                 for (int u =0; u < 200; u++)
@@ -628,6 +639,7 @@ void TextExtractor::ConvertToVectorOfString(char*c)
                 {
                     if(!ie->isStopWord(f))
                         ih->addIndex(ie->getStemmed(f),docname);
+                    wordCount++;
                 }
                 //reset n
                 for (int u =0; u < 200; u++)
@@ -689,10 +701,21 @@ void TextExtractor::ConvertToVectorOfString(char*c)
             {
                 if(!ie->isStopWord(f))
                     ih->addIndex(ie->getStemmed(f),docname);
+                wordCount++;
                 //this->a.push_back(f);
             }
         }
         x = 0;
     }
 
+}
+
+string TextExtractor::getDocName()
+{
+    return docsName;
+}
+
+int TextExtractor::getWordCount()
+{
+    return wordCount;
 }

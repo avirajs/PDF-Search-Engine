@@ -12,7 +12,7 @@ struct document
     {
         docname=name;
     }
-    document(string name,string docname, int count)
+    document(string name,int count)
     {
         this->count=count;
         docname=name;

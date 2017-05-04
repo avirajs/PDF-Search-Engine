@@ -328,7 +328,6 @@ void AVLTreeIndex::readIndex()
    string wordkey;
    string docname;
    int count=0;
-//statck overflow citation hwe
     while(!(read.eof()))
     {
         getline(read,line);
@@ -341,6 +340,7 @@ void AVLTreeIndex::readIndex()
             count=std::stoi(tokens[i+1]);
             // cout<<"word: "<<wordkey<<" doc name: "<<docname<<" count: "<<count<<endl;
             insert(wordkey,docname,count);
+            topwords.push_back(document(docname,count));
         }
     }
 }

@@ -63,6 +63,10 @@ void DocumentParser::extract(string fileStream)
 
     for (int i = 0; i < k.size(); i++)
     {
+        if (i == 5)
+        {
+            int helpme =0;
+        }
       TextExtractor extractor(ih,ie);
       string names = fileStream;
       string ne = names + k[i];
@@ -73,10 +77,19 @@ void DocumentParser::extract(string fileStream)
       } catch( PdfError & e ) {
           fprintf( stderr, "Error: An error %i ocurred during processing the pdf file.\n", e.GetError() );
           e.PrintErrorMsg();
-
       }
+       totalPages += extractor.getTotalPages();
+       docName = k[i];
+       wordCount = extractor.getWordCount();
+       wordy[docName]=wordCount;
     }
+    int helpme =0;
+}
 
+
+int DocumentParser::getTotalPages()
+{
+    return totalPages;
 }
 
 string DocumentParser::getStemmed(string& word)
@@ -86,4 +99,8 @@ string DocumentParser::getStemmed(string& word)
 bool DocumentParser::isStopWord(string& word)
 {
     return ie->isStopWord(word);
+}
+int DocumentParser::numOfDocs()
+{
+    return k.size();
 }

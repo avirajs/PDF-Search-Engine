@@ -9,8 +9,10 @@ SearchEngine::SearchEngine(char type)
 {
    ih= new IndexHandler(type);
    dp=new DocumentParser();
+   dp->readInWordyMap();
    qe=new QueryEngine(ih,dp);
 
+    this->readIndex();
 }
 
 SearchEngine::SearchEngine(string docpath,char type)
@@ -18,9 +20,10 @@ SearchEngine::SearchEngine(string docpath,char type)
     //inialize
     ih= new IndexHandler(type);
     dp = new DocumentParser(ih);
-
     dp->extract(docpath);
     qe=new QueryEngine(ih,dp);
+    this->clearIndex();
+    this->writeIndex();
 
 }
 void SearchEngine::display_search_results(string word)

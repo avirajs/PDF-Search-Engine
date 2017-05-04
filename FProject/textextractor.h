@@ -50,7 +50,7 @@ class TextExtractor {
     TextExtractor(IndexHandler*,indexextractor*);
     virtual ~TextExtractor();
     int getTotalPages();
-    int wordCount;
+    int wordCount=0;
     string docsName;
     string getDocName();
     int getWordCount();

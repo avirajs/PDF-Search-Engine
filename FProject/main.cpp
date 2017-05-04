@@ -13,13 +13,13 @@ int main()
     //  string path = "/home/coder/Documents/Corpus01/sampleCorpus/";
     //  extractor.extract(path);
 
-   //SearchEngine se("/home/coder/Documents/sampleCorpus/");
+   SearchEngine se('A');
 //se.clearIndex();
-   SearchEngine tester("/home/coder/Documents/sampleCorpus/",'A');
+   //SearchEngine se("/home/coder/Documents/sampleCorpus/",'A');
    // tester.writeIndex();
    //tester.readIndex();
     //cout << "It might have worked." << endl;
-   tester.display_search_results("OR Boston results");
+   se.display_search_results("OR Boston results");
     //se.writeIndex();
     //se.querySearch("Boston");
     //se.querySearch("Seattle");

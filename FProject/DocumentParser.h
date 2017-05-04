@@ -34,6 +34,7 @@ public:
     bool isStopWord(string&);
     void extract(string);
     int getTotalPages();
+    void readInWordyMap();
     int numOfDocs();
 };
 

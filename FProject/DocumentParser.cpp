@@ -83,7 +83,22 @@ void DocumentParser::extract(string fileStream)
        wordCount = extractor.getWordCount();
        wordy[docName]=wordCount;
     }
-    int helpme =0;
+    int k =0;
+    ofstream fout("pdf_and_wordCount.txt", ios::out);
+    fout.close();
+    for (auto elem : wordy)
+    {
+        //cout << elem.first << " " << elem.second << endl;
+        ofstream ffout;
+        ffout.open("pdf_and_wordCount.txt",fstream::app);
+        // checks to see if file can open
+          if(!ffout)
+          {
+              cout << "File FlightData can't be opened. Exiting Program." << endl;
+              exit (EXIT_FAILURE);
+          }
+        ffout << elem.first << "|" << elem.second << endl;
+    }
 }
 
 
@@ -102,5 +117,30 @@ bool DocumentParser::isStopWord(string& word)
 }
 int DocumentParser::numOfDocs()
 {
-    return k.size();
+    return wordy.size();
+}
+void DocumentParser::readInWordyMap()
+{
+    ifstream fin("pdf_and_wordCount.txt", ios::in);
+        // checks to see if file can open
+        if(!fin)
+        {
+            cout << "File FlightData can't be opened. Exiting Program." << endl;
+            exit (EXIT_FAILURE);
+        }
+        while(!(fin.eof()))
+        {
+            string line;
+            getline(fin,line);
+            if (line != "")
+            {
+                string doc;
+                doc =line.substr(0,line.find("|"));
+                string words = line.substr(line.find("|")+1);
+                int word;
+                word = std::stoi(words);;
+                wordy[doc]=word;
+            }
+        }
+        int helpme =0;
 }

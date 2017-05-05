@@ -11,7 +11,8 @@ SOURCES += main.cpp \
     DocumentParser.cpp \
     indexextractor.cpp \
     hash.cpp \
-    queryengine.cpp
+    queryengine.cpp \
+    rawoutputextractor.cpp
 
 LIBS += -lpodofo
 
@@ -31,4 +32,5 @@ HEADERS += \
     DocumentParser.h \
     indexinterface.h \
     hash.h \
-    queryengine.h
+    queryengine.h \
+    rawoutputextractor.h

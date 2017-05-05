@@ -30,6 +30,7 @@ public:
     void clearTotalPages();
     void clearWordTxt();
     void clear();
+    void displayRawFile(string filePath);
 };
 
 #endif // SEARCHENGINE_H

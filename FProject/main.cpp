@@ -6,45 +6,68 @@ using namespace std;
 int main()
 {
     //keep track of document names if new document is not in add it to inverted file index
-
+// se.addDocumentsToIndex("/home/coder/Documents/sampleCorpus/");
     SearchEngine se;
-    //use this method before demo
-    se.clear();
+   // se.clear();
 
-    //se.addDocumentsToIndex("/home/coder/Documents/sampleCorpus/");
+ //   se.addDocumentsToIndex("/home/coder/Documents/sampleCorpus/");
     //se.addDocumentsToIndex("/home/coder/Documents/corpus/");
     // se.chooseStructure('H');
     //se.display_search_results("OR results efficacy");
 
-
-
-
-
-
-
-    /*
-    se.addDocumentsToIndex("/home/coder/Documents/sampleCorpus/");
-
-se.chooseStructure('H');
-
-
-    SearchEngine se('H');
-    char d='';
+    string query;
+    string path;
+    char d='1';
+    char r;
+    char s;
+    char t;
+    char k;
+    cout<<"Press 0 to exit"<<endl;
     while(d!='0')
     {
+        cout<<"Press m to enter maintainence mode or q for querying and 0 to exit"<<endl;
+        cin>>d;
       if(d=='m')
       {
-          if(d=='a')
-            se.addDocumentsToIndex("/home/coder/Documents/sampleCorpus/");
-          if(d=='c')
-              se.clearIndex();
+          cout<<"Press a to add document and c to clear"<<endl;
+          cin>>r;
+          if(r=='a')
+          {
+              cout<<"Enter document path:"<<endl;
+              cin>>query;
+              se.addDocumentsToIndex(query);
+          }
+          else if(r=='c')
+          {
+              se.clear();
+              cout<<"Cleared"<<endl;
+          }
       }
       else if(d=='q')
       {
-          if(d='H')
+           cout<<"Press H to use hashtable and A for AVL tree"<<endl;
+           cin>>s;
+          if(s=='H')
             se.chooseStructure('H');
-          else
+          else if(s=='A')
             se.chooseStructure('A');
+
+          cout<<"Enter query:"<<endl;
+          cin>>query;
+            se.display_search_results(query);
+
+            cout<<"Do you wish to see the document text from one pdf?" <<endl;
+            cout<<"Enter y for yes n for no"<<endl;
+            cin>>t;
+            if(t=='y')
+            {
+                cout << "Please enter in the path to the file." << endl;
+                cin >> path;
+                se.displayRawFile(path);
+            }
+
+            continue;
+
       }
 
     }
@@ -62,6 +85,7 @@ se.chooseStructure('H');
     // tester.writeIndex();
     //tester.readIndex();
     //cout << "It might have worked." << endl;
+    /*
     se.display_search_results("Boston");
     se.display_search_results("AND programming computer java");
     se.display_search_results("OR Boston Seattle");

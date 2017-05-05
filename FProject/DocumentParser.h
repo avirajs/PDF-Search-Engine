@@ -9,10 +9,11 @@
 #include "indexhandler.h"
 #include "indexextractor.h"
 #include <map>
-
+#include "rawoutputextractor.h"
 class DocumentParser
 {
 private:
+    vector<rawOutputExtractor> rawVec;
     IndexHandler* ih;
     indexextractor* ie;
     int cDot;
@@ -37,6 +38,7 @@ public:
     void readInWordyMap();
     int numOfDocs();
     void clearWordTxt();
+    void rawTextExtract(string fileStream);
 };
 
 #endif // DocumentParser_H

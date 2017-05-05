@@ -182,7 +182,7 @@ void hashy::readIndex()
         cout << "file could not be opened" << endl;
         exit(EXIT_FAILURE);
     }
-    cout << "File was opened" << endl;
+   // cout << "File was opened" << endl;
    string line;
 
    string wordkey;

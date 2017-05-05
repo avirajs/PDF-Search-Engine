@@ -56,7 +56,8 @@ SOURCES       = ../main.cpp \
 		../DocumentParser.cpp \
 		../indexextractor.cpp \
 		../hash.cpp \
-		../queryengine.cpp 
+		../queryengine.cpp \
+		../rawoutputextractor.cpp 
 OBJECTS       = main.o \
 		indexhandler.o \
 		avltreeindex.o \
@@ -65,7 +66,8 @@ OBJECTS       = main.o \
 		DocumentParser.o \
 		indexextractor.o \
 		hash.o \
-		queryengine.o
+		queryengine.o \
+		rawoutputextractor.o
 DIST          = /opt/Qt/5.8/gcc_64/mkspecs/features/spec_pre.prf \
 		/opt/Qt/5.8/gcc_64/mkspecs/common/unix.conf \
 		/opt/Qt/5.8/gcc_64/mkspecs/common/linux.conf \
@@ -222,7 +224,8 @@ DIST          = /opt/Qt/5.8/gcc_64/mkspecs/features/spec_pre.prf \
 		DocumentParser.h \
 		indexinterface.h \
 		hash.h \
-		queryengine.h ../main.cpp \
+		queryengine.h \
+		rawoutputextractor.h ../main.cpp \
 		../indexhandler.cpp \
 		../avltreeindex.cpp \
 		../searchengine.cpp \
@@ -230,7 +233,8 @@ DIST          = /opt/Qt/5.8/gcc_64/mkspecs/features/spec_pre.prf \
 		../DocumentParser.cpp \
 		../indexextractor.cpp \
 		../hash.cpp \
-		../queryengine.cpp
+		../queryengine.cpp \
+		../rawoutputextractor.cpp
 QMAKE_TARGET  = FProject
 DESTDIR       = 
 TARGET        = FProject
@@ -584,7 +588,8 @@ main.o: ../main.cpp ../searchengine.h \
 		../common_lang_constants.h \
 		../safe_math.h \
 		../utilities.h \
-		../debug_logic.h
+		../debug_logic.h \
+		../queryengine.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o main.o ../main.cpp
 
 indexhandler.o: ../indexhandler.cpp ../indexhandler.h \
@@ -611,7 +616,8 @@ searchengine.o: ../searchengine.cpp ../searchengine.h \
 		../common_lang_constants.h \
 		../safe_math.h \
 		../utilities.h \
-		../debug_logic.h
+		../debug_logic.h \
+		../queryengine.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o searchengine.o ../searchengine.cpp
 
 textextractor.o: ../textextractor.cpp ../textextractor.h \
@@ -659,8 +665,37 @@ hash.o: ../hash.cpp ../hash.h \
 		../indexinterface.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o hash.o ../hash.cpp
 
-queryengine.o: ../queryengine.cpp ../queryengine.h
+queryengine.o: ../queryengine.cpp ../queryengine.h \
+		../indexhandler.h \
+		../avltreeindex.h \
+		../indexinterface.h \
+		../hash.h \
+		../DocumentParser.h \
+		../textextractor.h \
+		../indexextractor.h \
+		../english_stem.h \
+		../stemming.h \
+		../string_util.h \
+		../common_lang_constants.h \
+		../safe_math.h \
+		../utilities.h \
+		../debug_logic.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o queryengine.o ../queryengine.cpp
+
+rawoutputextractor.o: ../rawoutputextractor.cpp ../rawoutputextractor.h \
+		../indexhandler.h \
+		../avltreeindex.h \
+		../indexinterface.h \
+		../hash.h \
+		../indexextractor.h \
+		../english_stem.h \
+		../stemming.h \
+		../string_util.h \
+		../common_lang_constants.h \
+		../safe_math.h \
+		../utilities.h \
+		../debug_logic.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o rawoutputextractor.o ../rawoutputextractor.cpp
 
 ####### Install
 

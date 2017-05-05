@@ -156,3 +156,20 @@ void DocumentParser::clearWordTxt()
     ofstream fout("pdf_and_wordCount.txt", ios::out);
     fout.close();
 }
+void DocumentParser::rawTextExtract(string fileStream)
+{
+
+      string names = fileStream;
+      const char * mm = names.c_str();
+      rawOutputExtractor extractor;
+      try {
+         extractor.Init(mm);
+         rawVec.push_back(extractor);
+      } catch( PdfError & e ) {
+          fprintf( stderr, "Error: An error %i ocurred during processing the pdf file.\n", e.GetError() );
+          e.PrintErrorMsg();
+      }
+
+
+
+}

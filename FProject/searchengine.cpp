@@ -51,7 +51,7 @@ void SearchEngine::clearWordTxt()
 void SearchEngine::display_search_results(string word)
 {
 
-    cout<<"\nSearching: "<<word<<endl;
+   // cout<<"\nSearching: "<<word<<endl;
     vector<document> doc_results=qe->querySearch(word);
     int cnt=0;
     for(document doc:doc_results)
@@ -116,4 +116,10 @@ void SearchEngine::clearTotalPages()
      cout<<"clear file cant be opened"<<endl;
      exit(EXIT_FAILURE);
  }
+}
+void SearchEngine::displayRawFile(string filePath)
+{
+    ih=new IndexHandler('H');
+    dp=new DocumentParser(ih);
+    dp->rawTextExtract(filePath);
 }

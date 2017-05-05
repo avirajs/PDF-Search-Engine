@@ -7,9 +7,9 @@ IndexHandler::IndexHandler(char type)
     {
     index=new AVLTreeIndex;
     }
+
     else if(type=='H')
         index=new hashy;
-
 }
 void IndexHandler::addIndex(string word,string docname)
 {

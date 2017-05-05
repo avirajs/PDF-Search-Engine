@@ -344,6 +344,7 @@ void AVLTreeIndex::readIndex()
             insert(wordkey,docname,doccount);
             wordCorpusCount+=doccount;
         }
+         if(wordkey.size()>3)
         allwords.push_back(document(wordkey,wordCorpusCount));//not actually a document but a word and count
     }
 

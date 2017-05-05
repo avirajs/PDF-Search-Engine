@@ -7,8 +7,8 @@ int main()
 {
 
     //keep track of document names if new document is not in add it to inverted file index
-
-    SearchEngine se('H');
+SearchEngine se("/home/coder/Documents/sampleCorpus/",'A');
+//    SearchEngine se('H');
     for(string word:se.topfifty())
         cout<<word<<endl;
     cout<<"total words indexed: "<<se.numWordsIndexed()<<endl;
@@ -16,7 +16,7 @@ int main()
 
 
     //se.clearIndex();
-    //SearchEngine se("/home/coder/Documents/sampleCorpus/",'A');
+
     // tester.writeIndex();
     //tester.readIndex();
     //cout << "It might have worked." << endl;

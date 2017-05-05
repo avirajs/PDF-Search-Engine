@@ -9,6 +9,7 @@ private:
     DocumentParser *dp;
     IndexHandler* ih;
     QueryEngine* qe;
+    vector<string>top50;
 
 public:
     int totalPages;

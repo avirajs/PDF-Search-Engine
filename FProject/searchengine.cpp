@@ -12,6 +12,7 @@ SearchEngine::SearchEngine(char type)
    dp->readInWordyMap();
    qe=new QueryEngine(ih,dp);
     this->readIndex();
+   top50= ih->topFifty();
 
 }
 
@@ -24,6 +25,8 @@ SearchEngine::SearchEngine(string docpath,char type)
     qe=new QueryEngine(ih,dp);
     this->clearIndex();
     this->writeIndex();
+    this->readIndex();
+    top50=ih->topFifty();
 
 }
 void SearchEngine::display_search_results(string word)
@@ -48,7 +51,7 @@ int SearchEngine::numWordsIndexed()
 }
 vector<string> SearchEngine::topfifty()
 {
- return ih->topFifty();
+ return top50;
 }
 void SearchEngine::readIndex()
 {

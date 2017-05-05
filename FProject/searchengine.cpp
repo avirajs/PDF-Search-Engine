@@ -12,6 +12,7 @@ void SearchEngine::chooseStructure(char type)
    dp->readInWordyMap();
    qe=new QueryEngine(ih,dp);
    this->readIndex();
+   this->readBookmarks();
    top50= ih->topFifty();
 }
 SearchEngine::SearchEngine()

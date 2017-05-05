@@ -8,12 +8,15 @@ int main()
     //keep track of document names if new document is not in add it to inverted file index
 // se.addDocumentsToIndex("/home/coder/Documents/sampleCorpus/");
     SearchEngine se;
-    se.addBookmark("book","query");
+    se.clearHistory();
+//se.addToHistory("AND big boy");
+    //se.addBookmark("book","query");
+
    // se.clear();
  //   se.addDocumentsToIndex("/home/coder/Documents/sampleCorpus/");
     //se.addDocumentsToIndex("/home/coder/Documents/corpus/");
-    // se.chooseStructure('H');
-    //se.display_search_results("OR results efficacy");
+     //se.chooseStructure('H');
+    //se.display_search_results("AND Boston Seattle");
 
 /*
     string query;

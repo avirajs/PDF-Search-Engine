@@ -95,6 +95,24 @@ void SearchEngine::clearIndex()
         exit(EXIT_FAILURE);
     }
 }
+void SearchEngine::clearBookmarks()
+{
+    ofstream fout("bookmarks.txt",ios::out);
+    if(!fout)
+    {
+        cout<<"clear file cant be opened"<<endl;
+        exit(EXIT_FAILURE);
+    }
+}
+void SearchEngine::clearHistory()
+{
+    ofstream fout("history.txt",ios::out);
+    if(!fout)
+    {
+        cout<<"clear file cant be opened"<<endl;
+        exit(EXIT_FAILURE);
+    }
+}
 void SearchEngine::readTotalPages()
 {
     int pages =0;
@@ -171,4 +189,47 @@ vector<bookmark>SearchEngine:: displayBookmarks()
     }
     return bookmarks;
 }
+void SearchEngine::addToHistory(string query)
+{
 
+    ofstream ffout;
+    ffout.open("history.txt",fstream::app);
+    // checks to see if file can open
+      if(!ffout)
+      {
+          cout << "histos can't be opened. Exiting Program." << endl;
+          exit (EXIT_FAILURE);
+      }
+
+    time_t t = time(0);   // get time now
+        struct tm * now = localtime( & t );
+        ffout<<query<<" y-" <<(now->tm_year + 1900) << " m-" << (now->tm_mon + 1) << " d-"<<  now->tm_mday<<endl;
+
+}
+void SearchEngine::displayHistory()
+{
+    cout<<"History"<<endl;
+    ifstream fin("history.txt", ios::in);
+    // checks to see if file can open
+    if(!fin)
+    {
+        cout << "display book can't be opened. Exiting Program." << endl;
+        exit (EXIT_FAILURE);
+    }
+    string line;
+    while(!(fin.eof()))
+    {
+       getline(fin,line);
+       cout<<"query: "<<line<<endl;
+    }
+}
+void SearchEngine::displayTop50()
+{
+    vector<document>vec=topfifty();
+
+    for(int i=0;i<50;i++)
+    {
+        int p = i+1;
+        cout<<setw(3)<<p<<". "<<setw(15)<<vec[i].docname<<setw(10)<<"count: "<<setw(5)<<vec[i].count<<endl;
+    }
+}

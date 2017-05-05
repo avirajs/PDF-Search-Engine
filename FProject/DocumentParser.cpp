@@ -28,8 +28,10 @@ void DocumentParser::extract(string fileStream)
     struct dirent *pent = nullptr;
     if (pdir == nullptr)
     {
-        cout << "\n Error! pdir coud not be initialised correctly" << endl;
-        exit (3);
+        cout << "\n Error! File could not be initialised correctly" << endl;
+        //exit (3);
+        cout<<endl;
+        return;
     }
     while (pent = readdir(pdir))
     {
@@ -37,8 +39,10 @@ void DocumentParser::extract(string fileStream)
         cP =0;
         if (pent == nullptr)
         {
-            cout << "\n Error! pent coud not be initialised correctly" << endl;
-            exit (3);
+            cout << "\n Error! File could not be initialised correctly" << endl;
+            //exit (3);
+            cout<<endl;
+            return;
         }
         nn = pent->d_name;
         int slen = strlen(nn);

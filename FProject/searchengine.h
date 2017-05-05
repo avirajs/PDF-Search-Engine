@@ -3,6 +3,9 @@
 #include "indexhandler.h"
 #include "DocumentParser.h"
 #include "queryengine.h"
+#include <ctime>
+#include <iostream>
+using namespace std;
 struct bookmark
 {
     bookmark(string m, string q)
@@ -46,8 +49,12 @@ public:
     void writeBookmark(string book,string query);
     void readBookmarks();
     void addBookmark(string book,string query);
+    void addToHistory(string query);
+void clearHistory();
+    void displayHistory();
 
-
+    void displayTop50();
+void clearBookmarks();
     vector<bookmark> displayBookmarks();
 
 };

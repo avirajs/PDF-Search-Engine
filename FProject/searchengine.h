@@ -20,6 +20,8 @@ public:
     void readIndex();
     void clearIndex();
     int getTotalPages();
+    int numWordsIndexed();
+    vector<string> topfifty();
 
 void findTDIFs(vector<document>& currdocs);
 };

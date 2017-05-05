@@ -31,3 +31,11 @@ void IndexHandler::readIndex()
 {
     index->readIndex();
 }
+vector<string> IndexHandler::topFifty()
+{
+ return index->topwords();
+}
+int IndexHandler::totalWordsIndexed()
+{
+    return index->totalWordsIndexed();
+}

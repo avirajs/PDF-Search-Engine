@@ -4,37 +4,28 @@
 #include "DocumentParser.h"
 using namespace std;
 int main()
-{   //check out self-efficacy in the stemmer it appears on pdf 2 with a space at the end but the stemmer
-    //messes it up and changes it to self-efficaci
-    //cout << "Hello World!" << endl;
-//keep track of document names if new document is not in add it to inverted file index
+{
 
-    //  FileExtractor extractor;
-    //  string path = "/home/coder/Documents/Corpus01/sampleCorpus/";
-    //  extractor.extract(path);
+    //keep track of document names if new document is not in add it to inverted file index
 
-   SearchEngine se('A');
-//se.clearIndex();
-   //SearchEngine se("/home/coder/Documents/sampleCorpus/",'A');
-   // tester.writeIndex();
-   //tester.readIndex();
+    SearchEngine se('H');
+    for(string word:se.topfifty())
+        cout<<word<<endl;
+    cout<<"total words indexed: "<<se.numWordsIndexed()<<endl;
+    cout<<endl;
+
+
+    //se.clearIndex();
+    //SearchEngine se("/home/coder/Documents/sampleCorpus/",'A');
+    // tester.writeIndex();
+    //tester.readIndex();
     //cout << "It might have worked." << endl;
-   se.display_search_results("OR Boston results");
-    //se.writeIndex();
-    //se.querySearch("Boston");
-    //se.querySearch("Seattle");
-    //se.querySearch("OR Boston Seattle");
-    //se.querySearch("AND Boston Seattle");
-    //se.querySearch("Boston NOT Seattle");
-    //se.querySearch("Boston NOT Seattle Bandura");
-    //se.querySearch("AND Boston Seattle NOT Bandura");
+    se.display_search_results("Boston");
+    se.display_search_results("AND programming computer java");
+    se.display_search_results("OR Boston Seattle");
+    se.display_search_results("AND book Boston Not Seattle");
+    se.display_search_results("Boston NOT Seattle");
 
-    // se.querySearch("AND Boston Seattle");
-    // se.querySearch("AND Boston Seattle Altemeyer");
-
-
-
-    //se.querySearch("hi how a are you");
 
     /*
     cout<<" In mainNow"<<endl;
@@ -45,7 +36,7 @@ int main()
     se.search("openness");
     se.search("results");
     se.search("lose");
-   se.search("uncertainty");
+    se.search("uncertainty");
     se.search("situation");
     se.search("Japanese");*/
 

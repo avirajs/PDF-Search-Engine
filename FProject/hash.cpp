@@ -187,31 +187,47 @@ void hashy::readIndex()
 
    string wordkey;
    string docname;
-   int count=0;
+   int doccount=0;
 //statck overflow citation hwe
-    while(!(read.eof()))
-    {
-        getline(read,line);
-        wordkey=line.substr(0,line.find("-"));
-        /*
-        istringstream iss(line.substr(line.find("-")+1));
-        vector<string> tokens;
-        copy(istream_iterator<string>(iss),
-             istream_iterator<string>(),
-             back_inserter(tokens));
-*/
+   while(!(read.eof()))
+   {
+       getline(read,line);
+       wordkey=line.substr(0,line.find("-"));
 
-    vector<string> tokens=split(line.substr(line.find("-")+1),'|');
-        for(int i=0;i<tokens.size();i+=2)
-        {
-            docname=tokens[i];
-            count=std::stoi(tokens[i+1]);
-            //cout<<"word: "<<wordkey<<" doc name: "<<docname<<" count: "<<count<<endl;
-            insertFromFile(wordkey,docname,count);
-        }
-    }
+       vector<string> tokens=split(line.substr(line.find("-")+1),'|');
+
+       int wordCorpusCount=0;
+       for(int i=0;i<tokens.size();i+=2)
+       {
+           docname=tokens[i];
+           doccount=std::stoi(tokens[i+1]);
+           // cout<<"word: "<<wordkey<<" doc name: "<<docname<<" count: "<<count<<endl;
+           insertFromFile(wordkey,docname,doccount);
+           wordCorpusCount+=doccount;
+       }
+       allwords.push_back(document(wordkey,wordCorpusCount));//not actually a document but a word and count
+   }
+
 }
 
+int hashy::totalWordsIndexed()
+{
+    allwords.size();
+}
+vector<string>hashy::topwords()
+{
+    nth_element(allwords.begin(), allwords.begin()+49, allwords.end(), [ ]( const document& lhs, const document& rhs )
+    {
+       return lhs.count > rhs.count;
+    });
+
+    vector<string>topfifty;
+    for(int i=0; i<50;i++)
+        topfifty.push_back(allwords[i].docname);
+    return topfifty;
+
+
+}
 
 void hashy::writeIndex()
 {

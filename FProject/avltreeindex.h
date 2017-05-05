@@ -22,7 +22,7 @@ struct index_node
 class AVLTreeIndex : public IndexInterface
 {
 private:
-    vector<document> topwords;
+    vector<document> allwords;//not actually a document just a word and its count
 
     index_node* root;
 
@@ -51,6 +51,8 @@ private:
     void inorder(index_node* t);
     void write_inorder(index_node* t);
 
+
+
 public:
     AVLTreeIndex();
     ~AVLTreeIndex();
@@ -62,5 +64,7 @@ public:
     virtual void display();
     virtual void readIndex();
     virtual void writeIndex();
+    virtual vector<string>topwords();
+    virtual int totalWordsIndexed();
     vector<std::string> split(const std::string &s, char delim);
 };

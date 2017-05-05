@@ -37,11 +37,13 @@ struct document
 class IndexInterface
 {
 public:
-  virtual vector<document>* findIndex(string key) = 0; // Pure virtual function makes
-  virtual void addIndex(string& word, string& doc) = 0;
-  virtual void display()=0;
-  virtual void readIndex()=0;
-  virtual void writeIndex()=0;
+    virtual vector<document>* findIndex(string key) = 0; // Pure virtual function makes
+    virtual void addIndex(string& word, string& doc) = 0;
+    virtual void display()=0;
+    virtual void readIndex()=0;
+    virtual void writeIndex()=0;
+    virtual vector<string>topwords()=0;
+    virtual int totalWordsIndexed()=0;
 
 };
 #endif // INDEXINTERFACE_H

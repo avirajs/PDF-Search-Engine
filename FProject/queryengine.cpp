@@ -30,7 +30,6 @@ vector<document> QueryEngine::querySearch(string query)
        currdocs= search(words[0]);
        findTDIFs(currdocs);
        relevencySort(currdocs);
-       cout<<"\nQuery results:"<<endl;
 
        return currdocs;
     }
@@ -104,7 +103,6 @@ vector<document> QueryEngine::querySearch(string query)
     }
     relevencySort(currdocs);
 
-    cout<<"\nQuery results:"<<endl;
 
 
 

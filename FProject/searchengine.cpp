@@ -11,8 +11,8 @@ SearchEngine::SearchEngine(char type)
    dp=new DocumentParser();
    dp->readInWordyMap();
    qe=new QueryEngine(ih,dp);
-
     this->readIndex();
+
 }
 
 SearchEngine::SearchEngine(string docpath,char type)
@@ -28,18 +28,35 @@ SearchEngine::SearchEngine(string docpath,char type)
 }
 void SearchEngine::display_search_results(string word)
 {
+
+    cout<<"\nSearching: "<<word<<endl;
     vector<document> doc_results=qe->querySearch(word);
-    for(int i=0;i<15;i++)
-        cout<<"name: "<<doc_results[i].docname<<" count: "<<doc_results[i].count<<" tdif: "<<doc_results[i].tdif<<endl;
+    int cnt=0;
+    for(document doc:doc_results)
+    {
+        cout<<"name: "<<doc.docname<<" count: "<<doc.count<<" tdif: "<<doc.tdif<<endl;
+        if(cnt++==15)
+            break;
+    }
+    cout<<endl;
+}
+
+
+int SearchEngine::numWordsIndexed()
+{
+ return ih->totalWordsIndexed();
+}
+vector<string> SearchEngine::topfifty()
+{
+ return ih->topFifty();
+}
+void SearchEngine::readIndex()
+{
+     ih->readIndex();
 }
 void SearchEngine::writeIndex()
 {
  ih->writeIndex();
-}
-
-void SearchEngine::readIndex()
-{
-    ih->readIndex();
 }
 void SearchEngine::clearIndex()
 {

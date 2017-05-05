@@ -327,22 +327,44 @@ void AVLTreeIndex::readIndex()
 
    string wordkey;
    string docname;
-   int count=0;
+   int doccount=0;
     while(!(read.eof()))
     {
         getline(read,line);
         wordkey=line.substr(0,line.find("-"));
 
         vector<string> tokens=split(line.substr(line.find("-")+1),'|');
+
+        int wordCorpusCount=0;
         for(int i=0;i<tokens.size();i+=2)
         {
             docname=tokens[i];
-            count=std::stoi(tokens[i+1]);
+            doccount=std::stoi(tokens[i+1]);
             // cout<<"word: "<<wordkey<<" doc name: "<<docname<<" count: "<<count<<endl;
-            insert(wordkey,docname,count);
-            topwords.push_back(document(docname,count));
+            insert(wordkey,docname,doccount);
+            wordCorpusCount+=doccount;
         }
+        allwords.push_back(document(wordkey,wordCorpusCount));//not actually a document but a word and count
     }
+
+}
+int AVLTreeIndex::totalWordsIndexed()
+{
+    allwords.size();
+}
+vector<string>AVLTreeIndex::topwords()
+{
+    nth_element(allwords.begin(), allwords.begin()+49, allwords.end(), [ ]( const document& lhs, const document& rhs )
+    {
+       return lhs.count > rhs.count;
+    });
+
+    vector<string>topfifty;
+    for(int i=0; i<50;i++)
+        topfifty.push_back(allwords[i].docname);
+    return topfifty;
+
+
 }
 void AVLTreeIndex::writeIndex()
 {

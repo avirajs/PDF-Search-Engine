@@ -5,10 +5,52 @@
 using namespace std;
 int main()
 {
-
     //keep track of document names if new document is not in add it to inverted file index
-SearchEngine se("/home/coder/Documents/sampleCorpus/",'A');
-//    SearchEngine se('H');
+
+    SearchEngine se;
+    //use this method before demo
+    se.clear();
+
+    //se.addDocumentsToIndex("/home/coder/Documents/sampleCorpus/");
+    //se.addDocumentsToIndex("/home/coder/Documents/corpus/");
+    // se.chooseStructure('H');
+    //se.display_search_results("OR results efficacy");
+
+
+
+
+
+
+
+    /*
+    se.addDocumentsToIndex("/home/coder/Documents/sampleCorpus/");
+
+se.chooseStructure('H');
+
+
+    SearchEngine se('H');
+    char d='';
+    while(d!='0')
+    {
+      if(d=='m')
+      {
+          if(d=='a')
+            se.addDocumentsToIndex("/home/coder/Documents/sampleCorpus/");
+          if(d=='c')
+              se.clearIndex();
+      }
+      else if(d=='q')
+      {
+          if(d='H')
+            se.chooseStructure('H');
+          else
+            se.chooseStructure('A');
+      }
+
+    }
+
+
+
     for(string word:se.topfifty())
         cout<<word<<endl;
     cout<<"total words indexed: "<<se.numWordsIndexed()<<endl;
@@ -25,7 +67,7 @@ SearchEngine se("/home/coder/Documents/sampleCorpus/",'A');
     se.display_search_results("OR Boston Seattle");
     se.display_search_results("AND book Boston Not Seattle");
     se.display_search_results("Boston NOT Seattle");
-
+*/
 
     /*
     cout<<" In mainNow"<<endl;

@@ -36,6 +36,7 @@ public:
     int getTotalPages();
     void readInWordyMap();
     int numOfDocs();
+    void clearWordTxt();
 };
 
 #endif // DocumentParser_H

@@ -84,8 +84,15 @@ void DocumentParser::extract(string fileStream)
        wordy[docName]=wordCount;
     }
     int k =0;
-    ofstream fout("pdf_and_wordCount.txt", ios::out);
-    fout.close();
+    ofstream write;
+    write.open("total_pages.txt",fstream::app);
+    // checks to see if file can open
+      if(!write)
+      {
+          cout << "File FlightData can't be opened. Exiting Program." << endl;
+          exit (EXIT_FAILURE);
+      }
+    write << totalPages << endl;
     for (auto elem : wordy)
     {
         //cout << elem.first << " " << elem.second << endl;
@@ -138,9 +145,14 @@ void DocumentParser::readInWordyMap()
                 doc =line.substr(0,line.find("|"));
                 string words = line.substr(line.find("|")+1);
                 int word;
-                word = std::stoi(words);;
+                word = std::stoi(words);
                 wordy[doc]=word;
             }
         }
         int helpme =0;
+}
+void DocumentParser::clearWordTxt()
+{
+    ofstream fout("pdf_and_wordCount.txt", ios::out);
+    fout.close();
 }

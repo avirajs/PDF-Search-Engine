@@ -13,8 +13,8 @@ private:
 
 public:
     int totalPages;
-    SearchEngine(char);
     SearchEngine(string docpath,char);
+    SearchEngine();
     void display_search_results(string word);
     void relevencySort(vector<document>& );
     void writeIndex();
@@ -23,8 +23,13 @@ public:
     int getTotalPages();
     int numWordsIndexed();
     vector<string> topfifty();
-
-void findTDIFs(vector<document>& currdocs);
+    void addDocumentsToIndex(string docpath);
+    void chooseStructure(char type);
+    void findTDIFs(vector<document>& currdocs);
+    void readTotalPages();
+    void clearTotalPages();
+    void clearWordTxt();
+    void clear();
 };
 
 #endif // SEARCHENGINE_H

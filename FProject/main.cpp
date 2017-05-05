@@ -8,13 +8,14 @@ int main()
     //keep track of document names if new document is not in add it to inverted file index
 // se.addDocumentsToIndex("/home/coder/Documents/sampleCorpus/");
     SearchEngine se;
+    se.addBookmark("book","query");
    // se.clear();
-
  //   se.addDocumentsToIndex("/home/coder/Documents/sampleCorpus/");
     //se.addDocumentsToIndex("/home/coder/Documents/corpus/");
     // se.chooseStructure('H');
     //se.display_search_results("OR results efficacy");
 
+/*
     string query;
     string path;
     char d='1';
@@ -64,6 +65,7 @@ int main()
                 cout << "Please enter in the path to the file." << endl;
                 cin >> path;
                 se.displayRawFile(path);
+
             }
 
             continue;
@@ -71,14 +73,14 @@ int main()
       }
 
     }
+*/
 
-
-
+/*
     for(string word:se.topfifty())
         cout<<word<<endl;
     cout<<"total words indexed: "<<se.numWordsIndexed()<<endl;
     cout<<endl;
-
+*/
 
     //se.clearIndex();
 

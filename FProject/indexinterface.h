@@ -42,7 +42,7 @@ public:
     virtual void display()=0;
     virtual void readIndex()=0;
     virtual void writeIndex()=0;
-    virtual vector<string>topwords()=0;
+    virtual vector<document>topwords()=0;
     virtual int totalWordsIndexed()=0;
 
 };

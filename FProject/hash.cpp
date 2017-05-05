@@ -215,16 +215,22 @@ int hashy::totalWordsIndexed()
 {
     allwords.size();
 }
-vector<string>hashy::topwords()
+vector<document>hashy::topwords()
 {
     nth_element(allwords.begin(), allwords.begin()+49, allwords.end(), [ ]( const document& lhs, const document& rhs )
     {
        return lhs.count > rhs.count;
     });
 
-    vector<string>topfifty;
+    vector<document>topfifty;
     for(int i=0; i<50;i++)
-        topfifty.push_back(allwords[i].docname);
+        topfifty.push_back(document(allwords[i].docname,allwords[i].count));
+
+    sort( topfifty.begin( ), topfifty.end( ), [ ]( const document& lhs, const document& rhs )
+    {
+       return lhs.count> rhs.count;
+    });
+
     return topfifty;
 
 

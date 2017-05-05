@@ -3,13 +3,25 @@
 #include "indexhandler.h"
 #include "DocumentParser.h"
 #include "queryengine.h"
+struct bookmark
+{
+    bookmark(string m, string q)
+    {
+        mark=m;
+        query=q;
+    }
+    string mark;
+    string query;
+};
 class SearchEngine
 {
+
 private:
     DocumentParser *dp;
     IndexHandler* ih;
     QueryEngine* qe;
-    vector<string>top50;
+    vector<document>top50;
+     vector<bookmark>bookmarks;
 
 public:
     int totalPages;
@@ -22,7 +34,7 @@ public:
     void clearIndex();
     int getTotalPages();
     int numWordsIndexed();
-    vector<string> topfifty();
+    vector<document> topfifty();
     void addDocumentsToIndex(string docpath);
     void chooseStructure(char type);
     void findTDIFs(vector<document>& currdocs);
@@ -31,6 +43,13 @@ public:
     void clearWordTxt();
     void clear();
     void displayRawFile(string filePath);
+    void writeBookmark(string book,string query);
+    void readBookmarks();
+    void addBookmark(string book,string query);
+
+
+    vector<bookmark> displayBookmarks();
+
 };
 
 #endif // SEARCHENGINE_H

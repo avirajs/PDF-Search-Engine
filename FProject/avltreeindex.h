@@ -64,7 +64,7 @@ public:
     virtual void display();
     virtual void readIndex();
     virtual void writeIndex();
-    virtual vector<string>topwords();
+    virtual vector<document>topwords();
     virtual int totalWordsIndexed();
     vector<std::string> split(const std::string &s, char delim);
 };

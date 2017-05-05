@@ -31,7 +31,7 @@ void IndexHandler::readIndex()
 {
     index->readIndex();
 }
-vector<string> IndexHandler::topFifty()
+vector<document> IndexHandler::topFifty()
 {
  return index->topwords();
 }

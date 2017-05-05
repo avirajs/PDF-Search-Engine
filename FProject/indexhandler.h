@@ -24,8 +24,8 @@ public:
     int getCorpusFrequency(string word);
     void displayIndices();
     void readIndex();
-    vector<string> topFifty();
     int totalWordsIndexed();
+    vector<document> topFifty();
 };
 
 #endif // INDEXHANDLER_H

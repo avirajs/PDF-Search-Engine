@@ -37,7 +37,7 @@ public:
     virtual void writeIndex();
     virtual void insertFromFile(string& word, string& doc, int &count);
     vector<std::string> split(const std::string &s, char delim);
-    virtual vector<string>topwords();
+    virtual vector<document>topwords();
     virtual int totalWordsIndexed();
 private:
     vector<document>allwords;

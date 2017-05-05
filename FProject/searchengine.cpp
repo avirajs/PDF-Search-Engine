@@ -66,7 +66,7 @@ int SearchEngine::numWordsIndexed()
 {
  return ih->totalWordsIndexed();
 }
-vector<string> SearchEngine::topfifty()
+vector<document> SearchEngine::topfifty()
 {
  return top50;
 }
@@ -107,7 +107,6 @@ void SearchEngine::readTotalPages()
     }
     cout << "The total page count is: " << pages << endl;
 }
-
 void SearchEngine::clearTotalPages()
 {
  ofstream ouut("total_pages.txt",ios::out);
@@ -123,3 +122,52 @@ void SearchEngine::displayRawFile(string filePath)
     dp=new DocumentParser(ih);
     dp->rawTextExtract(filePath);
 }
+void SearchEngine::addBookmark(string book,string query)
+{
+
+        ofstream ffout;
+        ffout.open("bookmarks.txt",fstream::app);
+        // checks to see if file can open
+          if(!ffout)
+          {
+              cout << "book marks can't be opened. Exiting Program." << endl;
+              exit (EXIT_FAILURE);
+          }
+
+        ffout << book << "|" << query << endl;
+        bookmarks.push_back(bookmark(book,query));
+}
+void SearchEngine::readBookmarks()
+{
+    ifstream fin("bookmarks.txt", ios::in);
+    // checks to see if file can open
+    if(!fin)
+    {
+        cout << "display book can't be opened. Exiting Program." << endl;
+        exit (EXIT_FAILURE);
+    }
+
+    while(!(fin.eof()))
+    {
+        string line;
+        getline(fin,line);
+        if (line != "")
+        {
+            string book =line.substr(0,line.find("|"));
+            string query = line.substr(line.find("|")+1);
+            bookmarks.push_back(bookmark(book,query));
+        }
+    }
+}
+vector<bookmark>SearchEngine:: displayBookmarks()
+{
+    int i=0;
+    for(bookmark bm:bookmarks)
+    {
+        cout<<++i<<" bookmark: "<<bm.mark<<"query: "<<bm.query<<endl;
+        if(i==10)
+            break;
+    }
+    return bookmarks;
+}
+

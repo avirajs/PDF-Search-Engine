@@ -42,7 +42,7 @@ using namespace std;
 #include "indexextractor.h"
 #include "map"
 class TextExtractor {
- public:
+public:
     IndexHandler* ih;
     indexextractor* ie;
     string mm;
@@ -56,7 +56,7 @@ class TextExtractor {
     int getWordCount();
     void Init( const char* pszInput, string docName);
 
- private:
+private:
     int totalPages;
     int chP = 0;
     int num =0;

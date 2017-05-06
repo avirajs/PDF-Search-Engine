@@ -6,8 +6,10 @@
 #include <ctime>
 #include <iostream>
 using namespace std;
-struct bookmark {
-    bookmark(string m, string q) {
+struct bookmark
+{
+    bookmark(string m, string q)
+    {
         mark =m;
         query =q;
     }
@@ -17,7 +19,8 @@ struct bookmark {
 
 
 
-class SearchEngine {
+class SearchEngine
+{
 private:
     DocumentParser *dp;
     IndexHandler* ih;

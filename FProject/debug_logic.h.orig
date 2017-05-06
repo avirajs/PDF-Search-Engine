@@ -29,48 +29,49 @@
 /** @} */
 
 #ifdef __PRETTY_FUNCTION__
-#define __DEBUG_FUNCTION_NAME__ __PRETTY_FUNCTION__
+    #define __DEBUG_FUNCTION_NAME__ __PRETTY_FUNCTION__
 #elif defined(__FUNCTION__)
-#define __DEBUG_FUNCTION_NAME__ __FUNCTION__
+    #define __DEBUG_FUNCTION_NAME__ __FUNCTION__
 #elif defined(__func__)
-#define __DEBUG_FUNCTION_NAME__ __func__
+    #define __DEBUG_FUNCTION_NAME__ __func__
 #elif defined(__FUNCSIG__)
-#define __DEBUG_FUNCTION_NAME__ __FUNCSIG__
+    #define __DEBUG_FUNCTION_NAME__ __FUNCSIG__
 #elif defined(__FUNCDNAME__)
-#define __DEBUG_FUNCTION_NAME__ __FUNCDNAME__
+    #define __DEBUG_FUNCTION_NAME__ __FUNCDNAME__
 #endif
 
 //----------------------------------------------------------------------
 #if !defined (NDEBUG) || defined ENABLE_LOGIC_CHECKS || defined DEBUG_ENABLE_ALL
-#define CASSERT(x) typedef char __C_ASSERT__[(x) ? 1 : -1]
+    #define CASSERT(x) typedef char __C_ASSERT__[(x) ? 1 : -1]
 #else
-#define CASSERT(x) ((void)0)
+    #define CASSERT(x) ((void)0)
 #endif
 
 //----------------------------------------------------------------------
 #ifdef __UNITTEST
-#define NON_UNIT_TEST_ASSERT(x) ((void)0)
+    #define NON_UNIT_TEST_ASSERT(x) ((void)0)
 #else
-#define NON_UNIT_TEST_ASSERT(x) assert(x)
+    #define NON_UNIT_TEST_ASSERT(x) assert(x)
 #endif
 
 //----------------------------------------------------------------------
 #if !defined (NDEBUG) || defined DEBUG_ENABLE_ALL
-#define DUMP_TO_FILE(x,file) __debug::__dump_to_file((x), (file))
+    #define DUMP_TO_FILE(x,file) __debug::__dump_to_file((x), (file))
 #else
-#define DUMP_TO_FILE(x,file) ((void)0)
+    #define DUMP_TO_FILE(x,file) ((void)0)
 #endif
 
 //----------------------------------------------------------------------
-namespace __debug {
-//debug helpers
-inline void __dump_to_file(const wchar_t* begin, const std::string& file_path) {
-    if (begin == NULL) {
-        return;
+namespace __debug
+    {
+    //debug helpers
+    inline void __dump_to_file(const wchar_t* begin, const std::string& file_path)
+        {
+        if (begin == NULL)
+            { return; }
+        std::wofstream f(file_path.c_str());
+        f.write(begin, static_cast<std::streamsize>(std::wcslen(begin)));
+        }
     }
-    std::wofstream f(file_path.c_str());
-    f.write(begin, static_cast<std::streamsize>(std::wcslen(begin)));
-}
-}
 
 #endif //__DEBUG_LOGIC_H__

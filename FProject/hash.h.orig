@@ -14,7 +14,8 @@
 #include <sstream>
 #include <iterator>
 
-struct item {
+struct item
+{
     string word_key;
     //document has count and name variables
     int count;
@@ -22,7 +23,8 @@ struct item {
     vector<item> vec;
 };
 
-class hashy : public IndexInterface {
+class hashy : public IndexInterface
+{
 public:
     hashy();
     int Hashy(string key);

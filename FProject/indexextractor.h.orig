@@ -12,13 +12,16 @@
 
 using namespace std;
 using namespace stemming;
-class indexextractor {
+class indexextractor
+{
 private:
     unordered_set<string>stopwords;
-    struct documentCount {
+    struct documentCount
+    {
         int docnum;
         int count=1;
-        documentCount(int num) {
+        documentCount(int num)
+        {
             docnum=num;
         }
     };

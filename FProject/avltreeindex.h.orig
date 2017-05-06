@@ -10,7 +10,8 @@
 #include <sstream>
 #include <iterator>
 using namespace std;
-struct index_node {
+struct index_node
+{
     string word_key;
     index_node* left;
     index_node* right;
@@ -18,7 +19,8 @@ struct index_node {
     int height;
 };
 
-class AVLTreeIndex : public IndexInterface {
+class AVLTreeIndex : public IndexInterface
+{
 private:
     vector<document> allwords;//not actually a document just a word and its count
 

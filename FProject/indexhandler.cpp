@@ -1,41 +1,32 @@
 #include "indexhandler.h"
 
-IndexHandler::IndexHandler(char type)
-{
+IndexHandler::IndexHandler(char type) {
     //add other option using arguments
-    if(type=='A')
-    {
-    index=new AVLTreeIndex;
+    if(type=='A') {
+        index=new AVLTreeIndex;
     }
 
     else if(type=='H')
         index=new hashy;
 }
-void IndexHandler::addIndex(string word,string docname)
-{
+void IndexHandler::addIndex(string word,string docname) {
     index->addIndex(word,docname);
 }
-vector<document>* IndexHandler::getDocs(string word)
-{
-   return index->findIndex(word);
+vector<document>* IndexHandler::getDocs(string word) {
+    return index->findIndex(word);
 }
-void IndexHandler::displayIndices()
-{
+void IndexHandler::displayIndices() {
     index->display();
 }
-void IndexHandler::writeIndex()
-{
+void IndexHandler::writeIndex() {
     index->writeIndex();
 }
-void IndexHandler::readIndex()
-{
+void IndexHandler::readIndex() {
     index->readIndex();
 }
-vector<document> IndexHandler::topFifty()
-{
- return index->topwords();
+vector<document> IndexHandler::topFifty() {
+    return index->topwords();
 }
-int IndexHandler::totalWordsIndexed()
-{
+int IndexHandler::totalWordsIndexed() {
     return index->totalWordsIndexed();
 }

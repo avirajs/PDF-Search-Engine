@@ -18,8 +18,8 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#ifndef _RAW_OUTPUT_EXTRACTOR_H
-#define _RAW_OUTPUT_EXTRACTOR_H
+#ifndef _TEXT_EXTRACTOR_H_
+#define _TEXT_EXTRACTOR_H_
 
 #include "podofo/podofo.h"
 #include <cstdio>
@@ -41,23 +41,22 @@ using namespace std;
 #include "indexhandler.h"
 #include "indexextractor.h"
 #include "map"
-class rawOutputExtractor {
-public:
+class TextExtractor {
+ public:
     IndexHandler* ih;
     indexextractor* ie;
     string mm;
     vector<string> a;
-    rawOutputExtractor(IndexHandler*,indexextractor*);
-    rawOutputExtractor();
-    virtual ~rawOutputExtractor();
+    TextExtractor(IndexHandler*,indexextractor*);
+    virtual ~TextExtractor();
     int getTotalPages();
     int wordCount =0;
     string docsName;
     string getDocName();
     int getWordCount();
-    void Init( const char* pszInput);
+    void Init( const char* pszInput, string docName);
 
-private:
+ private:
     int totalPages;
     int chP = 0;
     int num =0;
@@ -103,4 +102,4 @@ private:
                          PdfFont* pCurFont, const PdfString & rString );
 };
 
-#endif // _RAW_OUTPUT_EXTRACTOR_H
+#endif // _TEXT_EXTRACTOR_H_

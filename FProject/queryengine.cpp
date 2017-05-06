@@ -1,15 +1,13 @@
 #include "queryengine.h"
 
-QueryEngine::QueryEngine(IndexHandler *i,DocumentParser*d)
-{
+QueryEngine::QueryEngine(IndexHandler *i,DocumentParser*d) {
     ih=i;
     dp=d;
 }
-vector<document> QueryEngine::querySearch(string query)
-{
+vector<document> QueryEngine::querySearch(string query) {
     istringstream iss(query);
     vector<string> words{istream_iterator<string>{iss},
-                          istream_iterator<string>{}};
+                         istream_iterator<string>{}};
     queue<string> searches;
     for(string word: words)
         searches.push(word);
@@ -25,81 +23,59 @@ vector<document> QueryEngine::querySearch(string query)
     vector<document> currdocs;
 
     //simple search
-    if(words.size()==1)
-    {
-       currdocs= search(words[0]);
-       findTDIFs(currdocs);
-       relevencySort(currdocs);
+    if(words.size()==1) {
+        currdocs= search(words[0]);
+        findTDIFs(currdocs);
+        relevencySort(currdocs);
 
-       return currdocs;
+        return currdocs;
     }
 
-    while(!searches.empty())
-    {
+    while(!searches.empty()) {
 
-       if(searches.front()=="AND")
-       {
-           a=true;
-           o, n=false;
-           searches.pop();
-       }
-       else if(searches.front()=="OR")
-       {
-           o=true;
-           a, n=false;
-           searches.pop();
-       }
-       else if(searches.front()=="NOT")
-       {
-           n=true;
-           o, a=false;
-           searches.pop();
-       }
-       else if(a)
-       {
-           if(currdocs.empty())
-           {
-               string temp=searches.front();
-               searches.pop();
-               currdocs=getIntersection(search(temp),search(searches.front()));
+        if(searches.front()=="AND") {
+            a=true;
+            o, n=false;
+            searches.pop();
+        } else if(searches.front()=="OR") {
+            o=true;
+            a, n=false;
+            searches.pop();
+        } else if(searches.front()=="NOT") {
+            n=true;
+            o, a=false;
+            searches.pop();
+        } else if(a) {
+            if(currdocs.empty()) {
+                string temp=searches.front();
                 searches.pop();
-           }
-           else
-           {
+                currdocs=getIntersection(search(temp),search(searches.front()));
+                searches.pop();
+            } else {
                 currdocs=getIntersection(currdocs,search(searches.front()));
                 searches.pop();
-           }
-       }
-       else if(o)
-       {
-           if(currdocs.empty())
-           {
-               string temp=searches.front();
-               searches.pop();
-               currdocs=getUnion(search(temp),search(searches.front()));
+            }
+        } else if(o) {
+            if(currdocs.empty()) {
+                string temp=searches.front();
+                searches.pop();
+                currdocs=getUnion(search(temp),search(searches.front()));
 
                 searches.pop();
-           }
-           else
-           {
+            } else {
                 currdocs=getUnion(currdocs,search(searches.front()));
                 searches.pop();
-           }
-       }
-       else if(n)
-       {
-           //should never be empty
-           if(!currdocs.empty())
-           {
-               currdocs=getDifference(currdocs,search(searches.front()));
-               searches.pop();
-           }
-       }
-       else//NOT case with word a in front     a NOT b
-       {
+            }
+        } else if(n) {
+            //should never be empty
+            if(!currdocs.empty()) {
+                currdocs=getDifference(currdocs,search(searches.front()));
+                searches.pop();
+            }
+        } else { //NOT case with word a in front     a NOT b
             currdocs=search(searches.front());
             searches.pop();
-       }
+        }
     }
     relevencySort(currdocs);
 
@@ -109,26 +85,19 @@ vector<document> QueryEngine::querySearch(string query)
     return currdocs;
 
 }
-vector<document> QueryEngine::search(string word)
-{
+vector<document> QueryEngine::search(string word) {
     vector<document>*found;
-   // cout<<"Document titles containing "<<word<<":"<<endl;
-    if(dp->isStopWord(word))
-    {
+    // cout<<"Document titles containing "<<word<<":"<<endl;
+    if(dp->isStopWord(word)) {
         found=new vector<document>();
         cout<<word<<" is a stop word"<<endl;
         return *found;
-    }
-    else
-    {
+    } else {
         string stem=(dp->getStemmed(word));
         found=ih->getDocs(stem);
-        if(found!=nullptr)
-        {
+        if(found!=nullptr) {
             return *found;
-        }
-        else
-        {
+        } else {
             found=new vector<document>();
             cout<<"No documents found"<<endl;
             return *found;
@@ -138,17 +107,16 @@ vector<document> QueryEngine::search(string word)
     cout<<endl;
 
 }
-vector<document>  QueryEngine::getIntersection(vector<document> l,vector<document> r)
-{
+vector<document>  QueryEngine::getIntersection(vector<document> l,vector<document> r) {
     findTDIFs(l);
     findTDIFs(r);
     vector<document> doc_intersection;
-    for(document doc:r)
-    {
+    for(document doc:r) {
         //searches for rhs words in left vector
-        auto it = find_if(l.begin(), l.end(), [&doc]( document& obj) {return obj.getName() == doc.docname;});
-        if (it != l.end())
-        {
+        auto it = find_if(l.begin(), l.end(), [&doc]( document& obj) {
+            return obj.getName() == doc.docname;
+        });
+        if (it != l.end()) {
             doc.count+=(*it).count;
             doc.tdif+=(*it).tdif;
             doc_intersection.push_back(doc);
@@ -157,52 +125,46 @@ vector<document>  QueryEngine::getIntersection(vector<document> l,vector<documen
     return doc_intersection;
 
 }
-vector<document> QueryEngine::getUnion(vector<document> l,vector<document> r)
-{
+vector<document> QueryEngine::getUnion(vector<document> l,vector<document> r) {
 
     //searches for rhs words in left vector
     findTDIFs(l);
     findTDIFs(r);
-    for(document doc:r)
-    {
-        auto it = find_if(l.begin(), l.end(), [&doc]( document& obj) {return obj.getName() == doc.docname;});
-        if (it == l.end())
-        {
+    for(document doc:r) {
+        auto it = find_if(l.begin(), l.end(), [&doc]( document& obj) {
+            return obj.getName() == doc.docname;
+        });
+        if (it == l.end()) {
             l.push_back(doc);
         }
-        if (it != l.end())
-        {
+        if (it != l.end()) {
             (*it).count+=doc.count;
             (*it).tdif+=doc.tdif;
         }
     }
     return l;
 }
-vector<document> QueryEngine::getDifference(vector<document> r,vector<document> l)
-{
+vector<document> QueryEngine::getDifference(vector<document> r,vector<document> l) {
     findTDIFs(l);
     findTDIFs(r);
     vector<document> doc_diff;
-    for(document doc:r)
-    {
+    for(document doc:r) {
         //searches for rhs words in left vector
-        auto it = find_if(l.begin(), l.end(), [&doc]( document& obj) {return obj.getName() == doc.docname;});
-        if (it == l.end())
-        {
-               doc_diff.push_back(doc);
+        auto it = find_if(l.begin(), l.end(), [&doc]( document& obj) {
+            return obj.getName() == doc.docname;
+        });
+        if (it == l.end()) {
+            doc_diff.push_back(doc);
         }
     }
     return doc_diff;
 }
-void QueryEngine::findTDIFs(vector<document>& currdocs)
-{
+void QueryEngine::findTDIFs(vector<document>& currdocs) {
     int corpus_sum=0;
-    for (unsigned j=0; j<currdocs.size(); j++)
-    {
-       corpus_sum+= currdocs.at(j).count;
+    for (unsigned j=0; j<currdocs.size(); j++) {
+        corpus_sum+= currdocs.at(j).count;
     }
-    for(document &doc: currdocs)
-    {
+    for(document &doc: currdocs) {
         int p = dp->wordy.size();
         int pp = currdocs.size();
         int ppp = doc.count;
@@ -211,12 +173,10 @@ void QueryEngine::findTDIFs(vector<document>& currdocs)
     }
 
 }
-void QueryEngine::relevencySort(vector<document>& currdocs)
-{
+void QueryEngine::relevencySort(vector<document>& currdocs) {
 
-    sort( currdocs.begin( ), currdocs.end( ), [ ]( const document& lhs, const document& rhs )
-    {
-       return lhs.tdif> rhs.tdif;
+    sort( currdocs.begin( ), currdocs.end( ), [ ]( const document& lhs, const document& rhs ) {
+        return lhs.tdif> rhs.tdif;
     });
 
 }

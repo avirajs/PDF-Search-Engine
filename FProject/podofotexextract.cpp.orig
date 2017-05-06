@@ -28,35 +28,38 @@
 #include <config.h>
 #endif // _HAVE_CONFIG
 
-void print_help() {
-    printf("Usage: podofotxtextract [inputfile]\n\n");
-    printf("\nPoDoFo Version: %s\n\n", PODOFO_VERSION_STRING);
+void print_help()
+{
+  printf("Usage: podofotxtextract [inputfile]\n\n");
+  printf("\nPoDoFo Version: %s\n\n", PODOFO_VERSION_STRING);
 }
 
-int main( int argc, char* argv[] ) {
-    char* pszInput;
+int main( int argc, char* argv[] )
+{
+  char* pszInput;
 
 
-    char names[200] = "/home/coder/Documents/Corpus01/sampleCorpus/84 Hutch self-efficacy.pdf";
-    TextExtractor extractor;
+  char names[200] = "/home/coder/Documents/Corpus01/sampleCorpus/84 Hutch self-efficacy.pdf";
+  TextExtractor extractor;
 
-    if( argc != 2 ) {
-        print_help();
-        exit( -1 );
-    }
+  if( argc != 2 )
+  {
+    print_help();
+    exit( -1 );
+  }
 
-    pszInput  = argv[1];
+  pszInput  = argv[1];
 
-    pszInput = names;
+ pszInput = names;
 
-    try {
-        extractor.Init( pszInput );
-    } catch( PdfError & e ) {
-        fprintf( stderr, "Error: An error %i ocurred during processing the pdf file.\n", e.GetError() );
-        e.PrintErrorMsg();
-        return e.GetError();
-    }
+  try {
+      extractor.Init( pszInput );
+  } catch( PdfError & e ) {
+      fprintf( stderr, "Error: An error %i ocurred during processing the pdf file.\n", e.GetError() );
+      e.PrintErrorMsg();
+      return e.GetError();
+  }
 
-    return 0;
+  return 0;
 }
 

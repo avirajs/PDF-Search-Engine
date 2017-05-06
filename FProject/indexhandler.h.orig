@@ -10,7 +10,8 @@
 #include "hash.h"
 using namespace std;
 
-class IndexHandler {
+class IndexHandler
+{
 private:
     IndexInterface *index;
     //index interface pointer

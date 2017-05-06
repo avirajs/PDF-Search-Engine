@@ -10,7 +10,8 @@
 #include "indexextractor.h"
 #include <map>
 #include "rawoutputextractor.h"
-class DocumentParser {
+class DocumentParser
+{
 private:
     vector<rawOutputExtractor> rawVec;
     IndexHandler* ih;

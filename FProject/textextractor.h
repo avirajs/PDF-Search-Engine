@@ -50,14 +50,14 @@ class TextExtractor {
     TextExtractor(IndexHandler*,indexextractor*);
     virtual ~TextExtractor();
     int getTotalPages();
-    int wordCount=0;
+    int wordCount =0;
     string docsName;
     string getDocName();
     int getWordCount();
     void Init( const char* pszInput, string docName);
 
  private:
-    int totalPages = 0;
+    int totalPages;
     int chP = 0;
     int num =0;
     int lenPszData =0;

@@ -238,7 +238,9 @@ vector<document>hashy::topwords()
 
 void hashy::writeIndex()
 {
-    ofstream fout("inverted_index.txt", ios::out);
+    ofstream fout;
+    fout.open("inverted_index.txt", fstream::app);
+
     // checks to see if file can open
       if(!fout)
       {
@@ -411,34 +413,4 @@ std::vector<std::string> hashy:: split(const std::string &s, char delim)
     }
     return elems;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 

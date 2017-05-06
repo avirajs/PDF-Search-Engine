@@ -709,4 +709,3 @@ int rawOutputExtractor::getWordCount()
 {
     return wordCount;
 }
-

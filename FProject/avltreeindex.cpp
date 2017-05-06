@@ -387,4 +387,4 @@ std::vector<std::string> AVLTreeIndex:: split(const std::string &s, char delim)
       // elems.push_back(std::move(item)); // if C++11 (based on comment from @mchiasson)
     }
     return elems;
-  }
+}

@@ -93,6 +93,10 @@ void TextExtractor::Init( const char* pszInput,string docName)
          b[i] = conP[0];
     }
 
+    if (mm == "21740.pdf")
+    {
+        int helpme =0;
+    }
 }
 
 void TextExtractor::ExtractText( PdfMemDocument* pDocument, PdfPage* pPage )
@@ -517,6 +521,34 @@ void TextExtractor::ConvertToVectorOfString(char*c)
                 }
 
             }
+
+            //if it has a -  remove it from the word before adding to the index handler
+            if (value == 45)
+            {
+                for (int o = h; o < i; o++)
+                {
+                    n[x] = c[o];
+                    x++;
+                }
+                n[x] = null[0];
+                //set h to next element
+                h = i+1;
+                //convert n to string method
+                string f = string(n);
+                if (f != " " && f != "")
+                {
+                    if(!ie->isStopWord(f))
+                        ih->addIndex(ie->getStemmed(f),docname);
+                    wordCount++;
+                }
+                //reset n
+                for (int u =0; u < 200; u++)
+                {
+                    n[u] = p[u];
+                }
+
+            }
+
 
             if (value == 46)
             {

@@ -18,7 +18,7 @@ DocumentParser::DocumentParser()
 {
 ie= new indexextractor("stopwords.txt");
 }
-void DocumentParser::extract(string fileStream)
+bool DocumentParser::extract(string fileStream)
 {
 
 
@@ -28,10 +28,10 @@ void DocumentParser::extract(string fileStream)
     struct dirent *pent = nullptr;
     if (pdir == nullptr)
     {
-        cout << "\n Error! File could not be initialised correctly" << endl;
-        //exit (3);
-        cout<<endl;
-        return;
+        cout << "\n Error! The file coud not be initialised correctly" << endl;
+       // exit (3);
+        cout << endl;
+       return flag;
     }
     while (pent = readdir(pdir))
     {
@@ -39,10 +39,10 @@ void DocumentParser::extract(string fileStream)
         cP =0;
         if (pent == nullptr)
         {
-            cout << "\n Error! File could not be initialised correctly" << endl;
-            //exit (3);
-            cout<<endl;
-            return;
+            cout << "\n Error! The file coud not be initialised correctly" << endl;
+         //   exit (3);
+            cout << endl;
+            return flag;
         }
         nn = pent->d_name;
         int slen = strlen(nn);
@@ -67,10 +67,6 @@ void DocumentParser::extract(string fileStream)
 
     for (int i = 0; i < k.size(); i++)
     {
-        if (i == 5)
-        {
-            int helpme =0;
-        }
       TextExtractor extractor(ih,ie);
       string names = fileStream;
       string ne = names + k[i];
@@ -81,8 +77,10 @@ void DocumentParser::extract(string fileStream)
       } catch( PdfError & e ) {
           fprintf( stderr, "Error: An error %i ocurred during processing the pdf file.\n", e.GetError() );
           e.PrintErrorMsg();
+          return flag;
       }
-       totalPages += extractor.getTotalPages();
+     // int currpages = extractor.getTotalPages();
+       totalPages = extractor.getTotalPages();
        docName = k[i];
        wordCount = extractor.getWordCount();
        wordy[docName]=wordCount;
@@ -110,6 +108,8 @@ void DocumentParser::extract(string fileStream)
           }
         ffout << elem.first << "|" << elem.second << endl;
     }
+    flag = true;
+    return flag;
 }
 
 
@@ -153,14 +153,15 @@ void DocumentParser::readInWordyMap()
                 wordy[doc]=word;
             }
         }
-        int helpme =0;
+        int k =0;
 }
+
 void DocumentParser::clearWordTxt()
 {
     ofstream fout("pdf_and_wordCount.txt", ios::out);
     fout.close();
 }
-void DocumentParser::rawTextExtract(string fileStream)
+bool DocumentParser::rawTextExtract(string fileStream)
 {
 
       string names = fileStream;
@@ -172,8 +173,10 @@ void DocumentParser::rawTextExtract(string fileStream)
       } catch( PdfError & e ) {
           fprintf( stderr, "Error: An error %i ocurred during processing the pdf file.\n", e.GetError() );
           e.PrintErrorMsg();
+          return flag;
       }
-
+      flag = true;
+      return flag;
 
 
 }

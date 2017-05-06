@@ -10,27 +10,31 @@ struct bookmark
 {
     bookmark(string m, string q)
     {
-        mark=m;
-        query=q;
+        mark =m;
+        query =q;
     }
     string mark;
     string query;
 };
+
+
+
 class SearchEngine
 {
-
 private:
     DocumentParser *dp;
     IndexHandler* ih;
     QueryEngine* qe;
     vector<document>top50;
-     vector<bookmark>bookmarks;
+    string filePath = "";
+    bool flag = false;
+    vector<bookmark>bookmarks;
 
 public:
-    int totalPages;
+    int totalPages =0;
     SearchEngine(string docpath,char);
     SearchEngine();
-    void display_search_results(string word);
+    vector<document> display_search_results(string word);
     void relevencySort(vector<document>& );
     void writeIndex();
     void readIndex();
@@ -38,23 +42,25 @@ public:
     int getTotalPages();
     int numWordsIndexed();
     vector<document> topfifty();
-    void addDocumentsToIndex(string docpath);
+    bool addDocumentsToIndex(string docpath);
     void chooseStructure(char type);
     void findTDIFs(vector<document>& currdocs);
-    void readTotalPages();
+    int readTotalPages();
     void clearTotalPages();
     void clearWordTxt();
     void clear();
-    void displayRawFile(string filePath);
+    bool displayRawFile(string filePath);
+    void displayTop50();
+    void writeFilePathToTXTFile();
+    vector<string> readFilePathFromTXTFile();
+    void clearFilePath();
     void writeBookmark(string book,string query);
     void readBookmarks();
     void addBookmark(string book,string query);
     void addToHistory(string query);
-void clearHistory();
+    void clearHistory();
     void displayHistory();
-
-    void displayTop50();
-void clearBookmarks();
+    void clearBookmarks();
     vector<bookmark> displayBookmarks();
 
 };

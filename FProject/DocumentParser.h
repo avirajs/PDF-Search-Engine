@@ -24,6 +24,7 @@ private:
     int totalPages =0;
     int wordCount;
     string docName;
+    bool flag = false;
 
 public:
     map<string,int> wordy;
@@ -33,12 +34,12 @@ public:
     DocumentParser();
     string getStemmed(string&);
     bool isStopWord(string&);
-    void extract(string);
+    bool extract(string);
     int getTotalPages();
     void readInWordyMap();
     int numOfDocs();
     void clearWordTxt();
-    void rawTextExtract(string fileStream);
+    bool rawTextExtract(string fileStream);
 };
 
 #endif // DocumentParser_H

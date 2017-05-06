@@ -14,6 +14,10 @@ vector<document> QueryEngine::querySearch(string query)
     for(string word: words)
         searches.push(word);
 
+
+
+
+
     bool a=false;
     bool o=false;
     bool n=false;
@@ -199,6 +203,10 @@ void QueryEngine::findTDIFs(vector<document>& currdocs)
     }
     for(document &doc: currdocs)
     {
+        int p = dp->wordy.size();
+        int pp = currdocs.size();
+        int ppp = doc.count;
+        int pppp = dp->wordy[doc.docname];
         doc.tdif=log(1.*dp->wordy.size()/currdocs.size())*(1.*doc.count/dp->wordy[doc.docname]);
     }
 
@@ -212,4 +220,3 @@ void QueryEngine::relevencySort(vector<document>& currdocs)
     });
 
 }
-

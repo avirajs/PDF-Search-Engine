@@ -1,10 +1,9 @@
 /**
     CSE 2341 AVLTreeIndex.cpp
     @brief The AVLTreeindex is the custom implementation of the AVLTree.
-    The code was based off of ................................................
-    ..........................................................................
-    .........................................................................
-    @author Aviraj Shina (owner)
+    The code was based off of github implementation
+    https://gist.github.com/harish-r/097688ac7f48bcbadfa5
+    @author Aviraj Sinha (owner)
     @version 1.0 05/07/17
 */
 
@@ -47,7 +46,7 @@ void  AVLTreeIndex::addIndex(string& word, string& docname) {
 }
 
 /**
- * @brief AVLTreeIndex::display This dispays the AVLTree
+ * @brief AVLTreeIndex::display This displays the AVLTree
  */
 void AVLTreeIndex::display() {
     inorder(root);
@@ -55,8 +54,8 @@ void AVLTreeIndex::display() {
 }
 
 /**
- * @brief AVLTreeIndex::makeEmpty This .......
- * @param t The ........
+ * @brief AVLTreeIndex::makeEmpty this clears the avl tree and is called by destructor
+ *
  */
 void AVLTreeIndex:: makeEmpty(index_node* t) {
     if(t == NULL)
@@ -67,11 +66,11 @@ void AVLTreeIndex:: makeEmpty(index_node* t) {
 }
 
 /**
- * @brief AVLTreeIndex::insert This ..........
- * @param x The ...........
- * @param docname The ............
- * @param t The ..............
- * @return index_node The ...........
+ * @brief AVLTreeIndex::insert This is used to insert from document parser and keeps count
+ * @param x The the word to be added
+ * @param docname The document name ot be added
+ * @param t The recursively passing node
+ * @return index_node The inserted node
  */
 index_node* AVLTreeIndex:: insert(string x,string docname, index_node* t) {
     if(t == NULL) {
@@ -112,9 +111,7 @@ index_node* AVLTreeIndex:: insert(string x,string docname, index_node* t) {
 }
 
 /**
- * @brief AVLTreeIndex::singleRightRotate This ..........
- * @param t The ........
- * @return The ...........
+ * @brief AVLTreeIndex::singleRightRotate
  */
 index_node* AVLTreeIndex:: singleRightRotate(index_node* &t) {
     index_node* u = t->left;
@@ -126,9 +123,7 @@ index_node* AVLTreeIndex:: singleRightRotate(index_node* &t) {
 }
 
 /**
- * @brief AVLTreeIndex::singleLeftRotate This .........
- * @param t The .........
- * @return index_node The .................
+ * @brief AVLTreeIndex::singleLeftRotate
  */
 index_node* AVLTreeIndex:: singleLeftRotate(index_node* &t) {
     index_node* u = t->right;
@@ -140,9 +135,7 @@ index_node* AVLTreeIndex:: singleLeftRotate(index_node* &t) {
 }
 
 /**
- * @brief AVLTreeIndex::doubleLeftRotate This .............
- * @param t The .........
- * @return index_node The ...........
+ * @brief AVLTreeIndex::doubleLeftRotate
  */
 index_node*  AVLTreeIndex::doubleLeftRotate(index_node* &t) {
     t->right = singleRightRotate(t->right);
@@ -150,9 +143,7 @@ index_node*  AVLTreeIndex::doubleLeftRotate(index_node* &t) {
 }
 
 /**
- * @brief AVLTreeIndex::doubleRightRotate This ..............
- * @param t The ........
- * @return  index_node The ..................
+ * @brief AVLTreeIndex::doubleRightRotate
  */
 index_node*  AVLTreeIndex::doubleRightRotate(index_node* &t) {
     t->left = singleLeftRotate(t->left);
@@ -160,9 +151,7 @@ index_node*  AVLTreeIndex::doubleRightRotate(index_node* &t) {
 }
 
 /**
- * @brief AVLTreeIndex::findMin This ...............
- * @param t The .............
- * @return index_node The ...............
+ * @brief AVLTreeIndex::findMin This finds the minimum value
  */
 index_node* AVLTreeIndex:: findMin(index_node* t) {
     if(t == NULL)
@@ -174,9 +163,7 @@ index_node* AVLTreeIndex:: findMin(index_node* t) {
 }
 
 /**
- * @brief AVLTreeIndex::findMax This ............
- * @param t The ............
- * @return index_node The..............
+ * @brief AVLTreeIndex::findMax This finds the maximum value
  */
 index_node*  AVLTreeIndex::findMax(index_node* t) {
     if(t == NULL)
@@ -188,10 +175,7 @@ index_node*  AVLTreeIndex::findMax(index_node* t) {
 }
 
 /**
- * @brief AVLTreeIndex::remove This ............
- * @param x The ................
- * @param t The ................
- * @return index_node The ...................
+ * @brief AVLTreeIndex::remove This removes a node
  */
 index_node*  AVLTreeIndex::remove(string x, index_node* t) {
     index_node* temp;
@@ -250,16 +234,14 @@ index_node*  AVLTreeIndex::remove(string x, index_node* t) {
 }
 
 /**
- * @brief AVLTreeIndex::height This .............
- * @param t The ..............
- * @return index_node The ..............
+ * @brief AVLTreeIndex::height This finds the height
  */
 int AVLTreeIndex:: height(index_node* t) {
     return (t == NULL ? -1 : t->height);
 }
 
 /**
- * @brief AVLTreeIndex::getBalance This ................
+ * @brief AVLTreeIndex::getBalance This balances the tree
  * @param t The .....................
  * @return index_node The ................
  */
@@ -271,8 +253,7 @@ int  AVLTreeIndex::getBalance(index_node* t) {
 }
 
 /**
- * @brief AVLTreeIndex::inorder This ...............
- * @param t The .................
+ * @brief AVLTreeIndex::inorder This writes out the tree in-order
  */
 void  AVLTreeIndex::inorder(index_node* t) {
     if(t == NULL)
@@ -290,8 +271,6 @@ void  AVLTreeIndex::inorder(index_node* t) {
  * @param x The word to be inserted.
  * @param docname The PDF name to be inserted.
  * @param doc_count The count to be updated/set.
- * @param t index_node The ......................................
- * @return index_node The ..................................................
  */
 index_node* AVLTreeIndex:: insert(string x,string docname, int doc_count, index_node* t) {
     if(t == NULL) {
@@ -329,8 +308,7 @@ index_node* AVLTreeIndex:: insert(string x,string docname, int doc_count, index_
 }
 
 /**
- * @brief AVLTreeIndex::write_inorder This .................
- * @param t The ................
+ * @brief AVLTreeIndex::write_inorder This writes out ot the file in order
  */
 void  AVLTreeIndex::write_inorder(index_node* t) {
     ofstream ifi;
@@ -379,7 +357,6 @@ void AVLTreeIndex::insert(string x,string docname, int count) {
 
 /**
  * @brief AVLTreeIndex::remove This removes a word from the AVLTree
- * @param x
  */
 void AVLTreeIndex:: remove(string x) {
     root = remove(x, root);

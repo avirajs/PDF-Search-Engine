@@ -1,3 +1,13 @@
+/**
+    CSE 2341 DocumentParser.h
+    @brief The DocumentParser class parses the PDFs.
+    It extracts the text using the TextExtractor class, stems the words and removes
+    stop words using the IndexExtractor class, and computes the term frequency using the custom
+    AVLTree or the custom Hash table.
+    @author Aviraj Shina (owner)
+    @author Patrick Yienger
+    @version 1.0 05/07/17
+*/
 #ifndef DocumentParser_H
 #define DocumentParser_H
 
@@ -10,6 +20,10 @@
 #include "indexextractor.h"
 #include <map>
 #include "rawoutputextractor.h"
+
+/**
+ * @brief The DocumentParser class
+ */
 class DocumentParser {
 private:
     vector<rawOutputExtractor> rawVec;

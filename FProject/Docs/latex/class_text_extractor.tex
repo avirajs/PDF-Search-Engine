@@ -1,0 +1,54 @@
+\section{Text\+Extractor Class Reference}
+\label{class_text_extractor}\index{Text\+Extractor@{Text\+Extractor}}
+
+
+{\ttfamily \#include $<$textextractor.\+h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\bfseries Text\+Extractor} ({\bf Index\+Handler} $\ast$, {\bf indexextractor} $\ast$)\label{class_text_extractor_a10caf1764ade9e474231adf781b367f7}
+
+\item 
+int {\bfseries get\+Total\+Pages} ()\label{class_text_extractor_a66e37d8e8161909dc786aa1a6a5f7637}
+
+\item 
+string {\bfseries get\+Doc\+Name} ()\label{class_text_extractor_a85ca0ccdb54737c6d5ac8dd681d5b1a8}
+
+\item 
+int {\bfseries get\+Word\+Count} ()\label{class_text_extractor_a8d3c038e06d44b5c173a53245ef2d7f2}
+
+\item 
+void {\bfseries Init} (const char $\ast$psz\+Input, string doc\+Name)\label{class_text_extractor_a5e99ac7195f139e6de81ecb444f220d7}
+
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+{\bf Index\+Handler} $\ast$ {\bfseries ih}\label{class_text_extractor_a0394a5aac80ffd832e553a00cd06e768}
+
+\item 
+{\bf indexextractor} $\ast$ {\bfseries ie}\label{class_text_extractor_a53dff35095b3b6ac06db8565ed525c31}
+
+\item 
+string {\bfseries mm}\label{class_text_extractor_ab336de8579bd37a2623061457aa2c799}
+
+\item 
+vector$<$ string $>$ {\bfseries a}\label{class_text_extractor_a3b1a87ce7b4c17c085ea51cb7c2e446f}
+
+\item 
+int {\bfseries word\+Count} =0\label{class_text_extractor_ad8e30cc9eb1d54a17ca131b30d216990}
+
+\item 
+string {\bfseries docs\+Name}\label{class_text_extractor_acdf61457e2da0bd6a16db3624ba9ef71}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+This class uses the Po\+Do\+Fo lib to parse a P\+DF file and to write all text it finds in this P\+DF document to stdout. 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+textextractor.\+h\item 
+textextractor.\+cpp\end{DoxyCompactItemize}

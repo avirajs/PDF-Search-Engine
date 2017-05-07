@@ -1,4 +1,10 @@
-
+/**
+    CSE 2341 IndexHandler.h
+    @brief The IndexHandler class creates and stores the inverted index file.
+    It uses the custom data structures to write and read the inverted index.
+    @author Aviraj Shina (owner)
+    @version 1.0 05/07/17
+*/
 #ifndef INDEXHANDLER_H
 #define INDEXHANDLER_H
 #include <set>
@@ -10,12 +16,15 @@
 #include "hash.h"
 using namespace std;
 
+/**
+ * @brief The IndexHandler class
+ */
 class IndexHandler {
 private:
     IndexInterface *index;
     //index interface pointer
 public:
-    IndexHandler(char type);//add argument to decide which data structure to create but for now avl tree
+    IndexHandler(char type);
     void writeIndex();
     void addIndex(string,string);
     vector<document>* getDocs(string);

@@ -1,3 +1,14 @@
+/**
+    CSE 2341 DocumentParser.cpp
+    @brief The DocumentParser class parses the PDFs.
+    It extracts the text using the TextExtractor class, stems the words and removes
+    stop words using the IndexExtractor class, and computes the term frequency using the custom
+    AVLTree or the custom Hash table.
+    @author Aviraj Shina (owner)
+    @author Patrick Yienger
+    @version 1.0 05/07/17
+*/
+
 #include "indexextractor.h"
 #include "textextractor.h"
 #include <dirent.h>
@@ -5,21 +16,30 @@
 #include <stdlib.h>
 #include <cstdio>
 #include "DocumentParser.h"
-//#include <config.h>
 
-
-
+/**
+ * @brief DocumentParser::DocumentParser The DocumentParser constructor.
+ * @param i The IndexHandler object.
+ */
 DocumentParser::DocumentParser(IndexHandler* i) {
     ih=i;
     ie= new indexextractor("stopwords.txt");
 }
+
+/**
+ * @brief DocumentParser::DocumentParser The overloaded defualt DocumentParser constructor.
+ */
 DocumentParser::DocumentParser() {
     ie= new indexextractor("stopwords.txt");
 }
+
+/**
+ * @brief DocumentParser::extract This ectracts the text from the PDF.
+ * This also stores the total pages and the total word indexed count in the appropriate .txt file.
+ * @param fileStream The file path to the corpus of PDFs.
+ * @return bool The flag for a sucessful text extract.
+ */
 bool DocumentParser::extract(string fileStream) {
-
-
-
     //pdir = opendir("/home/coder/Documents/Corpus01/sampleCorpus");
     pdir = opendir(fileStream.c_str());
     struct dirent *pent = nullptr;
@@ -99,20 +119,43 @@ bool DocumentParser::extract(string fileStream) {
     return flag;
 }
 
-
+/**
+ * @brief DocumentParser::getTotalPages This gets the total number of pages.
+ * @return totalPages The total number of pages.
+ */
 int DocumentParser::getTotalPages() {
     return totalPages;
 }
 
+/**
+ * @brief DocumentParser::getStemmed This .......
+ * @param word The ......
+ * @return string The ........
+ */
 string DocumentParser::getStemmed(string& word) {
     return ie->getStemmed(word);
 }
+
+/**
+ * @brief DocumentParser::isStopWord This ........
+ * @param word The ......
+ * @return The .......
+ */
 bool DocumentParser::isStopWord(string& word) {
     return ie->isStopWord(word);
 }
+
+/**
+ * @brief DocumentParser::numOfDocs This returns the number of documents in the corpus.
+ * @return int The number of documents in the corpus.
+ */
 int DocumentParser::numOfDocs() {
     return wordy.size();
 }
+
+/**
+ * @brief DocumentParser::readInWordyMap This reads the word count and associated PDF name to a .txt file.
+ */
 void DocumentParser::readInWordyMap() {
     ifstream fin("pdf_and_wordCount.txt", ios::in);
     // checks to see if file can open
@@ -135,10 +178,19 @@ void DocumentParser::readInWordyMap() {
     int k =0;
 }
 
+/**
+ * @brief DocumentParser::clearWordTxt This clears the word count and associated PDf name from the .txt file.
+ */
 void DocumentParser::clearWordTxt() {
     ofstream fout("pdf_and_wordCount.txt", ios::out);
     fout.close();
 }
+
+/**
+ * @brief DocumentParser::rawTextExtract This outputs the raw text from a supplied PDF.
+ * @param fileStream The file path to the supplied PDF.
+ * @return bool The flag for a successful text extract.
+ */
 bool DocumentParser::rawTextExtract(string fileStream) {
 
     string names = fileStream;

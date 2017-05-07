@@ -1,4 +1,10 @@
-
+/**
+    CSE 2341 hash.h
+    @brief The hashy class is the custom implementation of the HashTable.
+    The basic hash parts of the code was based off of the series of videos by Paul Programming.
+    @author Parick Yienger (owner)
+    @version 1.0 05/07/17
+*/
 #ifndef HASH_H
 #define HASH_H
 #include <string>
@@ -14,6 +20,10 @@
 #include <sstream>
 #include <iterator>
 
+/**
+ * @brief The item struct This is a struct that contains the word, count, and PDFName.
+ * It also uses a vector in the top index on the hash table to handle collisions.
+ */
 struct item {
     string word_key;
     //document has count and name variables
@@ -22,17 +32,13 @@ struct item {
     vector<item> vec;
 };
 
+/**
+ * @brief The hashy class
+ */
 class hashy : public IndexInterface {
 public:
-    /**
-     * @brief This is the constructor for the custom hash table
-     */
+
     hashy();
-    /**
-     * @brief Hashy
-     * @param word key
-     * @return int
-     */
     int Hashy(string key);
     void addIndex(string &word, string &name);
     int NumItemsInIndex(int index);

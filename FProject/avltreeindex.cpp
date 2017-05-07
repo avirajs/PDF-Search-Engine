@@ -1,6 +1,22 @@
+/**
+    CSE 2341 AVLTreeIndex.cpp
+    @brief The AVLTreeindex is the custom implementation of the AVLTree.
+    The code was based off of ................................................
+    ..........................................................................
+    .........................................................................
+    @author Aviraj Shina (owner)
+    @version 1.0 05/07/17
+*/
+
 #include "avltreeindex.h"
 #include <regex.h>
 using namespace std;
+
+/**
+ * @brief AVLTreeIndex::findIndex This finds the index of a specified word.
+ * @param word_key The specified word.
+ * @return vector<document> The vector of document that contains all off the PDF names and counts of the specified word.
+ */
 vector<document>*  AVLTreeIndex:: findIndex(string word_key) {
 
     index_node *temp=root;      //'head' is pointer to root node
@@ -20,14 +36,28 @@ vector<document>*  AVLTreeIndex:: findIndex(string word_key) {
     else if(temp->word_key==word_key)
         return &(temp->documents);
 }
+
+/**
+ * @brief AVLTreeIndex::addIndex This adds the index given a word and PDF name.
+ * @param word The given word.
+ * @param docname The given PDF name.
+ */
 void  AVLTreeIndex::addIndex(string& word, string& docname) {
     this->insert(word,docname);
 }
+
+/**
+ * @brief AVLTreeIndex::display This dispays the AVLTree
+ */
 void AVLTreeIndex::display() {
     inorder(root);
     cout << endl;
 }
 
+/**
+ * @brief AVLTreeIndex::makeEmpty This .......
+ * @param t The ........
+ */
 void AVLTreeIndex:: makeEmpty(index_node* t) {
     if(t == NULL)
         return;
@@ -36,6 +66,13 @@ void AVLTreeIndex:: makeEmpty(index_node* t) {
     delete t;
 }
 
+/**
+ * @brief AVLTreeIndex::insert This ..........
+ * @param x The ...........
+ * @param docname The ............
+ * @param t The ..............
+ * @return index_node The ...........
+ */
 index_node* AVLTreeIndex:: insert(string x,string docname, index_node* t) {
     if(t == NULL) {
         t = new index_node;
@@ -74,6 +111,11 @@ index_node* AVLTreeIndex:: insert(string x,string docname, index_node* t) {
     return t;
 }
 
+/**
+ * @brief AVLTreeIndex::singleRightRotate This ..........
+ * @param t The ........
+ * @return The ...........
+ */
 index_node* AVLTreeIndex:: singleRightRotate(index_node* &t) {
     index_node* u = t->left;
     t->left = u->right;
@@ -83,6 +125,11 @@ index_node* AVLTreeIndex:: singleRightRotate(index_node* &t) {
     return u;
 }
 
+/**
+ * @brief AVLTreeIndex::singleLeftRotate This .........
+ * @param t The .........
+ * @return index_node The .................
+ */
 index_node* AVLTreeIndex:: singleLeftRotate(index_node* &t) {
     index_node* u = t->right;
     t->right = u->left;
@@ -92,16 +139,31 @@ index_node* AVLTreeIndex:: singleLeftRotate(index_node* &t) {
     return u;
 }
 
+/**
+ * @brief AVLTreeIndex::doubleLeftRotate This .............
+ * @param t The .........
+ * @return index_node The ...........
+ */
 index_node*  AVLTreeIndex::doubleLeftRotate(index_node* &t) {
     t->right = singleRightRotate(t->right);
     return singleLeftRotate(t);
 }
 
+/**
+ * @brief AVLTreeIndex::doubleRightRotate This ..............
+ * @param t The ........
+ * @return  index_node The ..................
+ */
 index_node*  AVLTreeIndex::doubleRightRotate(index_node* &t) {
     t->left = singleLeftRotate(t->left);
     return singleRightRotate(t);
 }
 
+/**
+ * @brief AVLTreeIndex::findMin This ...............
+ * @param t The .............
+ * @return index_node The ...............
+ */
 index_node* AVLTreeIndex:: findMin(index_node* t) {
     if(t == NULL)
         return NULL;
@@ -111,6 +173,11 @@ index_node* AVLTreeIndex:: findMin(index_node* t) {
         return findMin(t->left);
 }
 
+/**
+ * @brief AVLTreeIndex::findMax This ............
+ * @param t The ............
+ * @return index_node The..............
+ */
 index_node*  AVLTreeIndex::findMax(index_node* t) {
     if(t == NULL)
         return NULL;
@@ -120,6 +187,12 @@ index_node*  AVLTreeIndex::findMax(index_node* t) {
         return findMax(t->right);
 }
 
+/**
+ * @brief AVLTreeIndex::remove This ............
+ * @param x The ................
+ * @param t The ................
+ * @return index_node The ...................
+ */
 index_node*  AVLTreeIndex::remove(string x, index_node* t) {
     index_node* temp;
 
@@ -176,10 +249,20 @@ index_node*  AVLTreeIndex::remove(string x, index_node* t) {
     return t;
 }
 
+/**
+ * @brief AVLTreeIndex::height This .............
+ * @param t The ..............
+ * @return index_node The ..............
+ */
 int AVLTreeIndex:: height(index_node* t) {
     return (t == NULL ? -1 : t->height);
 }
 
+/**
+ * @brief AVLTreeIndex::getBalance This ................
+ * @param t The .....................
+ * @return index_node The ................
+ */
 int  AVLTreeIndex::getBalance(index_node* t) {
     if(t == NULL)
         return 0;
@@ -187,6 +270,10 @@ int  AVLTreeIndex::getBalance(index_node* t) {
         return height(t->left) - height(t->right);
 }
 
+/**
+ * @brief AVLTreeIndex::inorder This ...............
+ * @param t The .................
+ */
 void  AVLTreeIndex::inorder(index_node* t) {
     if(t == NULL)
         return;
@@ -198,7 +285,14 @@ void  AVLTreeIndex::inorder(index_node* t) {
     inorder(t->right);
 }
 
-//inserts the doccument to the word witht the correct doc count
+/**
+ * @brief AVLTreeIndex::insert This inserts a document object into the AVLTree and updates the word count.
+ * @param x The word to be inserted.
+ * @param docname The PDF name to be inserted.
+ * @param doc_count The count to be updated/set.
+ * @param t index_node The ......................................
+ * @return index_node The ..................................................
+ */
 index_node* AVLTreeIndex:: insert(string x,string docname, int doc_count, index_node* t) {
     if(t == NULL) {
         t = new index_node;
@@ -234,6 +328,10 @@ index_node* AVLTreeIndex:: insert(string x,string docname, int doc_count, index_
     return t;
 }
 
+/**
+ * @brief AVLTreeIndex::write_inorder This .................
+ * @param t The ................
+ */
 void  AVLTreeIndex::write_inorder(index_node* t) {
     ofstream ifi;
     ifi.open("inverted_index.txt",fstream::app);
@@ -253,23 +351,43 @@ void  AVLTreeIndex::write_inorder(index_node* t) {
     write_inorder(t->right);
 }
 
+/**
+ * @brief AVLTreeIndex::AVLTreeIndex The AVLTree constructor.
+ */
 AVLTreeIndex::AVLTreeIndex() {
     root = NULL;
 }
 
+/**
+ * @brief AVLTreeIndex::insert This inserts a word and PDF name into the AVL tree.
+ * @param x The word to be inserted.
+ * @param docname The PDF name to be inserted.
+ */
 void  AVLTreeIndex::insert(string x,string docname) {
     root = insert(x,docname, root);
 }
 
+/**
+ * @brief AVLTreeIndex::insert This inserts the data from the inverted file index and into the hash table.
+ * @param x The word to be inserted.
+ * @param docname The PDF name to be inserted.
+ * @param count The count to be inserted.
+ */
 void AVLTreeIndex::insert(string x,string docname, int count) {
     root = insert(x,docname,count,root);
 }
+
+/**
+ * @brief AVLTreeIndex::remove This removes a word from the AVLTree
+ * @param x
+ */
 void AVLTreeIndex:: remove(string x) {
     root = remove(x, root);
 }
 
-
-
+/**
+ * @brief AVLTreeIndex::readIndex This reads the inverted file index and inserts the data into the AVLTree.
+ */
 void AVLTreeIndex::readIndex() {
 
 
@@ -303,9 +421,19 @@ void AVLTreeIndex::readIndex() {
     }
 
 }
+
+/**
+ * @brief AVLTreeIndex::totalWordsIndexed This returns the total words indexed.
+ * @return int The total words indexed.
+ */
 int AVLTreeIndex::totalWordsIndexed() {
     allwords.size();
 }
+
+/**
+ * @brief AVLTreeIndex::topwords This returns the top fifty words from the AVLTree.
+ * @return vector<document> The vector of documents objects of the top fifty words and their counts.
+ */
 vector<document>AVLTreeIndex::topwords() {
     nth_element(allwords.begin(), allwords.begin()+49, allwords.end(), [ ]( const document& lhs, const document& rhs ) {
         return lhs.count > rhs.count;
@@ -323,14 +451,25 @@ vector<document>AVLTreeIndex::topwords() {
 
 
 }
+
+/**
+ * @brief AVLTreeIndex::writeIndex This writes the AVLTree to the inverted file index .txt file
+ */
 void AVLTreeIndex::writeIndex() {
     write_inorder((root));
 }
-std::vector<std::string> AVLTreeIndex:: split(const std::string &s, char delim) {
-    std::stringstream ss(s);
-    std::string item;
-    std::vector<std::string> elems;
-    while (std::getline(ss, item, delim)) {
+
+/**
+ * @brief AVLTreeIndex::split This splits the supplied string by a given delimiter.
+ * @param s The string to be split.
+ * @param delim The character to be used as the delimiter.
+ * @return vector<string> The vector of delimited strings.
+ */
+vector<string> AVLTreeIndex:: split(const string &s, char delim) {
+    stringstream ss(s);
+    string item;
+    vector<string> elems;
+    while (getline(ss, item, delim)) {
         elems.push_back(item);
         // elems.push_back(std::move(item)); // if C++11 (based on comment from @mchiasson)
     }

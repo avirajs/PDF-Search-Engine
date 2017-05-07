@@ -1,9 +1,31 @@
+/**
+    CSE 2341 UserInterface.cpp
+    @brief The UserInterface is a command line menu driven class that makes use of the SearchEngine.
+    It allows the user to enter into two modes, Maintainence and Query, allows the user many options
+    including adding a new pdf to the inverted index, clearing the index, searching the PDF, outputting total pages,
+    outputting total words indexed, outputting the top fifty words, outputting the corpus paths, storing and clearing
+    the search history, storing and clearing bookmarks and outputting the raw text from a selected pdf.
+    @author Patrick Yienger (owner)
+    @version 1.0 05/07/17
+*/
+
 #include "userinterface.h"
 
+/**
+ * @brief userinterface::userinterface The constructor for the user interface.
+ */
 userinterface::userinterface()
 {
 
 }
+
+/**
+ * @brief userinterface::use The method that runs the user interface menu.
+ * It allows the user to enter into two modes, Maintainence and Query, allows the user many options
+   including adding a new pdf to the inverted index, clearing the index, searching the PDF, outputting total pages,
+   outputting total words indexed, outputting the top fifty words, outputting the corpus paths, storing and clearing
+   the search history, storing and clearing bookmarks and outputting the raw text from a selected pdf.
+ */
 void userinterface::use()
 {
     cout<<"Welcome to the Pdf Search Engine." << endl;

@@ -17,8 +17,18 @@
  *   Free Software Foundation, Inc.,                                       *
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
-//I added the ConvertToVectorOfString method and updated the Init, ExtractText,
-//and AddTextElement methods to use this new method
+
+/**
+    CSE 2341 TextExtractor.cpp
+    @brief The TextExtractor uses Podofo to extract the raw text from a pdf, convert it itno usable strings and
+    pass those stings to the IndexExtractor and IndexInterface for stop word removal and stemming.
+    The code was based off of the stack based text extractor provided in the podofo tools and documented above.
+    Its original code was modified to better output/combine the various raw text into words and strings.
+    The method of ConvertToVectorOfString(char c) was added, and the rest were modified for use in the
+    PDF Search engine.
+    @author Patrick Yienger (owner)
+    @version 1.0 05/07/17
+*/
 
 #include "textextractor.h"
 #include <iostream>
@@ -28,18 +38,35 @@
 #include <iomanip>
 
 using namespace std;
+/**
+ * @brief TextExtractor::TextExtractor The TextExtractor constructor.
+ * @param ih The IndexHandler object.
+ * @param ie The IndexInterface object.
+ */
 TextExtractor::TextExtractor(IndexHandler*ih,indexextractor*ie ) {
     this->ih=ih;
     this->ie=ie;
 }
 
+/**
+ * @brief TextExtractor::~TextExtractor The TextExtractor destructor.
+ */
 TextExtractor::~TextExtractor() {
 }
 
+/**
+ * @brief TextExtractor::getTotalPages Returns the total number of pages in the pdf.
+ * @return totalPages The total number of pages in the pdf.
+ */
 int TextExtractor::getTotalPages() {
     return totalPages;
 }
 
+/**
+ * @brief TextExtractor::Init Uses Podofo to extract the text from the given PDF.
+ * @param pszInput The path to the corpus of PDFs
+ * @param docName The name of the pdf to extract text from.
+ */
 void TextExtractor::Init( const char* pszInput,string docName) {
     mm=docName;
     // cout << "Start of init" << endl;
@@ -90,6 +117,11 @@ void TextExtractor::Init( const char* pszInput,string docName) {
     }
 }
 
+/**
+ * @brief TextExtractor::ExtractText Extracts all of the text from the PDF.
+ * @param pDocument the owning document.
+ * @param pPage xtracts the text of this page.
+ */
 void TextExtractor::ExtractText( PdfMemDocument* pDocument, PdfPage* pPage ) {
     const char*      pszToken = NULL;
     PdfVariant       var;
@@ -251,8 +283,13 @@ void TextExtractor::ExtractText( PdfMemDocument* pDocument, PdfPage* pPage ) {
     }
 }
 
-
-
+/**
+ * @brief TextExtractor::AddTextElement Adds the text from the pdf to a char[] adding spaces between words when necessary.
+ * @param dCurPosX x position of the text
+ * @param dCurPosY y position of the test
+ * @param pCurFont front of the test
+ * @param rString the actual string
+ */
 void TextExtractor::AddTextElement( double dCurPosX, double dCurPosY,
                                     PdfFont* pCurFont, const PdfString & rString ) {
 
@@ -377,7 +414,11 @@ void TextExtractor::AddTextElement( double dCurPosX, double dCurPosY,
     // printf("(%.3f,%.3f) %s \n", dCurPosX, dCurPosY, unicode.GetStringUtf8().c_str() );
 }
 
-
+/**
+ * @brief TextExtractor::ConvertToVectorOfString This converts the char[] into a string and passes the string to the IndexHandler and IndexExtractor.
+ * It removes spaces and most puncuation from the words before they are passed as strings.
+ * @param c The char[] to be converted into a string.
+ */
 void TextExtractor::ConvertToVectorOfString(char*c) {
     int x =0;
     int h =0;
@@ -625,10 +666,18 @@ void TextExtractor::ConvertToVectorOfString(char*c) {
 
 }
 
+/**
+ * @brief TextExtractor::getDocName Returns the PDF name.
+ * @return  docsName The PDF name.
+ */
 string TextExtractor::getDocName() {
     return docsName;
 }
 
+/**
+ * @brief TextExtractor::getWordCount Returns the word count.
+ * @return wordCount The word count.
+ */
 int TextExtractor::getWordCount() {
     return wordCount;
 }

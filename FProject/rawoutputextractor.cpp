@@ -17,8 +17,17 @@
  *   Free Software Foundation, Inc.,                                       *
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
-//I added the ConvertToVectorOfString method and updated the Init, ExtractText,
-//and AddTextElement methods to use this new method
+/**
+    CSE 2341 rawOutputExtractor.cpp
+    @brief The rawOutputExtractor uses Podofo to extract the raw text from a pdf, convert it itno usable strings.
+    It outputs the strings to the screen.
+    The code was based off of the stack based text extractor provided in the podofo tools and documented above.
+    Its original code was modified to better output/combine the various raw text into words and strings.
+    The method of ConvertToVectorOfString(char c) was added, and the rest were modified for use in the
+    PDF Search engine.
+    @author Patrick Yienger (owner)
+    @version 1.0 05/07/17
+*/
 
 #include "rawoutputextractor.h"
 #include <iostream>
@@ -28,22 +37,43 @@
 #include <iomanip>
 
 using namespace std;
+
+/**
+ * @brief rawOutputExtractor::rawOutputExtractor The rawOutputExtractor constructor.
+ * @param ih The IndexHandler object.
+ * @param ie The IndexExtractor object.
+ */
 rawOutputExtractor::rawOutputExtractor(IndexHandler*ih,indexextractor*ie ) {
     this->ih=ih;
     this->ie=ie;
 }
 
+/**
+ * @brief rawOutputExtractor::rawOutputExtractor The rawOutputExtractor constructor.
+ */
 rawOutputExtractor::rawOutputExtractor() {
 
 }
 
+/**
+ * @brief rawOutputExtractor::~rawOutputExtractor The rawOutputExtractor destroctor.
+ */
 rawOutputExtractor::~rawOutputExtractor() {
 }
 
+/**
+ * @brief rawOutputExtractor::getTotalPages Returns the total pages.
+ * @return totalPages
+ */
 int rawOutputExtractor::getTotalPages() {
     return totalPages;
 }
 
+/**
+ * @brief rawOutputExtractor::Init Uses Podofo to extract the text from the given PDF.
+ * @param pszInput The path to the corpus of PDFs
+ * @param docName The name of the pdf to extract text from.
+ */
 void rawOutputExtractor::Init( const char* pszInput) {
     // cout << "Start of init" << endl;
     if( !pszInput ) {
@@ -92,6 +122,11 @@ void rawOutputExtractor::Init( const char* pszInput) {
     cout << endl;
 }
 
+/**
+ * @brief rawOutputExtractor::ExtractText Extracts all of the text from the PDF.
+ * @param pDocument the owning document.
+ * @param pPage xtracts the text of this page.
+ */
 void rawOutputExtractor::ExtractText( PdfMemDocument* pDocument, PdfPage* pPage ) {
     const char*      pszToken = NULL;
     PdfVariant       var;
@@ -253,8 +288,13 @@ void rawOutputExtractor::ExtractText( PdfMemDocument* pDocument, PdfPage* pPage 
     }
 }
 
-
-
+/**
+ * @brief rawOutputExtractor::AddTextElement Adds the text from the pdf to a char[] adding spaces between words when necessary.
+ * @param dCurPosX x position of the text
+ * @param dCurPosY y position of the test
+ * @param pCurFont front of the test
+ * @param rString the actual string
+ */
 void rawOutputExtractor::AddTextElement( double dCurPosX, double dCurPosY,
         PdfFont* pCurFont, const PdfString & rString ) {
 
@@ -379,7 +419,11 @@ void rawOutputExtractor::AddTextElement( double dCurPosX, double dCurPosY,
     // printf("(%.3f,%.3f) %s \n", dCurPosX, dCurPosY, unicode.GetStringUtf8().c_str() );
 }
 
-
+/**
+ * @brief rawOutputExtractor::ConvertToVectorOfString This converts the char[] into a string outputting the string.
+ * It removes spaces and most puncuation from the words before they are passed as strings.
+ * @param c The char[] to be converted into a string.
+ */
 void rawOutputExtractor::ConvertToVectorOfString(char*c) {
     int x =0;
     int h =0;
@@ -587,10 +631,18 @@ void rawOutputExtractor::ConvertToVectorOfString(char*c) {
 
 }
 
+/**
+ * @brief rawOutputExtractor::getDocName Returns the PDF name.
+ * @return docsName The PDF name.
+ */
 string rawOutputExtractor::getDocName() {
     return docsName;
 }
 
+/**
+ * @brief rawOutputExtractor::getWordCount Returns the word count.
+ * @return wordCount The word count.
+ */
 int rawOutputExtractor::getWordCount() {
     return wordCount;
 }

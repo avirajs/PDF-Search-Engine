@@ -1,3 +1,11 @@
+/**
+    CSE 2341 QueryEngine.h
+    @brief The QueryEngine uses the inverted file index and searches it
+    given a properly formatted Boolean query. It also ranks the results
+    using tf/idf statistics.
+    @author Aviraj Shina (owner)
+    @version 1.0 05/07/17
+*/
 #ifndef QUERYENGINE_H
 #define QUERYENGINE_H
 #include <vector>
@@ -5,6 +13,9 @@
 #include "indexhandler.h"
 #include "DocumentParser.h"
 
+/**
+ * @brief The QueryEngine class
+ */
 class QueryEngine {
 private:
     IndexHandler *ih;

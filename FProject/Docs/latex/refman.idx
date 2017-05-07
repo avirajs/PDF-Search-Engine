@@ -1,0 +1,131 @@
+\indexentry{Indexing@{Indexing}}{9}
+\indexentry{Debugging@{Debugging}}{10}
+\indexentry{Debugging@{Debugging}!C\+A\+S\+S\+E\+RT@{C\+A\+S\+S\+E\+RT}}{10}
+\indexentry{C\+A\+S\+S\+E\+RT@{C\+A\+S\+S\+E\+RT}!Debugging@{Debugging}}{10}
+\indexentry{Debugging@{Debugging}!D\+U\+M\+P\+\_\+\+T\+O\+\_\+\+F\+I\+LE@{D\+U\+M\+P\+\_\+\+T\+O\+\_\+\+F\+I\+LE}}{10}
+\indexentry{D\+U\+M\+P\+\_\+\+T\+O\+\_\+\+F\+I\+LE@{D\+U\+M\+P\+\_\+\+T\+O\+\_\+\+F\+I\+LE}!Debugging@{Debugging}}{10}
+\indexentry{Debugging@{Debugging}!N\+O\+N\+\_\+\+U\+N\+I\+T\+\_\+\+T\+E\+S\+T\+\_\+\+A\+S\+S\+E\+RT@{N\+O\+N\+\_\+\+U\+N\+I\+T\+\_\+\+T\+E\+S\+T\+\_\+\+A\+S\+S\+E\+RT}}{10}
+\indexentry{N\+O\+N\+\_\+\+U\+N\+I\+T\+\_\+\+T\+E\+S\+T\+\_\+\+A\+S\+S\+E\+RT@{N\+O\+N\+\_\+\+U\+N\+I\+T\+\_\+\+T\+E\+S\+T\+\_\+\+A\+S\+S\+E\+RT}!Debugging@{Debugging}}{10}
+\indexentry{Stemming@{Stemming}}{11}
+\indexentry{Mathematics@{Mathematics}}{12}
+\indexentry{Mathematics@{Mathematics}!compare\+\_\+doubles@{compare\+\_\+doubles}}{12}
+\indexentry{compare\+\_\+doubles@{compare\+\_\+doubles}!Mathematics@{Mathematics}}{12}
+\indexentry{Mathematics@{Mathematics}!compare\+\_\+doubles\+\_\+greater@{compare\+\_\+doubles\+\_\+greater}}{13}
+\indexentry{compare\+\_\+doubles\+\_\+greater@{compare\+\_\+doubles\+\_\+greater}!Mathematics@{Mathematics}}{13}
+\indexentry{Mathematics@{Mathematics}!compare\+\_\+doubles\+\_\+less@{compare\+\_\+doubles\+\_\+less}}{13}
+\indexentry{compare\+\_\+doubles\+\_\+less@{compare\+\_\+doubles\+\_\+less}!Mathematics@{Mathematics}}{13}
+\indexentry{Mathematics@{Mathematics}!compare\+\_\+doubles\+\_\+less\+\_\+or\+\_\+equal@{compare\+\_\+doubles\+\_\+less\+\_\+or\+\_\+equal}}{13}
+\indexentry{compare\+\_\+doubles\+\_\+less\+\_\+or\+\_\+equal@{compare\+\_\+doubles\+\_\+less\+\_\+or\+\_\+equal}!Mathematics@{Mathematics}}{13}
+\indexentry{Mathematics@{Mathematics}!int\+\_\+to\+\_\+bool@{int\+\_\+to\+\_\+bool}}{14}
+\indexentry{int\+\_\+to\+\_\+bool@{int\+\_\+to\+\_\+bool}!Mathematics@{Mathematics}}{14}
+\indexentry{Mathematics@{Mathematics}!safe\+\_\+divide@{safe\+\_\+divide}}{14}
+\indexentry{safe\+\_\+divide@{safe\+\_\+divide}!Mathematics@{Mathematics}}{14}
+\indexentry{Mathematics@{Mathematics}!safe\+\_\+modulus@{safe\+\_\+modulus}}{14}
+\indexentry{safe\+\_\+modulus@{safe\+\_\+modulus}!Mathematics@{Mathematics}}{14}
+\indexentry{String\+Operations@{String\+Operations}}{16}
+\indexentry{Utilities@{Utilities}}{17}
+\indexentry{Utilities@{Utilities}!size\+\_\+of\+\_\+array@{size\+\_\+of\+\_\+array}}{18}
+\indexentry{size\+\_\+of\+\_\+array@{size\+\_\+of\+\_\+array}!Utilities@{Utilities}}{18}
+\indexentry{Utilities@{Utilities}!copy\+\_\+member@{copy\+\_\+member}}{18}
+\indexentry{copy\+\_\+member@{copy\+\_\+member}!Utilities@{Utilities}}{18}
+\indexentry{Utilities@{Utilities}!is\+\_\+within@{is\+\_\+within}}{18}
+\indexentry{is\+\_\+within@{is\+\_\+within}!Utilities@{Utilities}}{18}
+\indexentry{Utilities@{Utilities}!operator()@{operator()}}{18}
+\indexentry{operator()@{operator()}!Utilities@{Utilities}}{18}
+\indexentry{Utilities@{Utilities}!within@{within}}{19}
+\indexentry{within@{within}!Utilities@{Utilities}}{19}
+\indexentry{Utilities@{Utilities}!within\+\_\+range@{within\+\_\+range}}{19}
+\indexentry{within\+\_\+range@{within\+\_\+range}!Utilities@{Utilities}}{19}
+\indexentry{stemming@{stemming}}{21}
+\indexentry{string\+\_\+util@{string\+\_\+util}}{22}
+\indexentry{string\+\_\+util@{string\+\_\+util}!axtoi@{axtoi}}{25}
+\indexentry{axtoi@{axtoi}!string\+\_\+util@{string\+\_\+util}}{25}
+\indexentry{string\+\_\+util@{string\+\_\+util}!find\+\_\+last\+\_\+not\+\_\+of@{find\+\_\+last\+\_\+not\+\_\+of}}{25}
+\indexentry{find\+\_\+last\+\_\+not\+\_\+of@{find\+\_\+last\+\_\+not\+\_\+of}!string\+\_\+util@{string\+\_\+util}}{25}
+\indexentry{string\+\_\+util@{string\+\_\+util}!find\+\_\+last\+\_\+of@{find\+\_\+last\+\_\+of}}{25}
+\indexentry{find\+\_\+last\+\_\+of@{find\+\_\+last\+\_\+of}!string\+\_\+util@{string\+\_\+util}}{25}
+\indexentry{string\+\_\+util@{string\+\_\+util}!find\+\_\+matching\+\_\+close\+\_\+tag@{find\+\_\+matching\+\_\+close\+\_\+tag}}{25}
+\indexentry{find\+\_\+matching\+\_\+close\+\_\+tag@{find\+\_\+matching\+\_\+close\+\_\+tag}!string\+\_\+util@{string\+\_\+util}}{25}
+\indexentry{string\+\_\+util@{string\+\_\+util}!has\+\_\+suffix@{has\+\_\+suffix}}{26}
+\indexentry{has\+\_\+suffix@{has\+\_\+suffix}!string\+\_\+util@{string\+\_\+util}}{26}
+\indexentry{string\+\_\+util@{string\+\_\+util}!is\+\_\+hex\+\_\+digit@{is\+\_\+hex\+\_\+digit}}{26}
+\indexentry{is\+\_\+hex\+\_\+digit@{is\+\_\+hex\+\_\+digit}!string\+\_\+util@{string\+\_\+util}}{26}
+\indexentry{string\+\_\+util@{string\+\_\+util}!is\+\_\+space@{is\+\_\+space}}{26}
+\indexentry{is\+\_\+space@{is\+\_\+space}!string\+\_\+util@{string\+\_\+util}}{26}
+\indexentry{string\+\_\+util@{string\+\_\+util}!remove\+\_\+blank\+\_\+lines@{remove\+\_\+blank\+\_\+lines}}{26}
+\indexentry{remove\+\_\+blank\+\_\+lines@{remove\+\_\+blank\+\_\+lines}!string\+\_\+util@{string\+\_\+util}}{26}
+\indexentry{string\+\_\+util@{string\+\_\+util}!remove\+\_\+extra\+\_\+spaces@{remove\+\_\+extra\+\_\+spaces}}{27}
+\indexentry{remove\+\_\+extra\+\_\+spaces@{remove\+\_\+extra\+\_\+spaces}!string\+\_\+util@{string\+\_\+util}}{27}
+\indexentry{string\+\_\+util@{string\+\_\+util}!strcspn\+\_\+pointer@{strcspn\+\_\+pointer}}{27}
+\indexentry{strcspn\+\_\+pointer@{strcspn\+\_\+pointer}!string\+\_\+util@{string\+\_\+util}}{27}
+\indexentry{string\+\_\+util@{string\+\_\+util}!strnatordcmp@{strnatordcmp}}{27}
+\indexentry{strnatordcmp@{strnatordcmp}!string\+\_\+util@{string\+\_\+util}}{27}
+\indexentry{string\+\_\+util@{string\+\_\+util}!strnchr@{strnchr}}{27}
+\indexentry{strnchr@{strnchr}!string\+\_\+util@{string\+\_\+util}}{27}
+\indexentry{string\+\_\+util@{string\+\_\+util}!strncspn@{strncspn}}{27}
+\indexentry{strncspn@{strncspn}!string\+\_\+util@{string\+\_\+util}}{27}
+\indexentry{string\+\_\+util@{string\+\_\+util}!strnistr@{strnistr}}{28}
+\indexentry{strnistr@{strnistr}!string\+\_\+util@{string\+\_\+util}}{28}
+\indexentry{string\+\_\+util@{string\+\_\+util}!strnlen@{strnlen}}{28}
+\indexentry{strnlen@{strnlen}!string\+\_\+util@{string\+\_\+util}}{28}
+\indexentry{string\+\_\+util@{string\+\_\+util}!strrstr@{strrstr}}{28}
+\indexentry{strrstr@{strrstr}!string\+\_\+util@{string\+\_\+util}}{28}
+\indexentry{string\+\_\+util@{string\+\_\+util}!strtod\+\_\+ex@{strtod\+\_\+ex}}{28}
+\indexentry{strtod\+\_\+ex@{strtod\+\_\+ex}!string\+\_\+util@{string\+\_\+util}}{28}
+\indexentry{string\+\_\+util@{string\+\_\+util}!strtol@{strtol}}{28}
+\indexentry{strtol@{strtol}!string\+\_\+util@{string\+\_\+util}}{28}
+\indexentry{A\+V\+L\+Tree\+Index@{A\+V\+L\+Tree\+Index}}{29}
+\indexentry{backup\+\_\+variable$<$ T $>$@{backup\+\_\+variable$<$ T $>$}}{29}
+\indexentry{bookmark@{bookmark}}{30}
+\indexentry{comparable\+\_\+first\+\_\+pair$<$ T1, T2 $>$@{comparable\+\_\+first\+\_\+pair$<$ T1, T2 $>$}}{31}
+\indexentry{document@{document}}{31}
+\indexentry{Document\+Parser@{Document\+Parser}}{32}
+\indexentry{double\+\_\+less@{double\+\_\+less}}{32}
+\indexentry{stemming\+::english\+\_\+stem$<$ string\+\_\+type\+T $>$@{stemming\+::english\+\_\+stem$<$ string\+\_\+type\+T $>$}}{33}
+\indexentry{stemming\+::english\+\_\+stem@{stemming\+::english\+\_\+stem}!operator()@{operator()}}{35}
+\indexentry{operator()@{operator()}!stemming\+::english\+\_\+stem@{stemming\+::english\+\_\+stem}}{35}
+\indexentry{string\+\_\+util\+::equal\+\_\+basic\+\_\+string\+\_\+i\+\_\+compare$<$ T $>$@{string\+\_\+util\+::equal\+\_\+basic\+\_\+string\+\_\+i\+\_\+compare$<$ T $>$}}{36}
+\indexentry{string\+\_\+util\+::equal\+\_\+string\+\_\+compare$<$ T $>$@{string\+\_\+util\+::equal\+\_\+string\+\_\+compare$<$ T $>$}}{36}
+\indexentry{string\+\_\+util\+::equal\+\_\+string\+\_\+i\+\_\+compare$<$ T $>$@{string\+\_\+util\+::equal\+\_\+string\+\_\+i\+\_\+compare$<$ T $>$}}{37}
+\indexentry{hashy@{hashy}}{37}
+\indexentry{hashy@{hashy}!Hashy@{Hashy}}{37}
+\indexentry{Hashy@{Hashy}!hashy@{hashy}}{37}
+\indexentry{index\+\_\+node@{index\+\_\+node}}{38}
+\indexentry{indexextractor@{indexextractor}}{38}
+\indexentry{Index\+Handler@{Index\+Handler}}{39}
+\indexentry{Index\+Interface@{Index\+Interface}}{39}
+\indexentry{item@{item}}{40}
+\indexentry{string\+\_\+util\+::less\+\_\+basic\+\_\+string\+\_\+compare$<$ T $>$@{string\+\_\+util\+::less\+\_\+basic\+\_\+string\+\_\+compare$<$ T $>$}}{40}
+\indexentry{string\+\_\+util\+::less\+\_\+string\+\_\+compare$<$ T $>$@{string\+\_\+util\+::less\+\_\+string\+\_\+compare$<$ T $>$}}{40}
+\indexentry{string\+\_\+util\+::less\+\_\+string\+\_\+i\+\_\+compare$<$ T $>$@{string\+\_\+util\+::less\+\_\+string\+\_\+i\+\_\+compare$<$ T $>$}}{41}
+\indexentry{string\+\_\+util\+::less\+\_\+string\+\_\+n\+\_\+compare$<$ T $>$@{string\+\_\+util\+::less\+\_\+string\+\_\+n\+\_\+compare$<$ T $>$}}{41}
+\indexentry{string\+\_\+util\+::less\+\_\+string\+\_\+natural\+\_\+order\+\_\+i\+\_\+compare$<$ T $>$@{string\+\_\+util\+::less\+\_\+string\+\_\+natural\+\_\+order\+\_\+i\+\_\+compare$<$ T $>$}}{42}
+\indexentry{string\+\_\+util\+::less\+\_\+string\+\_\+ni\+\_\+compare$<$ T $>$@{string\+\_\+util\+::less\+\_\+string\+\_\+ni\+\_\+compare$<$ T $>$}}{42}
+\indexentry{stemming\+::no\+\_\+op\+\_\+stem$<$ string\+\_\+type\+T $>$@{stemming\+::no\+\_\+op\+\_\+stem$<$ string\+\_\+type\+T $>$}}{42}
+\indexentry{Query\+Engine@{Query\+Engine}}{43}
+\indexentry{raw\+Output\+Extractor@{raw\+Output\+Extractor}}{43}
+\indexentry{Search\+Engine@{Search\+Engine}}{44}
+\indexentry{stemming\+::stem$<$ string\+\_\+type\+T $>$@{stemming\+::stem$<$ string\+\_\+type\+T $>$}}{45}
+\indexentry{stemming\+::stem@{stemming\+::stem}!hash\+\_\+french\+\_\+yui@{hash\+\_\+french\+\_\+yui}}{50}
+\indexentry{hash\+\_\+french\+\_\+yui@{hash\+\_\+french\+\_\+yui}!stemming\+::stem@{stemming\+::stem}}{50}
+\indexentry{stemming\+::stem@{stemming\+::stem}!is\+\_\+apostrophe@{is\+\_\+apostrophe}}{50}
+\indexentry{is\+\_\+apostrophe@{is\+\_\+apostrophe}!stemming\+::stem@{stemming\+::stem}}{50}
+\indexentry{stemming\+::stem@{stemming\+::stem}!is\+\_\+suffix\+\_\+in\+\_\+r1@{is\+\_\+suffix\+\_\+in\+\_\+r1}}{50}
+\indexentry{is\+\_\+suffix\+\_\+in\+\_\+r1@{is\+\_\+suffix\+\_\+in\+\_\+r1}!stemming\+::stem@{stemming\+::stem}}{50}
+\indexentry{stemming\+::stem@{stemming\+::stem}!is\+\_\+suffix\+\_\+in\+\_\+r2@{is\+\_\+suffix\+\_\+in\+\_\+r2}}{50}
+\indexentry{is\+\_\+suffix\+\_\+in\+\_\+r2@{is\+\_\+suffix\+\_\+in\+\_\+r2}!stemming\+::stem@{stemming\+::stem}}{50}
+\indexentry{stemming\+::stem@{stemming\+::stem}!is\+\_\+suffix\+\_\+in\+\_\+rv@{is\+\_\+suffix\+\_\+in\+\_\+rv}}{50}
+\indexentry{is\+\_\+suffix\+\_\+in\+\_\+rv@{is\+\_\+suffix\+\_\+in\+\_\+rv}!stemming\+::stem@{stemming\+::stem}}{50}
+\indexentry{string\+\_\+util\+::string\+\_\+tokenize$<$ T $>$@{string\+\_\+util\+::string\+\_\+tokenize$<$ T $>$}}{50}
+\indexentry{string\+\_\+util\+::string\+\_\+tokenize@{string\+\_\+util\+::string\+\_\+tokenize}!string\+\_\+tokenize@{string\+\_\+tokenize}}{51}
+\indexentry{string\+\_\+tokenize@{string\+\_\+tokenize}!string\+\_\+util\+::string\+\_\+tokenize@{string\+\_\+util\+::string\+\_\+tokenize}}{51}
+\indexentry{string\+\_\+util\+::string\+\_\+tokenize@{string\+\_\+util\+::string\+\_\+tokenize}!get\+\_\+next\+\_\+token@{get\+\_\+next\+\_\+token}}{51}
+\indexentry{get\+\_\+next\+\_\+token@{get\+\_\+next\+\_\+token}!string\+\_\+util\+::string\+\_\+tokenize@{string\+\_\+util\+::string\+\_\+tokenize}}{51}
+\indexentry{string\+\_\+util\+::string\+\_\+tokenize@{string\+\_\+util\+::string\+\_\+tokenize}!has\+\_\+more\+\_\+delimiters@{has\+\_\+more\+\_\+delimiters}}{51}
+\indexentry{has\+\_\+more\+\_\+delimiters@{has\+\_\+more\+\_\+delimiters}!string\+\_\+util\+::string\+\_\+tokenize@{string\+\_\+util\+::string\+\_\+tokenize}}{51}
+\indexentry{string\+\_\+util\+::string\+\_\+tokenize@{string\+\_\+util\+::string\+\_\+tokenize}!has\+\_\+more\+\_\+tokens@{has\+\_\+more\+\_\+tokens}}{51}
+\indexentry{has\+\_\+more\+\_\+tokens@{has\+\_\+more\+\_\+tokens}!string\+\_\+util\+::string\+\_\+tokenize@{string\+\_\+util\+::string\+\_\+tokenize}}{51}
+\indexentry{string\+\_\+util\+::string\+\_\+trim$<$ char\+\_\+type\+T $>$@{string\+\_\+util\+::string\+\_\+trim$<$ char\+\_\+type\+T $>$}}{52}
+\indexentry{Text\+Extractor@{Text\+Extractor}}{52}
+\indexentry{userinterface@{userinterface}}{53}
+\indexentry{within$<$ T $>$@{within$<$ T $>$}}{53}

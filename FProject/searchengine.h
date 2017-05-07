@@ -1,3 +1,12 @@
+/**
+    CSE 2341 SearchEngine.h
+    @brief The SearchEngine class uses the various class to create a PDF Search Engine.
+    The class makes use of the DocumentParser, IndexHandler, and QueryEngie class to perform
+    all of the various tasks of the Mantience mode and Query mode of the user interface.
+    @author Aviraj Shina (owner)
+    @author Patrick Yienger
+    @version 1.0 05/07/17
+*/
 #ifndef SEARCHENGINE_H
 #define SEARCHENGINE_H
 #include "indexhandler.h"
@@ -6,6 +15,10 @@
 #include <ctime>
 #include <iostream>
 using namespace std;
+
+/**
+ * @brief The bookmark struct This struct uses two strings, one for the PDF name, the other for the query.
+ */
 struct bookmark {
     bookmark(string m, string q) {
         mark =m;
@@ -16,7 +29,9 @@ struct bookmark {
 };
 
 
-
+/**
+ * @brief The SearchEngine class
+ */
 class SearchEngine {
 private:
     DocumentParser *dp;

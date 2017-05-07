@@ -1,0 +1,41 @@
+\section{Query\+Engine Class Reference}
+\label{class_query_engine}\index{Query\+Engine@{Query\+Engine}}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\bfseries Query\+Engine} ({\bf Index\+Handler} $\ast$, {\bf Document\+Parser} $\ast$)\label{class_query_engine_a4f10c7d88f75039ac139209ad60c4867}
+
+\item 
+vector$<$ {\bf document} $>$ {\bfseries query\+Search} (string query)\label{class_query_engine_aea1c3b1b81ab4755bb9450c73080ba58}
+
+\item 
+vector$<$ {\bf document} $>$ {\bfseries search} (string word)\label{class_query_engine_a1a9e0cf429284793b690db04de09fd5f}
+
+\item 
+vector$<$ {\bf document} $>$ {\bfseries get\+Intersection} (vector$<$ {\bf document} $>$ l, vector$<$ {\bf document} $>$ r)\label{class_query_engine_a5acd0880e616f8a0c4e126294fe516b8}
+
+\item 
+vector$<$ {\bf document} $>$ {\bfseries get\+Union} (vector$<$ {\bf document} $>$ l, vector$<$ {\bf document} $>$ r)\label{class_query_engine_aee8574303264380c75ef2e02b0f76acf}
+
+\item 
+vector$<$ {\bf document} $>$ {\bfseries get\+Difference} (vector$<$ {\bf document} $>$ r, vector$<$ {\bf document} $>$ l)\label{class_query_engine_a57ef6547912ba509e2589b7b6cfe0d93}
+
+\item 
+void {\bfseries find\+T\+D\+I\+Fs} (vector$<$ {\bf document} $>$ \&currdocs)\label{class_query_engine_a8f580bd2a38cc08c68a2845f380d9547}
+
+\item 
+void {\bfseries relevency\+Sort} (vector$<$ {\bf document} $>$ \&currdocs)\label{class_query_engine_a11f70f58daaaa7dee67e52cc415bd13f}
+
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+int {\bfseries file\+Size} =0\label{class_query_engine_a562077633097b8ccc4324df971ee23db}
+
+\end{DoxyCompactItemize}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+queryengine.\+h\item 
+queryengine.\+cpp\end{DoxyCompactItemize}

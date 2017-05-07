@@ -1,3 +1,13 @@
+/**
+    CSE 2341 AVLTreeIndex.h
+    @brief The AVLTreeindex is the custom implementation of the AVLTree.
+    The code was based off of ................................................
+    ..........................................................................
+    .........................................................................
+    @author Aviraj Shina (owner)
+    @version 1.0 05/07/17
+*/
+
 #ifndef AVLTREEINDEX_H
 #define AVLTREEINDEX_H
 
@@ -10,6 +20,10 @@
 #include <sstream>
 #include <iterator>
 using namespace std;
+
+/**
+ * @brief The index_node struct This ...........................................
+ */
 struct index_node {
     string word_key;
     index_node* left;
@@ -18,6 +32,9 @@ struct index_node {
     int height;
 };
 
+/**
+ * @brief The AVLTreeIndex class
+ */
 class AVLTreeIndex : public IndexInterface {
 private:
     vector<document> allwords;//not actually a document just a word and its count

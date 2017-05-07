@@ -1,10 +1,32 @@
-﻿#include "searchengine.h"
+﻿/**
+    CSE 2341 SearchEngine.cpp
+    @brief The SearchEngine class uses the various class to create a PDF Search Engine.
+    The class makes use of the DocumentParser, IndexHandler, and QueryEngie class to perform
+    all of the various tasks of the Mantience mode and Query mode of the user interface.
+    @author Aviraj Shina (owner)
+    @author Patrick Yienger
+    @version 1.0 05/07/17
+*/
+
+#include "searchengine.h"
 #include "DocumentParser.h"
 #include <algorithm>
 #include <iomanip>
 #include <stack>
 
-//read from inverted index without parsing
+
+/**
+ * @brief SearchEngine::SearchEngine The search engine constructor.
+ */
+SearchEngine::SearchEngine() {
+}
+
+/**
+ * @brief SearchEngine::chooseStructure Allows the user to choose between using a Hash table or AVLTree to create the inverted index file.
+ * This also initalizes the IndexHandler, Documentparser, and QueryEngine objects to allow the Search Engine access to their functions.
+ * It also updtes the tf/idf, inverted file index, page count, word count, and top fifty words.
+ * @param type The user choice
+ */
 void SearchEngine::chooseStructure(char type) {
     ih= new IndexHandler(type);
     dp=new DocumentParser();
@@ -14,12 +36,15 @@ void SearchEngine::chooseStructure(char type) {
     top50= ih->topFifty();
 }
 
-SearchEngine::SearchEngine() {
-}
-
+/**
+ * @brief SearchEngine::addDocumentsToIndex Allows the user to choose between using a Hash table or AVLTree to create the inverted index file.
+ * This also initalizes the IndexHandler, Documentparser, and QueryEngine objects to allow the Search Engine access to their functions.
+ * It also updtes the tf/idf, inverted file index, page count, word count, and top fifty words.
+ * @param type The user choice
+ * @return bool The flag for a sucessful text extract.
+ */
 bool SearchEngine::addDocumentsToIndex(string docpath) {
     filePath = docpath;
-    //create a whole index handler to allow the counts to be stored too
     ih= new IndexHandler('H');
     dp = new DocumentParser(ih);
     flag = dp->extract(docpath);
@@ -29,25 +54,35 @@ bool SearchEngine::addDocumentsToIndex(string docpath) {
     }
     this->writeFilePathToTXTFile();
     return flag;
-
-    //not clearing
 }
 
+/**
+ * @brief SearchEngine::clear Allows the user to clear all of the stored data.
+ * It cleares the inverted file index, the total page count, the total indexed word count,
+ * the file paths, the bookmarks and the search history.
+ */
 void SearchEngine::clear() {
     this->clearIndex();
     this->clearTotalPages();
     this->clearWordTxt();
-    \
     this->clearFilePath();
     this->clearBookmarks();
     this->clearHistory();
 }
 
+/**
+ * @brief SearchEngine::clearWordTxt This clears the total indexed word count .txt file.
+ */
 void SearchEngine::clearWordTxt() {
     dp = new DocumentParser();
     dp->clearWordTxt();
 }
 
+/**
+ * @brief SearchEngine::display_search_results This searches the inverted file index for a query and displays the results.
+ * @param word The query to search for.
+ * @return vector<document> The vector containing the document objects from the query search.
+ */
 vector<document> SearchEngine::display_search_results(string word) {
 
     // cout<<"\nSearching: "<<word<<endl;
@@ -59,7 +94,7 @@ vector<document> SearchEngine::display_search_results(string word) {
     cout << endl;
     for(document doc:doc_results) {
 
-        cout << right << setw(2) << ++i << ". Name: "<< left << setw(65) << setfill(separator) << doc.docname << " Count: " << left << setw(5) << setfill(separator) <<doc.count<<" Tdif: "<<doc.tdif<<endl;
+        cout << right << setw(2) << ++i << ". Name: "<< left << setw(65) << setfill(separator) << doc.docname << " Count: " << left << setw(5) << setfill(separator) <<doc.count<<" Tf/idf: "<<doc.tdif<<endl;
         docsss.push_back(doc);
         if(cnt++==14) {
             break;
@@ -68,14 +103,26 @@ vector<document> SearchEngine::display_search_results(string word) {
     return docsss;
 }
 
+/**
+ * @brief SearchEngine::numWordsIndexed Returns the total indexed word count.
+ * @return totalWordsIndexed
+ */
 int SearchEngine::numWordsIndexed() {
     return ih->totalWordsIndexed();
 }
 
+/**
+ * @brief SearchEngine::topfifty Returns the top fifty most common words.
+ * @return top50 The vector<document> containing the top fifty words and their count.
+ */
 vector<document> SearchEngine::topfifty() {
     return top50;
 }
 
+/**
+ * @brief SearchEngine::getTotalPages Returns the total page count.
+ * @return pages The total page count.
+ */
 int SearchEngine::getTotalPages() {
     int pages =0;
     ifstream fin;
@@ -88,14 +135,23 @@ int SearchEngine::getTotalPages() {
     return pages;
 }
 
+/**
+ * @brief SearchEngine::readIndex This reads the index from the inverted index file and into the appropriate data structure.
+ */
 void SearchEngine::readIndex() {
     ih->readIndex();
 }
 
+/**
+ * @brief SearchEngine::writeIndex This writes the index from the appropriate data structure and into the inverted file index.
+ */
 void SearchEngine::writeIndex() {
     ih->writeIndex();
 }
 
+/**
+ * @brief SearchEngine::clearIndex This clears the inverted file index (.txt file).
+ */
 void SearchEngine::clearIndex() {
     ofstream fout("inverted_index.txt",ios::out);
     if(!fout) {
@@ -104,6 +160,10 @@ void SearchEngine::clearIndex() {
     }
 }
 
+/**
+ * @brief SearchEngine::readTotalPages This outputs the total number of pages stored from the PDFs on the inverted index.
+ * @return totalPages
+ */
 int SearchEngine::readTotalPages() {
     int pages =0;
     ifstream fin;
@@ -119,6 +179,9 @@ int SearchEngine::readTotalPages() {
     return pages;
 }
 
+/**
+ * @brief SearchEngine::clearTotalPages This clears the total number of pages .txt file.
+ */
 void SearchEngine::clearTotalPages() {
     ofstream ouut("total_pages.txt",ios::out);
     if(!ouut) {
@@ -127,6 +190,11 @@ void SearchEngine::clearTotalPages() {
     }
 }
 
+/**
+ * @brief SearchEngine::displayRawFile This dispalys the raw text of a requested PDF.
+ * @param filePath The path to the requested PDF
+ * @return bool The flag for a successful text extract.
+ */
 bool SearchEngine::displayRawFile(string filePath) {
     ih=new IndexHandler('H');
     dp=new DocumentParser(ih);
@@ -134,6 +202,9 @@ bool SearchEngine::displayRawFile(string filePath) {
     return flag;
 }
 
+/**
+ * @brief SearchEngine::displayTop50 This displays the top fifty words from the PDFs on the inverted index.
+ */
 void SearchEngine::displayTop50() {
     const char spacey = ' ';
     vector<document> vec = topfifty();
@@ -143,6 +214,9 @@ void SearchEngine::displayTop50() {
     }
 }
 
+/**
+ * @brief SearchEngine::writeFilePathToTXTFile This writes the file paths to a text file allowing the path to be stored.
+ */
 void SearchEngine::writeFilePathToTXTFile() {
     ofstream write;
     write.open("file_path.txt",fstream::app);
@@ -156,6 +230,10 @@ void SearchEngine::writeFilePathToTXTFile() {
     }
 }
 
+/**
+ * @brief SearchEngine::readFilePathFromTXTFile This reads the file paths from the .txt file of file paths.
+ * @return vector<string> The vector of the file paths.
+ */
 vector<string> SearchEngine::readFilePathFromTXTFile() {
     ifstream fin;
     vector<string> vecFile;
@@ -174,6 +252,9 @@ vector<string> SearchEngine::readFilePathFromTXTFile() {
     return vecFile;
 }
 
+/**
+ * @brief SearchEngine::clearFilePath This clears the file path .txt file.
+ */
 void SearchEngine::clearFilePath() {
     ofstream write("file_path.txt",ios::out);
     if(!write) {
@@ -183,6 +264,9 @@ void SearchEngine::clearFilePath() {
 
 }
 
+/**
+ * @brief SearchEngine::readBookmarks This reads the bookmarks from the .txt file and adds them to the bookmark vector.
+ */
 void SearchEngine::readBookmarks() {
     ifstream fin("bookmarks.txt", ios::in);
     // checks to see if file can open
@@ -202,6 +286,11 @@ void SearchEngine::readBookmarks() {
     }
 }
 
+/**
+ * @brief SearchEngine::addBookmark This adds bookmarks to the .txt file.
+ * @param book The bookmark to be added.
+ * @param query The query the bookmark was from.
+ */
 void SearchEngine::addBookmark(string book, string query) {
     ofstream ffout;
     ffout.open("bookmarks.txt",fstream::app);
@@ -215,6 +304,10 @@ void SearchEngine::addBookmark(string book, string query) {
     bookmarks.push_back(bookmark(book,query));
 }
 
+/**
+ * @brief SearchEngine::addToHistory This adds the query to the search history.
+ * @param query The query to be added.
+ */
 void SearchEngine::addToHistory(string query) {
     const char separtor = ' ';
     ofstream ffout;
@@ -230,6 +323,9 @@ void SearchEngine::addToHistory(string query) {
     ffout<<left << setw(20) << setfill(separtor) << query <<" Year: " <<(now->tm_year + 1900) << " Month: " << (now->tm_mon + 1) << " Day: "<<  now->tm_mday<<endl;
 }
 
+/**
+ * @brief SearchEngine::clearHistory This clears the history .txt file.
+ */
 void SearchEngine::clearHistory() {
     ofstream fout("history.txt",ios::out);
     if(!fout) {
@@ -238,6 +334,9 @@ void SearchEngine::clearHistory() {
     }
 }
 
+/**
+ * @brief SearchEngine::displayHistory This displays the search history.
+ */
 void SearchEngine::displayHistory() {
     cout<<"Search History is:"<<endl;
     cout << endl;
@@ -258,6 +357,9 @@ void SearchEngine::displayHistory() {
     }
 }
 
+/**
+ * @brief SearchEngine::clearBookmarksThis clears the bookmarks .txt file.
+ */
 void SearchEngine::clearBookmarks() {
     ofstream fout("bookmarks.txt",ios::out);
     if(!fout) {
@@ -266,6 +368,10 @@ void SearchEngine::clearBookmarks() {
     }
 }
 
+/**
+ * @brief SearchEngine::displayBookmarks This displays the bookmarks.
+ * @return vector<bookmarks> The vector of bookmark objects that were displayed.
+ */
 vector<bookmark> SearchEngine::displayBookmarks() {
     const char seperator = ' ';
     int i=0;

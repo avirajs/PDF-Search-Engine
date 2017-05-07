@@ -1,3 +1,14 @@
+/**
+    CSE 2341 UserInterface.h
+    @brief The UserInterface is a command line menu driven class that makes use of the SearchEngine.
+    It allows the user to enter into two modes, Maintainence and Query, allows the user many options
+    including adding a new pdf to the inverted index, clearing the index, searching the PDF, outputting total pages,
+    outputting total words indexed, outputting the top fifty words, outputting the corpus paths, storing and clearing
+    the search history, storing and clearing bookmarks and outputting the raw text from a selected pdf.
+    @author Patrick Yienger (owner)
+    @version 1.0 05/07/17
+*/
+
 #ifndef USERINTERFACE_H
 #define USERINTERFACE_H
 #include <string>
@@ -8,15 +19,17 @@
 #include "searchengine.h"
 #include "DocumentParser.h"
 
+/**
+ * @brief The userinterface class
+ */
 class userinterface
 {
 public:
-    /**
-     * @brief userinterface the object constructor
-     */
+
     userinterface();
     /**
-     * @brief the use method runs the user interface
+     * @brief use method runs the user interface.
+     * It
      */
     void use();
 private:string filePath;

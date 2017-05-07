@@ -1,9 +1,26 @@
+/**
+    CSE 2341 IndexExtractor.cpp
+    @brief The IndexExtractor class stems the words and removes stopwords.
+    The code makes use of the ..........
+    @author Aviraj Shina (owner)
+    @version 1.0 05/07/17
+*/
+
 #include "indexextractor.h"
 
+/**
+ * @brief indexextractor::indexextractor This .......
+ * @param stoptxt The ......
+ */
 indexextractor::indexextractor(string stoptxt) {
     useStopWords(stoptxt);
     (*read).close();
 }
+
+/**
+ * @brief indexextractor::useStopWords This .......
+ * @param stoptxt The .....
+ */
 void indexextractor::useStopWords(string stoptxt) {
 
     string word;
@@ -20,6 +37,12 @@ void indexextractor::useStopWords(string stoptxt) {
         stopwords.insert(word);
     }
 }
+
+/**
+ * @brief indexextractor::isStopWord This .....
+ * @param word The .....
+ * @return bool The ....
+ */
 bool indexextractor::isStopWord(string& word) {
     unordered_set<string>::const_iterator got = stopwords.find (word);
 
@@ -31,6 +54,10 @@ bool indexextractor::isStopWord(string& word) {
         return true;
     }
 }
+
+/**
+ * @brief indexextractor::displayTermFrequency This ......
+ */
 void indexextractor::displayTermFrequency() {
     for(auto ii=termfrequencies.begin(); ii!=termfrequencies.end(); ++ii) {
         cout << (*ii).first << ": ";
@@ -41,10 +68,20 @@ void indexextractor::displayTermFrequency() {
         cout << endl;
     }
 }
+
+/**
+ * @brief indexextractor::allDocFrequency This .......
+ * @param word The .......
+ */
 void indexextractor::allDocFrequency(string word) {
     for(documentCount doc:termfrequencies[word])
         cout<<"doc num: "<<doc.docnum<<" doc count:"<<doc.count<<endl;
 }
+
+/**
+ * @brief indexextractor::corpusFrequency This .......
+ * @param word The ......
+ */
 void indexextractor::corpusFrequency(string word) {
     vector<documentCount> *v= &termfrequencies[word];
 
@@ -55,6 +92,12 @@ void indexextractor::corpusFrequency(string word) {
     cout<<"num of words in corpus: "<<sum<<endl;
 
 }
+
+/**
+ * @brief indexextractor::getStemmed This .....
+ * @param w The ......
+ * @return string The .......
+ */
 string indexextractor::getStemmed(string& w) {
 
     wstring word(w.begin(),w.end());

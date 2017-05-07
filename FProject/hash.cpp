@@ -1,5 +1,16 @@
+/**
+    CSE 2341 hash.cpp
+    @brief The hashy class is the custom implementation of the HashTable.
+    The basic hash parts of the code was based off of the series of videos by Paul Programming.
+    @author Parick Yienger (owner)
+    @version 1.0 05/07/17
+*/
+
 #include "hash.h"
 
+/**
+ * @brief hashy::hashy This is the hashy constructor. It sets all of the elements of the HashTable to default values.
+ */
 hashy::hashy() {
     //sets elements of has table to default valuse
     for (int i =0; i < tableSize; i++) {
@@ -11,6 +22,12 @@ hashy::hashy() {
     }
 }
 
+/**
+ * @brief hashy::Hashy The hash function that retuns the int value of the supplied string.
+ * This function is based off of the hash function for strings developed by Paul Larson.
+ * @param key The string to be hashed.
+ * @return int The integer hash value of the string.
+ */
 int hashy::Hashy(string key) {
     const char* s = key.c_str();
     int hash = 0;
@@ -20,6 +37,11 @@ int hashy::Hashy(string key) {
     return abs(hash%tableSize);
 }
 
+/**
+ * @brief hashy::addIndex This adds the supplied word and name to the hash table. It also updates the count.
+ * @param word The word to be added.
+ * @param name The pdf the word came from.
+ */
 void hashy::addIndex(string &word, string &name) {
     int index = Hashy(word);
     item* Ptr = HashTable[index];
@@ -58,6 +80,11 @@ void hashy::addIndex(string &word, string &name) {
 
 }
 
+/**
+ * @brief hashy::NumItemsInIndex This returns the number of items in a specified index.
+ * @param index The specified index.
+ * @return int The number of words in the index.
+ */
 int hashy::NumItemsInIndex(int index) {
     int counts = 0;
     if (HashTable[index]->word_key == "empty") {
@@ -70,6 +97,9 @@ int hashy::NumItemsInIndex(int index) {
     return counts;
 }
 
+/**
+ * @brief hashy::display This displays the contents of the hash table.
+ */
 void hashy::display() {
     int number;
     for (int i =0; i < tableSize; i++) {
@@ -84,6 +114,10 @@ void hashy::display() {
     }
 }
 
+/**
+ * @brief hashy::displayIndex This displays the cotents oh the hash table at a specified index.
+ * @param index The specified index.
+ */
 void hashy::displayIndex(int index) {
     item* Ptr = HashTable[index];
     if (Ptr->word_key == "empty") {
@@ -104,6 +138,11 @@ void hashy::displayIndex(int index) {
     }
 }
 
+/**
+ * @brief hashy::findIndex This finds the index of a specified word.
+ * @param word The specified word.
+ * @return  vector<document> The vector of document that contains all off the PDF names and counts of the specified word.
+ */
 vector<document>* hashy::findIndex(string word) {
     int index = Hashy(word);
     vector<document>* data = new vector<document>;
@@ -146,6 +185,9 @@ vector<document>* hashy::findIndex(string word) {
 
 }
 
+/**
+ * @brief hashy::readIndex This reads the data from the inverted file index and into the hash table.
+ */
 void hashy::readIndex() {
     ifstream read("inverted_index.txt");
     if (!read) {
@@ -179,9 +221,18 @@ void hashy::readIndex() {
 
 }
 
+/**
+ * @brief hashy::totalWordsIndexed This returns the total words indexed.
+ * @return The total words indexed.
+ */
 int hashy::totalWordsIndexed() {
     allwords.size();
 }
+
+/**
+ * @brief hashy::topwords This finds and returns the top fifty words and their counts.
+ * @return vector<document> The vector of documents objects of the top fifty words and their counts.
+ */
 vector<document>hashy::topwords() {
     nth_element(allwords.begin(), allwords.begin()+49, allwords.end(), [ ]( const document& lhs, const document& rhs ) {
         return lhs.count > rhs.count;
@@ -200,6 +251,9 @@ vector<document>hashy::topwords() {
 
 }
 
+/**
+ * @brief hashy::writeIndex This writes the inverted file index from the hash table and into the index .txt.
+ */
 void hashy::writeIndex() {
     ofstream fout;
     fout.open("inverted_index.txt", fstream::app);
@@ -329,6 +383,12 @@ void hashy::writeIndex() {
     }//hash table loop
 }
 
+/**
+ * @brief hashy::insertFromFile This inserts the data from the inverted file index and into the hash table.
+ * @param word The word to be inserted.
+ * @param doc The PDF name to be inserted.
+ * @param count The count to be inserted.
+ */
 void hashy::insertFromFile(string& word, string& doc, int &count) {
     int index = Hashy(word);
     item* Ptr = HashTable[index];
@@ -347,11 +407,17 @@ void hashy::insertFromFile(string& word, string& doc, int &count) {
     Ptr->vec.push_back(*n);
 }
 
-std::vector<std::string> hashy:: split(const std::string &s, char delim) {
-    std::stringstream ss(s);
-    std::string item;
-    std::vector<std::string> elems;
-    while (std::getline(ss, item, delim)) {
+/**
+ * @brief hashy::split This splits the supplied string by a given delimiter.
+ * @param s The string to be split.
+ * @param delim The character to be used as the delimiter.
+ * @return vector<string> The vector of delimited strings.
+ */
+vector<string> hashy:: split(const string &s, char delim) {
+    stringstream ss(s);
+    string item;
+    vector<string> elems;
+    while (getline(ss, item, delim)) {
         elems.push_back(item);
         // elems.push_back(std::move(item)); // if C++11 (based on comment from @mchiasson)
     }

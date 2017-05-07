@@ -1,3 +1,10 @@
+/**
+    CSE 2341 IndexExtractor.h
+    @brief The IndexExtractor class stems the words and removes stopwords.
+    The code makes use of the ..........
+    @author Aviraj Shina (owner)
+    @version 1.0 05/07/17
+*/
 #ifndef indexextractor_H
 #define indexextractor_H
 #include <iostream>
@@ -12,6 +19,10 @@
 
 using namespace std;
 using namespace stemming;
+
+/**
+ * @brief The indexextractor class
+ */
 class indexextractor {
 private:
     unordered_set<string>stopwords;

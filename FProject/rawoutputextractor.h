@@ -17,7 +17,17 @@
  *   Free Software Foundation, Inc.,                                       *
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
-
+/**
+    CSE 2341 rawOutputExtractor.h
+    @brief The rawOutputExtractor uses Podofo to extract the raw text from a pdf, convert it itno usable strings.
+    It outputs the strings to the screen.
+    The code was based off of the stack based text extractor provided in the podofo tools and documented above.
+    Its original code was modified to better output/combine the various raw text into words and strings.
+    The method of ConvertToVectorOfString(char c) was added, and the rest were modified for use in the
+    PDF Search engine.
+    @author Patrick Yienger (owner)
+    @version 1.0 05/07/17
+*/
 #ifndef _RAW_OUTPUT_EXTRACTOR_H
 #define _RAW_OUTPUT_EXTRACTOR_H
 
@@ -34,13 +44,13 @@ using namespace std;
 #define MAX_PATH 512
 #endif // MAX_PATH
 
-/** This class uses the PoDoFo lib to parse
- *  a PDF file and to write all text it finds
- *  in this PDF document to stdout.
- */
 #include "indexhandler.h"
 #include "indexextractor.h"
 #include "map"
+
+/**
+ * @brief The rawOutputExtractor class
+ */
 class rawOutputExtractor {
 public:
     IndexHandler* ih;
@@ -83,22 +93,10 @@ private:
 
     void ConvertToVectorOfString(char* c);
 
-    /** Extract all text from the given page
-     *
-     *  \param pDocument the owning document
-     *  \param pPage extract the text of this page.
-     */
+
     void ExtractText( PdfMemDocument* pDocument, PdfPage* pPage );
 
-    /** Adds a text string to a list which can be sorted by
-     *  position on the page later, so that the whole structure
-     *  of the text including formatting can be reconstructed.
-     *
-     *  \param dCurPosX x position of the text
-     *  \param dCurPosY y position of the text
-     *  \param pCurFont font of the text
-     *  \param rString the actual string
-     */
+
     void AddTextElement( double dCurPosX, double dCurPosY,
                          PdfFont* pCurFont, const PdfString & rString );
 };

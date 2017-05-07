@@ -24,7 +24,15 @@ struct item {
 
 class hashy : public IndexInterface {
 public:
+    /**
+     * @brief This is the constructor for the custom hash table
+     */
     hashy();
+    /**
+     * @brief Hashy
+     * @param word key
+     * @return int
+     */
     int Hashy(string key);
     void addIndex(string &word, string &name);
     int NumItemsInIndex(int index);

@@ -45,7 +45,7 @@ void SearchEngine::chooseStructure(char type) {
  */
 bool SearchEngine::addDocumentsToIndex(string docpath) {
     filePath = docpath;
-    ih= new IndexHandler('H');
+    ih= new IndexHandler('A');
     dp = new DocumentParser(ih);
     flag = dp->extract(docpath);
     this->writeIndex();

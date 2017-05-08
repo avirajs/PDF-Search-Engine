@@ -1,10 +1,9 @@
 /**
     CSE 2341 AVLTreeIndex.h
     @brief The AVLTreeindex is the custom implementation of the AVLTree.
-    The code was based off of ................................................
-    ..........................................................................
-    .........................................................................
-    @author Aviraj Shina (owner)
+    The code was based off of github implementation
+    https://gist.github.com/harish-r/097688ac7f48bcbadfa5
+    @author Aviraj Sinha (owner)
     @version 1.0 05/07/17
 */
 
@@ -22,7 +21,8 @@
 using namespace std;
 
 /**
- * @brief The index_node struct This ...........................................
+ * @brief The index_node struct allows for storage of inverted indices
+ * with other data in tree; most importantly the documents it is found in
  */
 struct index_node {
     string word_key;
@@ -33,7 +33,8 @@ struct index_node {
 };
 
 /**
- * @brief The AVLTreeIndex class
+ * @brief The AVLTreeIndex class The AVLTreeIndex class has multiple custom insert methods
+ * to allow it to either insert from inverted index or directly from parser
  */
 class AVLTreeIndex : public IndexInterface {
 private:
@@ -71,7 +72,7 @@ private:
 public:
     AVLTreeIndex();
     ~AVLTreeIndex();
-    virtual vector<document>* findIndex(string key) ; // Pure virtual function makes
+    virtual vector<document>* findIndex(string key);
     virtual void addIndex(string& word, string& doc);
     void insert(string x,string docname);
     void insert(string x,string docname,int count);

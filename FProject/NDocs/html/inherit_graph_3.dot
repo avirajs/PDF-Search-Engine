@@ -1,0 +1,7 @@
+digraph "Graphical Class Hierarchy"
+{
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="LR";
+  Node1 [label="document",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$structdocument.html",tooltip="The document struct This struct conatins a string used as the word or the PDF name, and an int used as the count, and a double for the tf/idf. This struct is used in many different ways depending on the function it is used in. "];
+}

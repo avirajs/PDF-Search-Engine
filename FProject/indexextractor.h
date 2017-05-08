@@ -2,7 +2,7 @@
     CSE 2341 IndexExtractor.h
     @brief The IndexExtractor class stems the words and removes stopwords.
     The code makes use of the ..........
-    @author Aviraj Shina (owner)
+    @author Aviraj Sinha (owner)
     @version 1.0 05/07/17
 */
 #ifndef indexextractor_H
@@ -40,10 +40,6 @@ public:
     indexextractor(string);
     void useStopWords(string);
     bool isStopWord(string&);
-    void frequentTerm(string,int);//later make return * to vector
-    void displayTermFrequency();
-    void allDocFrequency(string word);
-    void corpusFrequency(string);
     string getStemmed(string&);
 };
 

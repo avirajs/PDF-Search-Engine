@@ -4,7 +4,7 @@
     It extracts the text using the TextExtractor class, stems the words and removes
     stop words using the IndexExtractor class, and computes the term frequency using the custom
     AVLTree or the custom Hash table.
-    @author Aviraj Shina (owner)
+    @author Aviraj Sinha (owner)
     @author Patrick Yienger
     @version 1.0 05/07/17
 */
@@ -89,21 +89,11 @@ bool DocumentParser::extract(string fileStream) {
             e.PrintErrorMsg();
             return flag;
         }
-        // int currpages = extractor.getTotalPages();
-        totalPages = extractor.getTotalPages();
         docName = k[i];
         wordCount = extractor.getWordCount();
         wordy[docName]=wordCount;
     }
     int k =0;
-    ofstream write;
-    write.open("total_pages.txt",fstream::app);
-    // checks to see if file can open
-    if(!write) {
-        cout << "File FlightData can't be opened. Exiting Program." << endl;
-        exit (EXIT_FAILURE);
-    }
-    write << totalPages << endl;
     for (auto elem : wordy) {
         //cout << elem.first << " " << elem.second << endl;
         ofstream ffout;
@@ -128,18 +118,18 @@ int DocumentParser::getTotalPages() {
 }
 
 /**
- * @brief DocumentParser::getStemmed This .......
- * @param word The ......
- * @return string The ........
+ * @brief DocumentParser::getStemmed This gets the stemmed version of the word.
+ * @param word The word to be stemmed
+ * @return string The stemmed word
  */
 string DocumentParser::getStemmed(string& word) {
     return ie->getStemmed(word);
 }
 
 /**
- * @brief DocumentParser::isStopWord This ........
- * @param word The ......
- * @return The .......
+ * @brief DocumentParser::isStopWord This checks if the word is a stop word.
+ * @param word The word to be checked
+ * @return bool The flag of whether the word is a stop word
  */
 bool DocumentParser::isStopWord(string& word) {
     return ie->isStopWord(word);

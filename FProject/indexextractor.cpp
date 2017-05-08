@@ -9,8 +9,7 @@
 #include "indexextractor.h"
 
 /**
- * @brief indexextractor::indexextractor This .......
- * @param stoptxt The ......
+ * @brief indexextractor::indexextractor This class is repsonsible for stemming and stop words
  */
 indexextractor::indexextractor(string stoptxt) {
     useStopWords(stoptxt);
@@ -18,8 +17,7 @@ indexextractor::indexextractor(string stoptxt) {
 }
 
 /**
- * @brief indexextractor::useStopWords This .......
- * @param stoptxt The .....
+ * @brief indexextractor::useStopWords adds the stop words from a file
  */
 void indexextractor::useStopWords(string stoptxt) {
 
@@ -39,9 +37,7 @@ void indexextractor::useStopWords(string stoptxt) {
 }
 
 /**
- * @brief indexextractor::isStopWord This .....
- * @param word The .....
- * @return bool The ....
+ * @brief indexextractor::isStopWord This checks if it is in the stop words set
  */
 bool indexextractor::isStopWord(string& word) {
     unordered_set<string>::const_iterator got = stopwords.find (word);
@@ -55,48 +51,9 @@ bool indexextractor::isStopWord(string& word) {
     }
 }
 
-/**
- * @brief indexextractor::displayTermFrequency This ......
- */
-void indexextractor::displayTermFrequency() {
-    for(auto ii=termfrequencies.begin(); ii!=termfrequencies.end(); ++ii) {
-        cout << (*ii).first << ": ";
-        vector <documentCount> inVect = (*ii).second;
-        for (unsigned j=0; j<inVect.size(); j++) {
-            cout <<"doc#:"<< inVect[j].docnum << " count:"<<inVect[j].count<< " ";
-        }
-        cout << endl;
-    }
-}
 
 /**
- * @brief indexextractor::allDocFrequency This .......
- * @param word The .......
- */
-void indexextractor::allDocFrequency(string word) {
-    for(documentCount doc:termfrequencies[word])
-        cout<<"doc num: "<<doc.docnum<<" doc count:"<<doc.count<<endl;
-}
-
-/**
- * @brief indexextractor::corpusFrequency This .......
- * @param word The ......
- */
-void indexextractor::corpusFrequency(string word) {
-    vector<documentCount> *v= &termfrequencies[word];
-
-    int sum=0;
-    for (unsigned j=0; j<v->size(); j++) {
-        sum+= v->at(j).count;
-    }
-    cout<<"num of words in corpus: "<<sum<<endl;
-
-}
-
-/**
- * @brief indexextractor::getStemmed This .....
- * @param w The ......
- * @return string The .......
+ * @brief indexextractor::getStemmed This gets the stemmed version of the word
  */
 string indexextractor::getStemmed(string& w) {
 

@@ -1,0 +1,323 @@
+\section{Search\+Engine Class Reference}
+\label{class_search_engine}\index{Search\+Engine@{Search\+Engine}}
+
+
+The \doxyref{Search\+Engine}{p.}{class_search_engine} class.  
+
+
+
+
+{\ttfamily \#include $<$searchengine.\+h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\bfseries Search\+Engine} (string docpath, char)\label{class_search_engine_a96042d7c914e9dec875f9f34efd42746}
+
+\item 
+{\bf Search\+Engine} ()
+\begin{DoxyCompactList}\small\item\em The \doxyref{Search\+Engine}{p.}{class_search_engine} class uses the various class to create a P\+DF Search Engine. The class makes use of the \doxyref{Document\+Parser}{p.}{class_document_parser}, \doxyref{Index\+Handler}{p.}{class_index_handler}, and Query\+Engie class to perform all of the various tasks of the Mantience mode and Query mode of the user interface. \end{DoxyCompactList}\item 
+vector$<$ {\bf document} $>$ {\bf display\+\_\+search\+\_\+results} (string word)
+\begin{DoxyCompactList}\small\item\em \doxyref{Search\+Engine\+::display\+\_\+search\+\_\+results}{p.}{class_search_engine_a28b5caaf6c40264037ffab938c0a6916} This searches the inverted file index for a query and displays the results. \end{DoxyCompactList}\item 
+void {\bfseries relevency\+Sort} (vector$<$ {\bf document} $>$ \&)\label{class_search_engine_abf44270499162aeb6b78ad9f72c89825}
+
+\item 
+void {\bf write\+Index} ()\label{class_search_engine_ad480df2432da22ce6556ada835112a4b}
+
+\begin{DoxyCompactList}\small\item\em \doxyref{Search\+Engine\+::write\+Index}{p.}{class_search_engine_ad480df2432da22ce6556ada835112a4b} This writes the index from the appropriate data structure and into the inverted file index. \end{DoxyCompactList}\item 
+void {\bf read\+Index} ()\label{class_search_engine_aefc6f13183bc05854205ca0dd1f2e22e}
+
+\begin{DoxyCompactList}\small\item\em \doxyref{Search\+Engine\+::read\+Index}{p.}{class_search_engine_aefc6f13183bc05854205ca0dd1f2e22e} This reads the index from the inverted index file and into the appropriate data structure. \end{DoxyCompactList}\item 
+void {\bf clear\+Index} ()\label{class_search_engine_a543e75d77f79c981b0c85bf3e6c4aa32}
+
+\begin{DoxyCompactList}\small\item\em \doxyref{Search\+Engine\+::clear\+Index}{p.}{class_search_engine_a543e75d77f79c981b0c85bf3e6c4aa32} This clears the inverted file index (.txt file). \end{DoxyCompactList}\item 
+int {\bf get\+Total\+Pages} ()
+\begin{DoxyCompactList}\small\item\em \doxyref{Search\+Engine\+::get\+Total\+Pages}{p.}{class_search_engine_a213e139ff06e4a786eb0d4291ab36b3a} Returns the total page count. \end{DoxyCompactList}\item 
+int {\bf num\+Words\+Indexed} ()
+\begin{DoxyCompactList}\small\item\em \doxyref{Search\+Engine\+::num\+Words\+Indexed}{p.}{class_search_engine_aec2f16d453e857875e62777117b173a3} Returns the total indexed word count. \end{DoxyCompactList}\item 
+vector$<$ {\bf document} $>$ {\bf topfifty} ()
+\begin{DoxyCompactList}\small\item\em \doxyref{Search\+Engine\+::topfifty}{p.}{class_search_engine_a6e4fb46ec3e35b4fcd3e479b21398983} Returns the top fifty most common words. \end{DoxyCompactList}\item 
+bool {\bf add\+Documents\+To\+Index} (string docpath)
+\begin{DoxyCompactList}\small\item\em \doxyref{Search\+Engine\+::add\+Documents\+To\+Index}{p.}{class_search_engine_ac34ccd88ddb26e15843036a63f80ca22} Allows the user to choose between using a Hash table or A\+V\+L\+Tree to create the inverted index file. This also initalizes the \doxyref{Index\+Handler}{p.}{class_index_handler}, Documentparser, and \doxyref{Query\+Engine}{p.}{class_query_engine} objects to allow the Search Engine access to their functions. It also updtes the tf/idf, inverted file index, page count, word count, and top fifty words. \end{DoxyCompactList}\item 
+void {\bf choose\+Structure} (char type)
+\begin{DoxyCompactList}\small\item\em \doxyref{Search\+Engine\+::choose\+Structure}{p.}{class_search_engine_ab1b68eb5a1887426b044f041546cbbb2} Allows the user to choose between using a Hash table or A\+V\+L\+Tree to create the inverted index file. This also initalizes the \doxyref{Index\+Handler}{p.}{class_index_handler}, Documentparser, and \doxyref{Query\+Engine}{p.}{class_query_engine} objects to allow the Search Engine access to their functions. It also updtes the tf/idf, inverted file index, page count, word count, and top fifty words. \end{DoxyCompactList}\item 
+void {\bfseries find\+T\+D\+I\+Fs} (vector$<$ {\bf document} $>$ \&currdocs)\label{class_search_engine_a3d873d763983aff96bfa5b53a5ce1857}
+
+\item 
+int {\bf read\+Total\+Pages} ()
+\begin{DoxyCompactList}\small\item\em \doxyref{Search\+Engine\+::read\+Total\+Pages}{p.}{class_search_engine_aa5eeb7c14f04c71458626a4e42fb7f90} This outputs the total number of pages stored from the P\+D\+Fs on the inverted index. \end{DoxyCompactList}\item 
+void {\bf clear\+Total\+Pages} ()\label{class_search_engine_a32cc85f13141666446a3970dccbf2b3f}
+
+\begin{DoxyCompactList}\small\item\em \doxyref{Search\+Engine\+::clear\+Total\+Pages}{p.}{class_search_engine_a32cc85f13141666446a3970dccbf2b3f} This clears the total number of pages .txt file. \end{DoxyCompactList}\item 
+void {\bf clear\+Word\+Txt} ()\label{class_search_engine_a7cbf38d7d2d78b8f85fcb722df5d509f}
+
+\begin{DoxyCompactList}\small\item\em \doxyref{Search\+Engine\+::clear\+Word\+Txt}{p.}{class_search_engine_a7cbf38d7d2d78b8f85fcb722df5d509f} This clears the total indexed word count .txt file. \end{DoxyCompactList}\item 
+void {\bf clear} ()\label{class_search_engine_a0fff04096cc03d5812306d35621556a0}
+
+\begin{DoxyCompactList}\small\item\em \doxyref{Search\+Engine\+::clear}{p.}{class_search_engine_a0fff04096cc03d5812306d35621556a0} Allows the user to clear all of the stored data. It cleares the inverted file index, the total page count, the total indexed word count, the file paths, the bookmarks and the search history. \end{DoxyCompactList}\item 
+bool {\bf display\+Raw\+File} (string file\+Path)
+\begin{DoxyCompactList}\small\item\em \doxyref{Search\+Engine\+::display\+Raw\+File}{p.}{class_search_engine_ad995e4339f832125cd4de230bbf4343f} This dispalys the raw text of a requested P\+DF. \end{DoxyCompactList}\item 
+void {\bf display\+Top50} ()\label{class_search_engine_a7afe7195e04733c109e8b3cd3d38c7be}
+
+\begin{DoxyCompactList}\small\item\em \doxyref{Search\+Engine\+::display\+Top50}{p.}{class_search_engine_a7afe7195e04733c109e8b3cd3d38c7be} This displays the top fifty words from the P\+D\+Fs on the inverted index. \end{DoxyCompactList}\item 
+void {\bf write\+File\+Path\+To\+T\+X\+T\+File} ()\label{class_search_engine_ab7e13d869a81e670969fc6f081340692}
+
+\begin{DoxyCompactList}\small\item\em \doxyref{Search\+Engine\+::write\+File\+Path\+To\+T\+X\+T\+File}{p.}{class_search_engine_ab7e13d869a81e670969fc6f081340692} This writes the file paths to a text file allowing the path to be stored. \end{DoxyCompactList}\item 
+vector$<$ string $>$ {\bf read\+File\+Path\+From\+T\+X\+T\+File} ()
+\begin{DoxyCompactList}\small\item\em \doxyref{Search\+Engine\+::read\+File\+Path\+From\+T\+X\+T\+File}{p.}{class_search_engine_a010df9478350578057cf319fad1f6eea} This reads the file paths from the .txt file of file paths. \end{DoxyCompactList}\item 
+void {\bf clear\+File\+Path} ()\label{class_search_engine_a898495849f799fdde2d626980e00882c}
+
+\begin{DoxyCompactList}\small\item\em \doxyref{Search\+Engine\+::clear\+File\+Path}{p.}{class_search_engine_a898495849f799fdde2d626980e00882c} This clears the file path .txt file. \end{DoxyCompactList}\item 
+void {\bfseries write\+Bookmark} (string book, string query)\label{class_search_engine_ac6a8ee08a20a31f6ba06fb1a85e695ad}
+
+\item 
+void {\bf read\+Bookmarks} ()\label{class_search_engine_ae5ad9234b0e6c8ebb408bb01693b9f33}
+
+\begin{DoxyCompactList}\small\item\em \doxyref{Search\+Engine\+::read\+Bookmarks}{p.}{class_search_engine_ae5ad9234b0e6c8ebb408bb01693b9f33} This reads the bookmarks from the .txt file and adds them to the bookmark vector. \end{DoxyCompactList}\item 
+void {\bf add\+Bookmark} (string book, string query)
+\begin{DoxyCompactList}\small\item\em \doxyref{Search\+Engine\+::add\+Bookmark}{p.}{class_search_engine_afe7ea87d4ab4ff654d38b71624d12312} This adds bookmarks to the .txt file. \end{DoxyCompactList}\item 
+void {\bf add\+To\+History} (string query)
+\begin{DoxyCompactList}\small\item\em \doxyref{Search\+Engine\+::add\+To\+History}{p.}{class_search_engine_a1b8486fd4b7e4169e8a9dc61dab4346b} This adds the query to the search history. \end{DoxyCompactList}\item 
+void {\bf clear\+History} ()\label{class_search_engine_a5ddd80c981473501dab71fa019356c46}
+
+\begin{DoxyCompactList}\small\item\em \doxyref{Search\+Engine\+::clear\+History}{p.}{class_search_engine_a5ddd80c981473501dab71fa019356c46} This clears the history .txt file. \end{DoxyCompactList}\item 
+void {\bf display\+History} ()\label{class_search_engine_a1c690004902e31c701f584fdbdec5438}
+
+\begin{DoxyCompactList}\small\item\em \doxyref{Search\+Engine\+::display\+History}{p.}{class_search_engine_a1c690004902e31c701f584fdbdec5438} This displays the search history. \end{DoxyCompactList}\item 
+void {\bf clear\+Bookmarks} ()\label{class_search_engine_addcad78e40a60301848ceb89426d64d3}
+
+\begin{DoxyCompactList}\small\item\em Search\+Engine\+::clear\+Bookmarks\+This clears the bookmarks .txt file. \end{DoxyCompactList}\item 
+vector$<$ {\bf bookmark} $>$ {\bf display\+Bookmarks} ()
+\begin{DoxyCompactList}\small\item\em \doxyref{Search\+Engine\+::display\+Bookmarks}{p.}{class_search_engine_ab461f4ce41e02d2405ce8fad949a49bb} This displays the bookmarks. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+int {\bfseries total\+Pages} =0\label{class_search_engine_a833ba7e860c954284b64a83e1e3556d8}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+The \doxyref{Search\+Engine}{p.}{class_search_engine} class. 
+
+\subsection{Constructor \& Destructor Documentation}
+\index{Search\+Engine@{Search\+Engine}!Search\+Engine@{Search\+Engine}}
+\index{Search\+Engine@{Search\+Engine}!Search\+Engine@{Search\+Engine}}
+\subsubsection[{Search\+Engine()}]{\setlength{\rightskip}{0pt plus 5cm}Search\+Engine\+::\+Search\+Engine (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{class_search_engine_ab129d2c96c29c6dcf4a28abbe4168f6c}
+
+
+The \doxyref{Search\+Engine}{p.}{class_search_engine} class uses the various class to create a P\+DF Search Engine. The class makes use of the \doxyref{Document\+Parser}{p.}{class_document_parser}, \doxyref{Index\+Handler}{p.}{class_index_handler}, and Query\+Engie class to perform all of the various tasks of the Mantience mode and Query mode of the user interface. 
+
+C\+SE 2341 Search\+Engine.\+cpp \begin{DoxyAuthor}{Author}
+Aviraj Shina (owner) 
+
+Patrick Yienger 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+1.\+0 05/07/17 Search\+Engine\+::\+Search\+Engine The search engine constructor. 
+\end{DoxyVersion}
+
+
+\subsection{Member Function Documentation}
+\index{Search\+Engine@{Search\+Engine}!add\+Bookmark@{add\+Bookmark}}
+\index{add\+Bookmark@{add\+Bookmark}!Search\+Engine@{Search\+Engine}}
+\subsubsection[{add\+Bookmark(string book, string query)}]{\setlength{\rightskip}{0pt plus 5cm}void Search\+Engine\+::add\+Bookmark (
+\begin{DoxyParamCaption}
+\item[{string}]{book, }
+\item[{string}]{query}
+\end{DoxyParamCaption}
+)}\label{class_search_engine_afe7ea87d4ab4ff654d38b71624d12312}
+
+
+\doxyref{Search\+Engine\+::add\+Bookmark}{p.}{class_search_engine_afe7ea87d4ab4ff654d38b71624d12312} This adds bookmarks to the .txt file. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em book} & The bookmark to be added. \\
+\hline
+{\em query} & The query the bookmark was from. \\
+\hline
+\end{DoxyParams}
+\index{Search\+Engine@{Search\+Engine}!add\+Documents\+To\+Index@{add\+Documents\+To\+Index}}
+\index{add\+Documents\+To\+Index@{add\+Documents\+To\+Index}!Search\+Engine@{Search\+Engine}}
+\subsubsection[{add\+Documents\+To\+Index(string docpath)}]{\setlength{\rightskip}{0pt plus 5cm}bool Search\+Engine\+::add\+Documents\+To\+Index (
+\begin{DoxyParamCaption}
+\item[{string}]{docpath}
+\end{DoxyParamCaption}
+)}\label{class_search_engine_ac34ccd88ddb26e15843036a63f80ca22}
+
+
+\doxyref{Search\+Engine\+::add\+Documents\+To\+Index}{p.}{class_search_engine_ac34ccd88ddb26e15843036a63f80ca22} Allows the user to choose between using a Hash table or A\+V\+L\+Tree to create the inverted index file. This also initalizes the \doxyref{Index\+Handler}{p.}{class_index_handler}, Documentparser, and \doxyref{Query\+Engine}{p.}{class_query_engine} objects to allow the Search Engine access to their functions. It also updtes the tf/idf, inverted file index, page count, word count, and top fifty words. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em type} & The user choice \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+bool The flag for a sucessful text extract. 
+\end{DoxyReturn}
+\index{Search\+Engine@{Search\+Engine}!add\+To\+History@{add\+To\+History}}
+\index{add\+To\+History@{add\+To\+History}!Search\+Engine@{Search\+Engine}}
+\subsubsection[{add\+To\+History(string query)}]{\setlength{\rightskip}{0pt plus 5cm}void Search\+Engine\+::add\+To\+History (
+\begin{DoxyParamCaption}
+\item[{string}]{query}
+\end{DoxyParamCaption}
+)}\label{class_search_engine_a1b8486fd4b7e4169e8a9dc61dab4346b}
+
+
+\doxyref{Search\+Engine\+::add\+To\+History}{p.}{class_search_engine_a1b8486fd4b7e4169e8a9dc61dab4346b} This adds the query to the search history. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em query} & The query to be added. \\
+\hline
+\end{DoxyParams}
+\index{Search\+Engine@{Search\+Engine}!choose\+Structure@{choose\+Structure}}
+\index{choose\+Structure@{choose\+Structure}!Search\+Engine@{Search\+Engine}}
+\subsubsection[{choose\+Structure(char type)}]{\setlength{\rightskip}{0pt plus 5cm}void Search\+Engine\+::choose\+Structure (
+\begin{DoxyParamCaption}
+\item[{char}]{type}
+\end{DoxyParamCaption}
+)}\label{class_search_engine_ab1b68eb5a1887426b044f041546cbbb2}
+
+
+\doxyref{Search\+Engine\+::choose\+Structure}{p.}{class_search_engine_ab1b68eb5a1887426b044f041546cbbb2} Allows the user to choose between using a Hash table or A\+V\+L\+Tree to create the inverted index file. This also initalizes the \doxyref{Index\+Handler}{p.}{class_index_handler}, Documentparser, and \doxyref{Query\+Engine}{p.}{class_query_engine} objects to allow the Search Engine access to their functions. It also updtes the tf/idf, inverted file index, page count, word count, and top fifty words. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em type} & The user choice \\
+\hline
+\end{DoxyParams}
+\index{Search\+Engine@{Search\+Engine}!display\+\_\+search\+\_\+results@{display\+\_\+search\+\_\+results}}
+\index{display\+\_\+search\+\_\+results@{display\+\_\+search\+\_\+results}!Search\+Engine@{Search\+Engine}}
+\subsubsection[{display\+\_\+search\+\_\+results(string word)}]{\setlength{\rightskip}{0pt plus 5cm}vector$<$ {\bf document} $>$ Search\+Engine\+::display\+\_\+search\+\_\+results (
+\begin{DoxyParamCaption}
+\item[{string}]{word}
+\end{DoxyParamCaption}
+)}\label{class_search_engine_a28b5caaf6c40264037ffab938c0a6916}
+
+
+\doxyref{Search\+Engine\+::display\+\_\+search\+\_\+results}{p.}{class_search_engine_a28b5caaf6c40264037ffab938c0a6916} This searches the inverted file index for a query and displays the results. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em word} & The query to search for. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+vector$<$document$>$ The vector containing the document objects from the query search. 
+\end{DoxyReturn}
+\index{Search\+Engine@{Search\+Engine}!display\+Bookmarks@{display\+Bookmarks}}
+\index{display\+Bookmarks@{display\+Bookmarks}!Search\+Engine@{Search\+Engine}}
+\subsubsection[{display\+Bookmarks()}]{\setlength{\rightskip}{0pt plus 5cm}vector$<$ {\bf bookmark} $>$ Search\+Engine\+::display\+Bookmarks (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{class_search_engine_ab461f4ce41e02d2405ce8fad949a49bb}
+
+
+\doxyref{Search\+Engine\+::display\+Bookmarks}{p.}{class_search_engine_ab461f4ce41e02d2405ce8fad949a49bb} This displays the bookmarks. 
+
+\begin{DoxyReturn}{Returns}
+vector$<$bookmarks$>$ The vector of bookmark objects that were displayed. 
+\end{DoxyReturn}
+\index{Search\+Engine@{Search\+Engine}!display\+Raw\+File@{display\+Raw\+File}}
+\index{display\+Raw\+File@{display\+Raw\+File}!Search\+Engine@{Search\+Engine}}
+\subsubsection[{display\+Raw\+File(string file\+Path)}]{\setlength{\rightskip}{0pt plus 5cm}bool Search\+Engine\+::display\+Raw\+File (
+\begin{DoxyParamCaption}
+\item[{string}]{file\+Path}
+\end{DoxyParamCaption}
+)}\label{class_search_engine_ad995e4339f832125cd4de230bbf4343f}
+
+
+\doxyref{Search\+Engine\+::display\+Raw\+File}{p.}{class_search_engine_ad995e4339f832125cd4de230bbf4343f} This dispalys the raw text of a requested P\+DF. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em file\+Path} & The path to the requested P\+DF \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+bool The flag for a successful text extract. 
+\end{DoxyReturn}
+\index{Search\+Engine@{Search\+Engine}!get\+Total\+Pages@{get\+Total\+Pages}}
+\index{get\+Total\+Pages@{get\+Total\+Pages}!Search\+Engine@{Search\+Engine}}
+\subsubsection[{get\+Total\+Pages()}]{\setlength{\rightskip}{0pt plus 5cm}int Search\+Engine\+::get\+Total\+Pages (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{class_search_engine_a213e139ff06e4a786eb0d4291ab36b3a}
+
+
+\doxyref{Search\+Engine\+::get\+Total\+Pages}{p.}{class_search_engine_a213e139ff06e4a786eb0d4291ab36b3a} Returns the total page count. 
+
+\begin{DoxyReturn}{Returns}
+pages The total page count. 
+\end{DoxyReturn}
+\index{Search\+Engine@{Search\+Engine}!num\+Words\+Indexed@{num\+Words\+Indexed}}
+\index{num\+Words\+Indexed@{num\+Words\+Indexed}!Search\+Engine@{Search\+Engine}}
+\subsubsection[{num\+Words\+Indexed()}]{\setlength{\rightskip}{0pt plus 5cm}int Search\+Engine\+::num\+Words\+Indexed (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{class_search_engine_aec2f16d453e857875e62777117b173a3}
+
+
+\doxyref{Search\+Engine\+::num\+Words\+Indexed}{p.}{class_search_engine_aec2f16d453e857875e62777117b173a3} Returns the total indexed word count. 
+
+\begin{DoxyReturn}{Returns}
+total\+Words\+Indexed 
+\end{DoxyReturn}
+\index{Search\+Engine@{Search\+Engine}!read\+File\+Path\+From\+T\+X\+T\+File@{read\+File\+Path\+From\+T\+X\+T\+File}}
+\index{read\+File\+Path\+From\+T\+X\+T\+File@{read\+File\+Path\+From\+T\+X\+T\+File}!Search\+Engine@{Search\+Engine}}
+\subsubsection[{read\+File\+Path\+From\+T\+X\+T\+File()}]{\setlength{\rightskip}{0pt plus 5cm}vector$<$ string $>$ Search\+Engine\+::read\+File\+Path\+From\+T\+X\+T\+File (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{class_search_engine_a010df9478350578057cf319fad1f6eea}
+
+
+\doxyref{Search\+Engine\+::read\+File\+Path\+From\+T\+X\+T\+File}{p.}{class_search_engine_a010df9478350578057cf319fad1f6eea} This reads the file paths from the .txt file of file paths. 
+
+\begin{DoxyReturn}{Returns}
+vector$<$string$>$ The vector of the file paths. 
+\end{DoxyReturn}
+\index{Search\+Engine@{Search\+Engine}!read\+Total\+Pages@{read\+Total\+Pages}}
+\index{read\+Total\+Pages@{read\+Total\+Pages}!Search\+Engine@{Search\+Engine}}
+\subsubsection[{read\+Total\+Pages()}]{\setlength{\rightskip}{0pt plus 5cm}int Search\+Engine\+::read\+Total\+Pages (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{class_search_engine_aa5eeb7c14f04c71458626a4e42fb7f90}
+
+
+\doxyref{Search\+Engine\+::read\+Total\+Pages}{p.}{class_search_engine_aa5eeb7c14f04c71458626a4e42fb7f90} This outputs the total number of pages stored from the P\+D\+Fs on the inverted index. 
+
+\begin{DoxyReturn}{Returns}
+total\+Pages 
+\end{DoxyReturn}
+\index{Search\+Engine@{Search\+Engine}!topfifty@{topfifty}}
+\index{topfifty@{topfifty}!Search\+Engine@{Search\+Engine}}
+\subsubsection[{topfifty()}]{\setlength{\rightskip}{0pt plus 5cm}vector$<$ {\bf document} $>$ Search\+Engine\+::topfifty (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{class_search_engine_a6e4fb46ec3e35b4fcd3e479b21398983}
+
+
+\doxyref{Search\+Engine\+::topfifty}{p.}{class_search_engine_a6e4fb46ec3e35b4fcd3e479b21398983} Returns the top fifty most common words. 
+
+\begin{DoxyReturn}{Returns}
+top50 The vector$<$document$>$ containing the top fifty words and their count. 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+searchengine.\+h\item 
+searchengine.\+cpp\end{DoxyCompactItemize}

@@ -1,0 +1,263 @@
+\section{hashy Class Reference}
+\label{classhashy}\index{hashy@{hashy}}
+
+
+The hashy class.  
+
+
+
+
+{\ttfamily \#include $<$hash.\+h$>$}
+
+
+
+Inheritance diagram for hashy\+:
+% FIG 0
+
+
+Collaboration diagram for hashy\+:
+% FIG 1
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\bf hashy} ()
+\begin{DoxyCompactList}\small\item\em The hashy class is the custom implementation of the Hash\+Table. The basic hash parts of the code was based off of the series of videos by Paul Programming. \end{DoxyCompactList}\item 
+int {\bf Hashy} (string key)
+\begin{DoxyCompactList}\small\item\em \doxyref{hashy\+::\+Hashy}{p.}{classhashy_ae7ff1a1b27254330aa13d815bd12c885} The hash function that retuns the int value of the supplied string. This function is based off of the hash function for strings developed by Paul Larson. \end{DoxyCompactList}\item 
+void {\bf add\+Index} (string \&word, string \&name)
+\begin{DoxyCompactList}\small\item\em \doxyref{hashy\+::add\+Index}{p.}{classhashy_ab6e0bf2ad21ff3ecfb313fdb0ad5c8f0} This adds the supplied word and name to the hash table. It also updates the count. \end{DoxyCompactList}\item 
+int {\bf Num\+Items\+In\+Index} (int index)
+\begin{DoxyCompactList}\small\item\em \doxyref{hashy\+::\+Num\+Items\+In\+Index}{p.}{classhashy_aeeb63d39a0c003a2a9b8c21dc6025621} This returns the number of items in a specified index. \end{DoxyCompactList}\item 
+void {\bf display} ()\label{classhashy_aa45c52806c5d41632dfd06f981d2f077}
+
+\begin{DoxyCompactList}\small\item\em \doxyref{hashy\+::display}{p.}{classhashy_aa45c52806c5d41632dfd06f981d2f077} This displays the contents of the hash table. \end{DoxyCompactList}\item 
+void {\bf display\+Index} (int index)
+\begin{DoxyCompactList}\small\item\em \doxyref{hashy\+::display\+Index}{p.}{classhashy_a4d6553a650fa179be75d43d6bf0937a8} This displays the cotents oh the hash table at a specified index. \end{DoxyCompactList}\item 
+vector$<$ {\bf document} $>$ $\ast$ {\bf find\+Index} (string word)
+\begin{DoxyCompactList}\small\item\em \doxyref{hashy\+::find\+Index}{p.}{classhashy_a1896f27d06ef1312b49d6756b7df9886} This finds the index of a specified word. \end{DoxyCompactList}\item 
+virtual void {\bf read\+Index} ()\label{classhashy_a967409a70ff79b9e327bd199144ff974}
+
+\begin{DoxyCompactList}\small\item\em \doxyref{hashy\+::read\+Index}{p.}{classhashy_a967409a70ff79b9e327bd199144ff974} This reads the data from the inverted file index and into the hash table. \end{DoxyCompactList}\item 
+virtual void {\bf write\+Index} ()\label{classhashy_a9eee50b1514d733aad262ae74b190121}
+
+\begin{DoxyCompactList}\small\item\em \doxyref{hashy\+::write\+Index}{p.}{classhashy_a9eee50b1514d733aad262ae74b190121} This writes the inverted file index from the hash table and into the index .txt. \end{DoxyCompactList}\item 
+virtual void {\bf insert\+From\+File} (string \&word, string \&doc, int \&count)
+\begin{DoxyCompactList}\small\item\em \doxyref{hashy\+::insert\+From\+File}{p.}{classhashy_a83616aa2459834e846439b8c11895a6a} This inserts the data from the inverted file index and into the hash table. \end{DoxyCompactList}\item 
+vector$<$ std\+::string $>$ {\bf split} (const std\+::string \&s, char delim)
+\begin{DoxyCompactList}\small\item\em \doxyref{hashy\+::split}{p.}{classhashy_a64d0365b09fc60af857ca30b546007df} This splits the supplied string by a given delimiter. \end{DoxyCompactList}\item 
+virtual vector$<$ {\bf document} $>$ {\bf topwords} ()
+\begin{DoxyCompactList}\small\item\em \doxyref{hashy\+::topwords}{p.}{classhashy_adbe9acb0d7ab3caaf956f61b1f93bb2c} This finds and returns the top fifty words and their counts. \end{DoxyCompactList}\item 
+virtual int {\bf total\+Words\+Indexed} ()
+\begin{DoxyCompactList}\small\item\em \doxyref{hashy\+::total\+Words\+Indexed}{p.}{classhashy_ab763dc0125d94ed8f54bc83c8821f71e} This returns the total words indexed. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+The hashy class. 
+
+\subsection{Constructor \& Destructor Documentation}
+\index{hashy@{hashy}!hashy@{hashy}}
+\index{hashy@{hashy}!hashy@{hashy}}
+\subsubsection[{hashy()}]{\setlength{\rightskip}{0pt plus 5cm}hashy\+::hashy (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{classhashy_ab050f001c1a89c1e15fb1739626c8951}
+
+
+The hashy class is the custom implementation of the Hash\+Table. The basic hash parts of the code was based off of the series of videos by Paul Programming. 
+
+C\+SE 2341 hash.\+cpp \begin{DoxyAuthor}{Author}
+Parick Yienger (owner) 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+1.\+0 05/07/17 \doxyref{hashy\+::hashy}{p.}{classhashy_ab050f001c1a89c1e15fb1739626c8951} This is the hashy constructor. It sets all of the elements of the Hash\+Table to default values. 
+\end{DoxyVersion}
+
+
+\subsection{Member Function Documentation}
+\index{hashy@{hashy}!add\+Index@{add\+Index}}
+\index{add\+Index@{add\+Index}!hashy@{hashy}}
+\subsubsection[{add\+Index(string \&word, string \&name)}]{\setlength{\rightskip}{0pt plus 5cm}void hashy\+::add\+Index (
+\begin{DoxyParamCaption}
+\item[{string \&}]{word, }
+\item[{string \&}]{name}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}\label{classhashy_ab6e0bf2ad21ff3ecfb313fdb0ad5c8f0}
+
+
+\doxyref{hashy\+::add\+Index}{p.}{classhashy_ab6e0bf2ad21ff3ecfb313fdb0ad5c8f0} This adds the supplied word and name to the hash table. It also updates the count. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em word} & The word to be added. \\
+\hline
+{\em name} & The pdf the word came from. \\
+\hline
+\end{DoxyParams}
+
+
+Implements {\bf Index\+Interface} \doxyref{}{p.}{class_index_interface}.
+
+\index{hashy@{hashy}!display\+Index@{display\+Index}}
+\index{display\+Index@{display\+Index}!hashy@{hashy}}
+\subsubsection[{display\+Index(int index)}]{\setlength{\rightskip}{0pt plus 5cm}void hashy\+::display\+Index (
+\begin{DoxyParamCaption}
+\item[{int}]{index}
+\end{DoxyParamCaption}
+)}\label{classhashy_a4d6553a650fa179be75d43d6bf0937a8}
+
+
+\doxyref{hashy\+::display\+Index}{p.}{classhashy_a4d6553a650fa179be75d43d6bf0937a8} This displays the cotents oh the hash table at a specified index. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em index} & The specified index. \\
+\hline
+\end{DoxyParams}
+\index{hashy@{hashy}!find\+Index@{find\+Index}}
+\index{find\+Index@{find\+Index}!hashy@{hashy}}
+\subsubsection[{find\+Index(string word)}]{\setlength{\rightskip}{0pt plus 5cm}vector$<$ {\bf document} $>$ $\ast$ hashy\+::find\+Index (
+\begin{DoxyParamCaption}
+\item[{string}]{word}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}\label{classhashy_a1896f27d06ef1312b49d6756b7df9886}
+
+
+\doxyref{hashy\+::find\+Index}{p.}{classhashy_a1896f27d06ef1312b49d6756b7df9886} This finds the index of a specified word. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em word} & The specified word. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+vector$<$document$>$ The vector of document that contains all off the P\+DF names and counts of the specified word. 
+\end{DoxyReturn}
+
+
+Implements {\bf Index\+Interface} \doxyref{}{p.}{class_index_interface}.
+
+\index{hashy@{hashy}!Hashy@{Hashy}}
+\index{Hashy@{Hashy}!hashy@{hashy}}
+\subsubsection[{Hashy(string key)}]{\setlength{\rightskip}{0pt plus 5cm}int hashy\+::\+Hashy (
+\begin{DoxyParamCaption}
+\item[{string}]{key}
+\end{DoxyParamCaption}
+)}\label{classhashy_ae7ff1a1b27254330aa13d815bd12c885}
+
+
+\doxyref{hashy\+::\+Hashy}{p.}{classhashy_ae7ff1a1b27254330aa13d815bd12c885} The hash function that retuns the int value of the supplied string. This function is based off of the hash function for strings developed by Paul Larson. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em key} & The string to be hashed. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int The integer hash value of the string. 
+\end{DoxyReturn}
+\index{hashy@{hashy}!insert\+From\+File@{insert\+From\+File}}
+\index{insert\+From\+File@{insert\+From\+File}!hashy@{hashy}}
+\subsubsection[{insert\+From\+File(string \&word, string \&doc, int \&count)}]{\setlength{\rightskip}{0pt plus 5cm}void hashy\+::insert\+From\+File (
+\begin{DoxyParamCaption}
+\item[{string \&}]{word, }
+\item[{string \&}]{doc, }
+\item[{int \&}]{count}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}\label{classhashy_a83616aa2459834e846439b8c11895a6a}
+
+
+\doxyref{hashy\+::insert\+From\+File}{p.}{classhashy_a83616aa2459834e846439b8c11895a6a} This inserts the data from the inverted file index and into the hash table. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em word} & The word to be inserted. \\
+\hline
+{\em doc} & The P\+DF name to be inserted. \\
+\hline
+{\em count} & The count to be inserted. \\
+\hline
+\end{DoxyParams}
+\index{hashy@{hashy}!Num\+Items\+In\+Index@{Num\+Items\+In\+Index}}
+\index{Num\+Items\+In\+Index@{Num\+Items\+In\+Index}!hashy@{hashy}}
+\subsubsection[{Num\+Items\+In\+Index(int index)}]{\setlength{\rightskip}{0pt plus 5cm}int hashy\+::\+Num\+Items\+In\+Index (
+\begin{DoxyParamCaption}
+\item[{int}]{index}
+\end{DoxyParamCaption}
+)}\label{classhashy_aeeb63d39a0c003a2a9b8c21dc6025621}
+
+
+\doxyref{hashy\+::\+Num\+Items\+In\+Index}{p.}{classhashy_aeeb63d39a0c003a2a9b8c21dc6025621} This returns the number of items in a specified index. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em index} & The specified index. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int The number of words in the index. 
+\end{DoxyReturn}
+\index{hashy@{hashy}!split@{split}}
+\index{split@{split}!hashy@{hashy}}
+\subsubsection[{split(const std\+::string \&s, char delim)}]{\setlength{\rightskip}{0pt plus 5cm}vector$<$ string $>$ hashy\+::split (
+\begin{DoxyParamCaption}
+\item[{const std\+::string \&}]{s, }
+\item[{char}]{delim}
+\end{DoxyParamCaption}
+)}\label{classhashy_a64d0365b09fc60af857ca30b546007df}
+
+
+\doxyref{hashy\+::split}{p.}{classhashy_a64d0365b09fc60af857ca30b546007df} This splits the supplied string by a given delimiter. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em s} & The string to be split. \\
+\hline
+{\em delim} & The character to be used as the delimiter. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+vector$<$string$>$ The vector of delimited strings. 
+\end{DoxyReturn}
+\index{hashy@{hashy}!topwords@{topwords}}
+\index{topwords@{topwords}!hashy@{hashy}}
+\subsubsection[{topwords()}]{\setlength{\rightskip}{0pt plus 5cm}vector$<$ {\bf document} $>$ hashy\+::topwords (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}\label{classhashy_adbe9acb0d7ab3caaf956f61b1f93bb2c}
+
+
+\doxyref{hashy\+::topwords}{p.}{classhashy_adbe9acb0d7ab3caaf956f61b1f93bb2c} This finds and returns the top fifty words and their counts. 
+
+\begin{DoxyReturn}{Returns}
+vector$<$document$>$ The vector of documents objects of the top fifty words and their counts. 
+\end{DoxyReturn}
+
+
+Implements {\bf Index\+Interface} \doxyref{}{p.}{class_index_interface}.
+
+\index{hashy@{hashy}!total\+Words\+Indexed@{total\+Words\+Indexed}}
+\index{total\+Words\+Indexed@{total\+Words\+Indexed}!hashy@{hashy}}
+\subsubsection[{total\+Words\+Indexed()}]{\setlength{\rightskip}{0pt plus 5cm}int hashy\+::total\+Words\+Indexed (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}\label{classhashy_ab763dc0125d94ed8f54bc83c8821f71e}
+
+
+\doxyref{hashy\+::total\+Words\+Indexed}{p.}{classhashy_ab763dc0125d94ed8f54bc83c8821f71e} This returns the total words indexed. 
+
+\begin{DoxyReturn}{Returns}
+The total words indexed. 
+\end{DoxyReturn}
+
+
+Implements {\bf Index\+Interface} \doxyref{}{p.}{class_index_interface}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+hash.\+h\item 
+hash.\+cpp\end{DoxyCompactItemize}

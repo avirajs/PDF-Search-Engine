@@ -1,0 +1,144 @@
+\section{Index\+Handler Class Reference}
+\label{class_index_handler}\index{Index\+Handler@{Index\+Handler}}
+
+
+The \doxyref{Index\+Handler}{p.}{class_index_handler} class.  
+
+
+
+
+{\ttfamily \#include $<$indexhandler.\+h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\bf Index\+Handler} (char type)
+\begin{DoxyCompactList}\small\item\em The \doxyref{Index\+Handler}{p.}{class_index_handler} class creates and stores the inverted index file. It uses the custom data structures to write and read the inverted index. \end{DoxyCompactList}\item 
+void {\bf write\+Index} ()\label{class_index_handler_af4e152fb943fc9fd3962e008bd9e6ea5}
+
+\begin{DoxyCompactList}\small\item\em \doxyref{Index\+Handler\+::write\+Index}{p.}{class_index_handler_af4e152fb943fc9fd3962e008bd9e6ea5} This writes the inverted index file to the .txt file from the appropriate data structure. \end{DoxyCompactList}\item 
+void {\bf add\+Index} (string, string)
+\begin{DoxyCompactList}\small\item\em \doxyref{Index\+Handler\+::add\+Index}{p.}{class_index_handler_ad4bfa5c8de41b1b32a46db8094510d46} This adds the word and the P\+Df name to the chosen data structure. \end{DoxyCompactList}\item 
+vector$<$ {\bf document} $>$ $\ast$ {\bf get\+Docs} (string)
+\begin{DoxyCompactList}\small\item\em \doxyref{Index\+Handler\+::get\+Docs}{p.}{class_index_handler_a8d4cdec1dd190ba28dc8e743333ca597} This returns the name of all of the P\+D\+Fs containing the requested word. \end{DoxyCompactList}\item 
+int {\bfseries get\+Document\+Frequency} (string word, string docname)\label{class_index_handler_adba159334381d1fa51741defbeaa7a34}
+
+\item 
+int {\bfseries get\+Corpus\+Frequency} (string word)\label{class_index_handler_a64ed60231ddbd004bef0a8b36a941947}
+
+\item 
+void {\bf display\+Indices} ()\label{class_index_handler_a62629856602056eea2172d8c207fb4de}
+
+\begin{DoxyCompactList}\small\item\em \doxyref{Index\+Handler\+::display\+Indices}{p.}{class_index_handler_a62629856602056eea2172d8c207fb4de} This dispays the indicies of the appropriate data structure. \end{DoxyCompactList}\item 
+void {\bf read\+Index} ()\label{class_index_handler_a8a0cd8e4f2fe194a5ab11ab2922c39a4}
+
+\begin{DoxyCompactList}\small\item\em \doxyref{Index\+Handler\+::read\+Index}{p.}{class_index_handler_a8a0cd8e4f2fe194a5ab11ab2922c39a4} This reads the data from the inverted index file and into the appropriate data structure. \end{DoxyCompactList}\item 
+vector$<$ {\bf document} $>$ {\bf top\+Fifty} ()
+\begin{DoxyCompactList}\small\item\em \doxyref{Index\+Handler\+::top\+Fifty}{p.}{class_index_handler_acbcc15002e12ab79d6fe05d7e8dc8833} This returns the top fifty words and their count. \end{DoxyCompactList}\item 
+int {\bf total\+Words\+Indexed} ()
+\begin{DoxyCompactList}\small\item\em \doxyref{Index\+Handler\+::total\+Words\+Indexed}{p.}{class_index_handler_ab23ff6f1883b84bb7fa8732e598ac403} This returns the total number of words indexed. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+The \doxyref{Index\+Handler}{p.}{class_index_handler} class. 
+
+\subsection{Constructor \& Destructor Documentation}
+\index{Index\+Handler@{Index\+Handler}!Index\+Handler@{Index\+Handler}}
+\index{Index\+Handler@{Index\+Handler}!Index\+Handler@{Index\+Handler}}
+\subsubsection[{Index\+Handler(char type)}]{\setlength{\rightskip}{0pt plus 5cm}Index\+Handler\+::\+Index\+Handler (
+\begin{DoxyParamCaption}
+\item[{char}]{type}
+\end{DoxyParamCaption}
+)}\label{class_index_handler_a222c2e9f12fef0e242c7870836df88e8}
+
+
+The \doxyref{Index\+Handler}{p.}{class_index_handler} class creates and stores the inverted index file. It uses the custom data structures to write and read the inverted index. 
+
+C\+SE 2341 Index\+Handler.\+h \begin{DoxyAuthor}{Author}
+Aviraj Shina (owner) 
+
+Patrick Yienger 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+1.\+0 05/07/17 \doxyref{Index\+Handler\+::\+Index\+Handler}{p.}{class_index_handler_a222c2e9f12fef0e242c7870836df88e8} The index handler constructor. This initialaizes the chosen data structure. 
+\end{DoxyVersion}
+
+\begin{DoxyParams}{Parameters}
+{\em type} & The data structure to be initalized. \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\index{Index\+Handler@{Index\+Handler}!add\+Index@{add\+Index}}
+\index{add\+Index@{add\+Index}!Index\+Handler@{Index\+Handler}}
+\subsubsection[{add\+Index(string, string)}]{\setlength{\rightskip}{0pt plus 5cm}void Index\+Handler\+::add\+Index (
+\begin{DoxyParamCaption}
+\item[{string}]{word, }
+\item[{string}]{docname}
+\end{DoxyParamCaption}
+)}\label{class_index_handler_ad4bfa5c8de41b1b32a46db8094510d46}
+
+
+\doxyref{Index\+Handler\+::add\+Index}{p.}{class_index_handler_ad4bfa5c8de41b1b32a46db8094510d46} This adds the word and the P\+Df name to the chosen data structure. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em word} & The word to be added. \\
+\hline
+{\em docname} & The P\+DF name to be added. \\
+\hline
+\end{DoxyParams}
+\index{Index\+Handler@{Index\+Handler}!get\+Docs@{get\+Docs}}
+\index{get\+Docs@{get\+Docs}!Index\+Handler@{Index\+Handler}}
+\subsubsection[{get\+Docs(string)}]{\setlength{\rightskip}{0pt plus 5cm}vector$<$ {\bf document} $>$ $\ast$ Index\+Handler\+::get\+Docs (
+\begin{DoxyParamCaption}
+\item[{string}]{word}
+\end{DoxyParamCaption}
+)}\label{class_index_handler_a8d4cdec1dd190ba28dc8e743333ca597}
+
+
+\doxyref{Index\+Handler\+::get\+Docs}{p.}{class_index_handler_a8d4cdec1dd190ba28dc8e743333ca597} This returns the name of all of the P\+D\+Fs containing the requested word. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em word} & The word requested. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+vector$<$document$>$ The vector of document object that stores the count and P\+DF name of the requested word. 
+\end{DoxyReturn}
+\index{Index\+Handler@{Index\+Handler}!top\+Fifty@{top\+Fifty}}
+\index{top\+Fifty@{top\+Fifty}!Index\+Handler@{Index\+Handler}}
+\subsubsection[{top\+Fifty()}]{\setlength{\rightskip}{0pt plus 5cm}vector$<$ {\bf document} $>$ Index\+Handler\+::top\+Fifty (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{class_index_handler_acbcc15002e12ab79d6fe05d7e8dc8833}
+
+
+\doxyref{Index\+Handler\+::top\+Fifty}{p.}{class_index_handler_acbcc15002e12ab79d6fe05d7e8dc8833} This returns the top fifty words and their count. 
+
+\begin{DoxyReturn}{Returns}
+vector$<$document$>$ This returns the vector of document objects containing the word and the count. 
+\end{DoxyReturn}
+\index{Index\+Handler@{Index\+Handler}!total\+Words\+Indexed@{total\+Words\+Indexed}}
+\index{total\+Words\+Indexed@{total\+Words\+Indexed}!Index\+Handler@{Index\+Handler}}
+\subsubsection[{total\+Words\+Indexed()}]{\setlength{\rightskip}{0pt plus 5cm}int Index\+Handler\+::total\+Words\+Indexed (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{class_index_handler_ab23ff6f1883b84bb7fa8732e598ac403}
+
+
+\doxyref{Index\+Handler\+::total\+Words\+Indexed}{p.}{class_index_handler_ab23ff6f1883b84bb7fa8732e598ac403} This returns the total number of words indexed. 
+
+\begin{DoxyReturn}{Returns}
+total\+Words\+Indexed 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+indexhandler.\+h\item 
+indexhandler.\+cpp\end{DoxyCompactItemize}

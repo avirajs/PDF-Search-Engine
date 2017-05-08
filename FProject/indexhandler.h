@@ -2,7 +2,7 @@
     CSE 2341 IndexHandler.h
     @brief The IndexHandler class creates and stores the inverted index file.
     It uses the custom data structures to write and read the inverted index.
-    @author Aviraj Shina (owner)
+    @author Aviraj Sinha (owner)
     @version 1.0 05/07/17
 */
 #ifndef INDEXHANDLER_H

@@ -15,8 +15,8 @@ using namespace std;
  * @return
  */
 int main() {
-   userinterface user;
-   user.use();
+     userinterface user;
+     user.use();
 
 }
 

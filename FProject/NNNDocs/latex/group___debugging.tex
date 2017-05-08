@@ -1,0 +1,56 @@
+\section{Debugging}
+\label{group___debugging}\index{Debugging@{Debugging}}
+
+
+Functions used for debugging.  
+
+
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define {\bf C\+A\+S\+S\+E\+RT}(x)~typedef char \+\_\+\+\_\+\+C\+\_\+\+A\+S\+S\+E\+R\+T\+\_\+\+\_\+[(x) ? 1 \+: -\/1]
+\item 
+\#define {\bf N\+O\+N\+\_\+\+U\+N\+I\+T\+\_\+\+T\+E\+S\+T\+\_\+\+A\+S\+S\+E\+RT}(x)~assert(x)
+\item 
+\#define {\bf D\+U\+M\+P\+\_\+\+T\+O\+\_\+\+F\+I\+LE}(x,  file)~\+\_\+\+\_\+debug\+::\+\_\+\+\_\+dump\+\_\+to\+\_\+file((x), (file))
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Functions used for debugging. 
+
+\begin{DoxyDate}{Date}
+2008-\/2015 
+\end{DoxyDate}
+\begin{DoxyCopyright}{Copyright}
+Oleander Software, Ltd. 
+\end{DoxyCopyright}
+\begin{DoxyAuthor}{Author}
+Oleander Software, Ltd.
+\end{DoxyAuthor}
+This program is free software; you can redistribute it and/or modify it under the terms of the B\+SD License. 
+
+\subsection{Macro Definition Documentation}
+\index{Debugging@{Debugging}!C\+A\+S\+S\+E\+RT@{C\+A\+S\+S\+E\+RT}}
+\index{C\+A\+S\+S\+E\+RT@{C\+A\+S\+S\+E\+RT}!Debugging@{Debugging}}
+\subsubsection[{C\+A\+S\+S\+E\+RT}]{\setlength{\rightskip}{0pt plus 5cm}\#define C\+A\+S\+S\+E\+RT(
+\begin{DoxyParamCaption}
+\item[{}]{x}
+\end{DoxyParamCaption}
+)~typedef char \+\_\+\+\_\+\+C\+\_\+\+A\+S\+S\+E\+R\+T\+\_\+\+\_\+[(x) ? 1 \+: -\/1]}\label{group___debugging_gaef525f59da3110dc32652beae7944b5b}
+Validates that an expression is true at compile time. If the expression is false then compilation will fail. \index{Debugging@{Debugging}!D\+U\+M\+P\+\_\+\+T\+O\+\_\+\+F\+I\+LE@{D\+U\+M\+P\+\_\+\+T\+O\+\_\+\+F\+I\+LE}}
+\index{D\+U\+M\+P\+\_\+\+T\+O\+\_\+\+F\+I\+LE@{D\+U\+M\+P\+\_\+\+T\+O\+\_\+\+F\+I\+LE}!Debugging@{Debugging}}
+\subsubsection[{D\+U\+M\+P\+\_\+\+T\+O\+\_\+\+F\+I\+LE}]{\setlength{\rightskip}{0pt plus 5cm}\#define D\+U\+M\+P\+\_\+\+T\+O\+\_\+\+F\+I\+LE(
+\begin{DoxyParamCaption}
+\item[{}]{x, }
+\item[{}]{file}
+\end{DoxyParamCaption}
+)~\+\_\+\+\_\+debug\+::\+\_\+\+\_\+dump\+\_\+to\+\_\+file((x), (file))}\label{group___debugging_ga84e7646de26c8c5086ba7ec530dfd4d9}
+Prints data stream to a specified file. \index{Debugging@{Debugging}!N\+O\+N\+\_\+\+U\+N\+I\+T\+\_\+\+T\+E\+S\+T\+\_\+\+A\+S\+S\+E\+RT@{N\+O\+N\+\_\+\+U\+N\+I\+T\+\_\+\+T\+E\+S\+T\+\_\+\+A\+S\+S\+E\+RT}}
+\index{N\+O\+N\+\_\+\+U\+N\+I\+T\+\_\+\+T\+E\+S\+T\+\_\+\+A\+S\+S\+E\+RT@{N\+O\+N\+\_\+\+U\+N\+I\+T\+\_\+\+T\+E\+S\+T\+\_\+\+A\+S\+S\+E\+RT}!Debugging@{Debugging}}
+\subsubsection[{N\+O\+N\+\_\+\+U\+N\+I\+T\+\_\+\+T\+E\+S\+T\+\_\+\+A\+S\+S\+E\+RT}]{\setlength{\rightskip}{0pt plus 5cm}\#define N\+O\+N\+\_\+\+U\+N\+I\+T\+\_\+\+T\+E\+S\+T\+\_\+\+A\+S\+S\+E\+RT(
+\begin{DoxyParamCaption}
+\item[{}]{x}
+\end{DoxyParamCaption}
+)~assert(x)}\label{group___debugging_ga1f3720b71e9fee35a9907b2b8faabeda}
+If unit test symbol (\+\_\+\+\_\+\+U\+N\+I\+T\+T\+E\+ST) is defined then does nothing; otherwise asserts. This is useful for suppressing asserts when unit testing. 

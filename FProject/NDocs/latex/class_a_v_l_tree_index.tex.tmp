@@ -1,0 +1,208 @@
+\section{A\+V\+L\+Tree\+Index Class Reference}
+\label{class_a_v_l_tree_index}\index{A\+V\+L\+Tree\+Index@{A\+V\+L\+Tree\+Index}}
+
+
+The \doxyref{A\+V\+L\+Tree\+Index}{p.}{class_a_v_l_tree_index} class case multiple custom insert methods to allow it to either insert from inverted index or directly from parser.  
+
+
+
+
+{\ttfamily \#include $<$avltreeindex.\+h$>$}
+
+
+
+Inheritance diagram for A\+V\+L\+Tree\+Index\+:
+% FIG 0
+
+
+Collaboration diagram for A\+V\+L\+Tree\+Index\+:
+% FIG 1
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\bf A\+V\+L\+Tree\+Index} ()\label{class_a_v_l_tree_index_aba8dc551ea4963a8082991f52bb19c25}
+
+\begin{DoxyCompactList}\small\item\em \doxyref{A\+V\+L\+Tree\+Index\+::\+A\+V\+L\+Tree\+Index}{p.}{class_a_v_l_tree_index_aba8dc551ea4963a8082991f52bb19c25} The A\+V\+L\+Tree constructor. \end{DoxyCompactList}\item 
+virtual vector$<$ {\bf document} $>$ $\ast$ {\bf find\+Index} (string key)
+\begin{DoxyCompactList}\small\item\em \doxyref{A\+V\+L\+Tree\+Index\+::find\+Index}{p.}{class_a_v_l_tree_index_af12abae8988a8e7e87407b797da929cd} This finds the index of a specified word. \end{DoxyCompactList}\item 
+virtual void {\bf add\+Index} (string \&word, string \&doc)
+\begin{DoxyCompactList}\small\item\em \doxyref{A\+V\+L\+Tree\+Index\+::add\+Index}{p.}{class_a_v_l_tree_index_a91eee3f7bcb461a7fd1ea32ae7adf4c6} This adds the index given a word and P\+DF name. \end{DoxyCompactList}\item 
+void {\bf insert} (string x, string docname)
+\begin{DoxyCompactList}\small\item\em A\+V\+L\+Tree\+Index\+::insert This inserts a word and P\+DF name into the A\+VL tree. \end{DoxyCompactList}\item 
+void {\bf insert} (string x, string docname, int count)
+\begin{DoxyCompactList}\small\item\em A\+V\+L\+Tree\+Index\+::insert This inserts the data from the inverted file index and into the hash table. \end{DoxyCompactList}\item 
+void {\bf remove} (string x)\label{class_a_v_l_tree_index_a94d5a89508922a253babe44cb92470b1}
+
+\begin{DoxyCompactList}\small\item\em A\+V\+L\+Tree\+Index\+::remove This removes a word from the A\+V\+L\+Tree. \end{DoxyCompactList}\item 
+virtual void {\bf display} ()\label{class_a_v_l_tree_index_aa8d2a6a216c9662f9ab3f37f0b6445d6}
+
+\begin{DoxyCompactList}\small\item\em \doxyref{A\+V\+L\+Tree\+Index\+::display}{p.}{class_a_v_l_tree_index_aa8d2a6a216c9662f9ab3f37f0b6445d6} This displays the A\+V\+L\+Tree. \end{DoxyCompactList}\item 
+virtual void {\bf read\+Index} ()\label{class_a_v_l_tree_index_a7630dece23ef3f00269f1b9c868427c9}
+
+\begin{DoxyCompactList}\small\item\em \doxyref{A\+V\+L\+Tree\+Index\+::read\+Index}{p.}{class_a_v_l_tree_index_a7630dece23ef3f00269f1b9c868427c9} This reads the inverted file index and inserts the data into the A\+V\+L\+Tree. \end{DoxyCompactList}\item 
+virtual void {\bf write\+Index} ()\label{class_a_v_l_tree_index_a15f830a04d1ad46c93c9bca37738383b}
+
+\begin{DoxyCompactList}\small\item\em \doxyref{A\+V\+L\+Tree\+Index\+::write\+Index}{p.}{class_a_v_l_tree_index_a15f830a04d1ad46c93c9bca37738383b} This writes the A\+V\+L\+Tree to the inverted file index .txt file. \end{DoxyCompactList}\item 
+virtual vector$<$ {\bf document} $>$ {\bf topwords} ()
+\begin{DoxyCompactList}\small\item\em \doxyref{A\+V\+L\+Tree\+Index\+::topwords}{p.}{class_a_v_l_tree_index_a8bcab7ab0f53524ef7f6891e5b0e115a} This returns the top fifty words from the A\+V\+L\+Tree. \end{DoxyCompactList}\item 
+virtual int {\bf total\+Words\+Indexed} ()
+\begin{DoxyCompactList}\small\item\em \doxyref{A\+V\+L\+Tree\+Index\+::total\+Words\+Indexed}{p.}{class_a_v_l_tree_index_ad65184394671fb3373c7730225eaa9b7} This returns the total words indexed. \end{DoxyCompactList}\item 
+vector$<$ std\+::string $>$ {\bf split} (const std\+::string \&s, char delim)
+\begin{DoxyCompactList}\small\item\em \doxyref{A\+V\+L\+Tree\+Index\+::split}{p.}{class_a_v_l_tree_index_a29d0c3029e5eb0b856b34b935d76d8e1} This splits the supplied string by a given delimiter. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+The \doxyref{A\+V\+L\+Tree\+Index}{p.}{class_a_v_l_tree_index} class case multiple custom insert methods to allow it to either insert from inverted index or directly from parser. 
+
+\subsection{Member Function Documentation}
+\index{A\+V\+L\+Tree\+Index@{A\+V\+L\+Tree\+Index}!add\+Index@{add\+Index}}
+\index{add\+Index@{add\+Index}!A\+V\+L\+Tree\+Index@{A\+V\+L\+Tree\+Index}}
+\subsubsection[{add\+Index(string \&word, string \&doc)}]{\setlength{\rightskip}{0pt plus 5cm}void A\+V\+L\+Tree\+Index\+::add\+Index (
+\begin{DoxyParamCaption}
+\item[{string \&}]{word, }
+\item[{string \&}]{docname}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}\label{class_a_v_l_tree_index_a91eee3f7bcb461a7fd1ea32ae7adf4c6}
+
+
+\doxyref{A\+V\+L\+Tree\+Index\+::add\+Index}{p.}{class_a_v_l_tree_index_a91eee3f7bcb461a7fd1ea32ae7adf4c6} This adds the index given a word and P\+DF name. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em word} & The given word. \\
+\hline
+{\em docname} & The given P\+DF name. \\
+\hline
+\end{DoxyParams}
+
+
+Implements {\bf Index\+Interface} \doxyref{}{p.}{class_index_interface}.
+
+\index{A\+V\+L\+Tree\+Index@{A\+V\+L\+Tree\+Index}!find\+Index@{find\+Index}}
+\index{find\+Index@{find\+Index}!A\+V\+L\+Tree\+Index@{A\+V\+L\+Tree\+Index}}
+\subsubsection[{find\+Index(string key)}]{\setlength{\rightskip}{0pt plus 5cm}vector$<$ {\bf document} $>$ $\ast$ A\+V\+L\+Tree\+Index\+::find\+Index (
+\begin{DoxyParamCaption}
+\item[{string}]{word\+\_\+key}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}\label{class_a_v_l_tree_index_af12abae8988a8e7e87407b797da929cd}
+
+
+\doxyref{A\+V\+L\+Tree\+Index\+::find\+Index}{p.}{class_a_v_l_tree_index_af12abae8988a8e7e87407b797da929cd} This finds the index of a specified word. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em word\+\_\+key} & The specified word. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+vector$<$document$>$ The vector of document that contains all off the P\+DF names and counts of the specified word. 
+\end{DoxyReturn}
+
+
+Implements {\bf Index\+Interface} \doxyref{}{p.}{class_index_interface}.
+
+\index{A\+V\+L\+Tree\+Index@{A\+V\+L\+Tree\+Index}!insert@{insert}}
+\index{insert@{insert}!A\+V\+L\+Tree\+Index@{A\+V\+L\+Tree\+Index}}
+\subsubsection[{insert(string x, string docname)}]{\setlength{\rightskip}{0pt plus 5cm}void A\+V\+L\+Tree\+Index\+::insert (
+\begin{DoxyParamCaption}
+\item[{string}]{x, }
+\item[{string}]{docname}
+\end{DoxyParamCaption}
+)}\label{class_a_v_l_tree_index_a4ea3e5ab837e990ba337256fbdc1197b}
+
+
+A\+V\+L\+Tree\+Index\+::insert This inserts a word and P\+DF name into the A\+VL tree. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & The word to be inserted. \\
+\hline
+{\em docname} & The P\+DF name to be inserted. \\
+\hline
+\end{DoxyParams}
+\index{A\+V\+L\+Tree\+Index@{A\+V\+L\+Tree\+Index}!insert@{insert}}
+\index{insert@{insert}!A\+V\+L\+Tree\+Index@{A\+V\+L\+Tree\+Index}}
+\subsubsection[{insert(string x, string docname, int count)}]{\setlength{\rightskip}{0pt plus 5cm}void A\+V\+L\+Tree\+Index\+::insert (
+\begin{DoxyParamCaption}
+\item[{string}]{x, }
+\item[{string}]{docname, }
+\item[{int}]{count}
+\end{DoxyParamCaption}
+)}\label{class_a_v_l_tree_index_a246f8cef2d713f8384002746e3dd0987}
+
+
+A\+V\+L\+Tree\+Index\+::insert This inserts the data from the inverted file index and into the hash table. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & The word to be inserted. \\
+\hline
+{\em docname} & The P\+DF name to be inserted. \\
+\hline
+{\em count} & The count to be inserted. \\
+\hline
+\end{DoxyParams}
+\index{A\+V\+L\+Tree\+Index@{A\+V\+L\+Tree\+Index}!split@{split}}
+\index{split@{split}!A\+V\+L\+Tree\+Index@{A\+V\+L\+Tree\+Index}}
+\subsubsection[{split(const std\+::string \&s, char delim)}]{\setlength{\rightskip}{0pt plus 5cm}vector$<$ string $>$ A\+V\+L\+Tree\+Index\+::split (
+\begin{DoxyParamCaption}
+\item[{const std\+::string \&}]{s, }
+\item[{char}]{delim}
+\end{DoxyParamCaption}
+)}\label{class_a_v_l_tree_index_a29d0c3029e5eb0b856b34b935d76d8e1}
+
+
+\doxyref{A\+V\+L\+Tree\+Index\+::split}{p.}{class_a_v_l_tree_index_a29d0c3029e5eb0b856b34b935d76d8e1} This splits the supplied string by a given delimiter. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em s} & The string to be split. \\
+\hline
+{\em delim} & The character to be used as the delimiter. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+vector$<$string$>$ The vector of delimited strings. 
+\end{DoxyReturn}
+\index{A\+V\+L\+Tree\+Index@{A\+V\+L\+Tree\+Index}!topwords@{topwords}}
+\index{topwords@{topwords}!A\+V\+L\+Tree\+Index@{A\+V\+L\+Tree\+Index}}
+\subsubsection[{topwords()}]{\setlength{\rightskip}{0pt plus 5cm}vector$<$ {\bf document} $>$ A\+V\+L\+Tree\+Index\+::topwords (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}\label{class_a_v_l_tree_index_a8bcab7ab0f53524ef7f6891e5b0e115a}
+
+
+\doxyref{A\+V\+L\+Tree\+Index\+::topwords}{p.}{class_a_v_l_tree_index_a8bcab7ab0f53524ef7f6891e5b0e115a} This returns the top fifty words from the A\+V\+L\+Tree. 
+
+\begin{DoxyReturn}{Returns}
+vector$<$document$>$ The vector of documents objects of the top fifty words and their counts. 
+\end{DoxyReturn}
+
+
+Implements {\bf Index\+Interface} \doxyref{}{p.}{class_index_interface}.
+
+\index{A\+V\+L\+Tree\+Index@{A\+V\+L\+Tree\+Index}!total\+Words\+Indexed@{total\+Words\+Indexed}}
+\index{total\+Words\+Indexed@{total\+Words\+Indexed}!A\+V\+L\+Tree\+Index@{A\+V\+L\+Tree\+Index}}
+\subsubsection[{total\+Words\+Indexed()}]{\setlength{\rightskip}{0pt plus 5cm}int A\+V\+L\+Tree\+Index\+::total\+Words\+Indexed (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}\label{class_a_v_l_tree_index_ad65184394671fb3373c7730225eaa9b7}
+
+
+\doxyref{A\+V\+L\+Tree\+Index\+::total\+Words\+Indexed}{p.}{class_a_v_l_tree_index_ad65184394671fb3373c7730225eaa9b7} This returns the total words indexed. 
+
+\begin{DoxyReturn}{Returns}
+int The total words indexed. 
+\end{DoxyReturn}
+
+
+Implements {\bf Index\+Interface} \doxyref{}{p.}{class_index_interface}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+avltreeindex.\+h\item 
+avltreeindex.\+cpp\end{DoxyCompactItemize}

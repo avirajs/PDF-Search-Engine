@@ -1,0 +1,149 @@
+\section{raw\+Output\+Extractor Class Reference}
+\label{classraw_output_extractor}\index{raw\+Output\+Extractor@{raw\+Output\+Extractor}}
+
+
+The \doxyref{raw\+Output\+Extractor}{p.}{classraw_output_extractor} class.  
+
+
+
+
+{\ttfamily \#include $<$rawoutputextractor.\+h$>$}
+
+
+
+Collaboration diagram for raw\+Output\+Extractor\+:
+% FIG 0
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\bf raw\+Output\+Extractor} ({\bf Index\+Handler} $\ast$, {\bf indexextractor} $\ast$)
+\begin{DoxyCompactList}\small\item\em \doxyref{raw\+Output\+Extractor\+::raw\+Output\+Extractor}{p.}{classraw_output_extractor_a9f1429b521b00d304082bb6b6e7aa810} The \doxyref{raw\+Output\+Extractor}{p.}{classraw_output_extractor} constructor. \end{DoxyCompactList}\item 
+{\bf raw\+Output\+Extractor} ()\label{classraw_output_extractor_ad628e092bc1da26a1124fdac7e82a5d1}
+
+\begin{DoxyCompactList}\small\item\em \doxyref{raw\+Output\+Extractor\+::raw\+Output\+Extractor}{p.}{classraw_output_extractor_a9f1429b521b00d304082bb6b6e7aa810} The \doxyref{raw\+Output\+Extractor}{p.}{classraw_output_extractor} constructor. \end{DoxyCompactList}\item 
+virtual {\bf $\sim$raw\+Output\+Extractor} ()\label{classraw_output_extractor_af57e810658f24d12ef1b6975860aedf3}
+
+\begin{DoxyCompactList}\small\item\em \doxyref{raw\+Output\+Extractor\+::$\sim$raw\+Output\+Extractor}{p.}{classraw_output_extractor_af57e810658f24d12ef1b6975860aedf3} The \doxyref{raw\+Output\+Extractor}{p.}{classraw_output_extractor} destroctor. \end{DoxyCompactList}\item 
+int {\bf get\+Total\+Pages} ()
+\begin{DoxyCompactList}\small\item\em \doxyref{raw\+Output\+Extractor\+::get\+Total\+Pages}{p.}{classraw_output_extractor_a306ee3750845f8343c312524ab56119f} Returns the total pages. \end{DoxyCompactList}\item 
+string {\bf get\+Doc\+Name} ()
+\begin{DoxyCompactList}\small\item\em \doxyref{raw\+Output\+Extractor\+::get\+Doc\+Name}{p.}{classraw_output_extractor_aaa6eefc03308e4ab23e5a07fd14ffc94} Returns the P\+DF name. \end{DoxyCompactList}\item 
+int {\bf get\+Word\+Count} ()
+\begin{DoxyCompactList}\small\item\em \doxyref{raw\+Output\+Extractor\+::get\+Word\+Count}{p.}{classraw_output_extractor_a96366fc0b002b56285146c0a813ad76f} Returns the word count. \end{DoxyCompactList}\item 
+void {\bf Init} (const char $\ast$psz\+Input)
+\begin{DoxyCompactList}\small\item\em \doxyref{raw\+Output\+Extractor\+::\+Init}{p.}{classraw_output_extractor_a085aa59c775749e1f56363e8c195f3ef} Uses Podofo to extract the text from the given P\+DF. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+{\bf Index\+Handler} $\ast$ {\bfseries ih}\label{classraw_output_extractor_ad067d96f81f783c6f5bc20227806250b}
+
+\item 
+{\bf indexextractor} $\ast$ {\bfseries ie}\label{classraw_output_extractor_a60443cbf3cec7845e65acb58fefe369e}
+
+\item 
+string {\bfseries mm}\label{classraw_output_extractor_a2423c51cd2139ea3da4239b620a3e5ab}
+
+\item 
+vector$<$ string $>$ {\bfseries a}\label{classraw_output_extractor_a7466d30c2340396fcde7a185e4405e26}
+
+\item 
+int {\bfseries word\+Count} =0\label{classraw_output_extractor_a44ba737833045854b190a30fab86f8bd}
+
+\item 
+string {\bfseries docs\+Name}\label{classraw_output_extractor_a10e7d598053ca6ffaf7f053eb8f39127}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+The \doxyref{raw\+Output\+Extractor}{p.}{classraw_output_extractor} class. 
+
+\subsection{Constructor \& Destructor Documentation}
+\index{raw\+Output\+Extractor@{raw\+Output\+Extractor}!raw\+Output\+Extractor@{raw\+Output\+Extractor}}
+\index{raw\+Output\+Extractor@{raw\+Output\+Extractor}!raw\+Output\+Extractor@{raw\+Output\+Extractor}}
+\subsubsection[{raw\+Output\+Extractor(\+Index\+Handler $\ast$, indexextractor $\ast$)}]{\setlength{\rightskip}{0pt plus 5cm}raw\+Output\+Extractor\+::raw\+Output\+Extractor (
+\begin{DoxyParamCaption}
+\item[{{\bf Index\+Handler} $\ast$}]{ih, }
+\item[{{\bf indexextractor} $\ast$}]{ie}
+\end{DoxyParamCaption}
+)}\label{classraw_output_extractor_a9f1429b521b00d304082bb6b6e7aa810}
+
+
+\doxyref{raw\+Output\+Extractor\+::raw\+Output\+Extractor}{p.}{classraw_output_extractor_a9f1429b521b00d304082bb6b6e7aa810} The \doxyref{raw\+Output\+Extractor}{p.}{classraw_output_extractor} constructor. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em ih} & The \doxyref{Index\+Handler}{p.}{class_index_handler} object. \\
+\hline
+{\em ie} & The Index\+Extractor object. \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\index{raw\+Output\+Extractor@{raw\+Output\+Extractor}!get\+Doc\+Name@{get\+Doc\+Name}}
+\index{get\+Doc\+Name@{get\+Doc\+Name}!raw\+Output\+Extractor@{raw\+Output\+Extractor}}
+\subsubsection[{get\+Doc\+Name()}]{\setlength{\rightskip}{0pt plus 5cm}string raw\+Output\+Extractor\+::get\+Doc\+Name (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{classraw_output_extractor_aaa6eefc03308e4ab23e5a07fd14ffc94}
+
+
+\doxyref{raw\+Output\+Extractor\+::get\+Doc\+Name}{p.}{classraw_output_extractor_aaa6eefc03308e4ab23e5a07fd14ffc94} Returns the P\+DF name. 
+
+\begin{DoxyReturn}{Returns}
+docs\+Name The P\+DF name. 
+\end{DoxyReturn}
+\index{raw\+Output\+Extractor@{raw\+Output\+Extractor}!get\+Total\+Pages@{get\+Total\+Pages}}
+\index{get\+Total\+Pages@{get\+Total\+Pages}!raw\+Output\+Extractor@{raw\+Output\+Extractor}}
+\subsubsection[{get\+Total\+Pages()}]{\setlength{\rightskip}{0pt plus 5cm}int raw\+Output\+Extractor\+::get\+Total\+Pages (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{classraw_output_extractor_a306ee3750845f8343c312524ab56119f}
+
+
+\doxyref{raw\+Output\+Extractor\+::get\+Total\+Pages}{p.}{classraw_output_extractor_a306ee3750845f8343c312524ab56119f} Returns the total pages. 
+
+\begin{DoxyReturn}{Returns}
+total\+Pages 
+\end{DoxyReturn}
+\index{raw\+Output\+Extractor@{raw\+Output\+Extractor}!get\+Word\+Count@{get\+Word\+Count}}
+\index{get\+Word\+Count@{get\+Word\+Count}!raw\+Output\+Extractor@{raw\+Output\+Extractor}}
+\subsubsection[{get\+Word\+Count()}]{\setlength{\rightskip}{0pt plus 5cm}int raw\+Output\+Extractor\+::get\+Word\+Count (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{classraw_output_extractor_a96366fc0b002b56285146c0a813ad76f}
+
+
+\doxyref{raw\+Output\+Extractor\+::get\+Word\+Count}{p.}{classraw_output_extractor_a96366fc0b002b56285146c0a813ad76f} Returns the word count. 
+
+\begin{DoxyReturn}{Returns}
+word\+Count The word count. 
+\end{DoxyReturn}
+\index{raw\+Output\+Extractor@{raw\+Output\+Extractor}!Init@{Init}}
+\index{Init@{Init}!raw\+Output\+Extractor@{raw\+Output\+Extractor}}
+\subsubsection[{Init(const char $\ast$psz\+Input)}]{\setlength{\rightskip}{0pt plus 5cm}void raw\+Output\+Extractor\+::\+Init (
+\begin{DoxyParamCaption}
+\item[{const char $\ast$}]{psz\+Input}
+\end{DoxyParamCaption}
+)}\label{classraw_output_extractor_a085aa59c775749e1f56363e8c195f3ef}
+
+
+\doxyref{raw\+Output\+Extractor\+::\+Init}{p.}{classraw_output_extractor_a085aa59c775749e1f56363e8c195f3ef} Uses Podofo to extract the text from the given P\+DF. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em psz\+Input} & The path to the corpus of P\+D\+Fs \\
+\hline
+{\em doc\+Name} & The name of the pdf to extract text from. \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+rawoutputextractor.\+h\item 
+rawoutputextractor.\+cpp\end{DoxyCompactItemize}

@@ -1,0 +1,143 @@
+\section{Text\+Extractor Class Reference}
+\label{class_text_extractor}\index{Text\+Extractor@{Text\+Extractor}}
+
+
+The \doxyref{Text\+Extractor}{p.}{class_text_extractor} class.  
+
+
+
+
+{\ttfamily \#include $<$textextractor.\+h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\bf Text\+Extractor} ({\bf Index\+Handler} $\ast$, {\bf indexextractor} $\ast$)
+\begin{DoxyCompactList}\small\item\em \doxyref{Text\+Extractor\+::\+Text\+Extractor}{p.}{class_text_extractor_a10caf1764ade9e474231adf781b367f7} The \doxyref{Text\+Extractor}{p.}{class_text_extractor} constructor. \end{DoxyCompactList}\item 
+virtual {\bf $\sim$\+Text\+Extractor} ()\label{class_text_extractor_a4418b3b87b9ef74437473162d0263e68}
+
+\begin{DoxyCompactList}\small\item\em \doxyref{Text\+Extractor\+::$\sim$\+Text\+Extractor}{p.}{class_text_extractor_a4418b3b87b9ef74437473162d0263e68} The \doxyref{Text\+Extractor}{p.}{class_text_extractor} destructor. \end{DoxyCompactList}\item 
+int {\bf get\+Total\+Pages} ()
+\begin{DoxyCompactList}\small\item\em \doxyref{Text\+Extractor\+::get\+Total\+Pages}{p.}{class_text_extractor_a66e37d8e8161909dc786aa1a6a5f7637} Returns the total number of pages in the pdf. \end{DoxyCompactList}\item 
+string {\bf get\+Doc\+Name} ()
+\begin{DoxyCompactList}\small\item\em \doxyref{Text\+Extractor\+::get\+Doc\+Name}{p.}{class_text_extractor_a85ca0ccdb54737c6d5ac8dd681d5b1a8} Returns the P\+DF name. \end{DoxyCompactList}\item 
+int {\bf get\+Word\+Count} ()
+\begin{DoxyCompactList}\small\item\em \doxyref{Text\+Extractor\+::get\+Word\+Count}{p.}{class_text_extractor_a8d3c038e06d44b5c173a53245ef2d7f2} Returns the word count. \end{DoxyCompactList}\item 
+void {\bf Init} (const char $\ast$psz\+Input, string doc\+Name)
+\begin{DoxyCompactList}\small\item\em \doxyref{Text\+Extractor\+::\+Init}{p.}{class_text_extractor_a5e99ac7195f139e6de81ecb444f220d7} Uses Podofo to extract the text from the given P\+DF. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+{\bf Index\+Handler} $\ast$ {\bfseries ih}\label{class_text_extractor_a0394a5aac80ffd832e553a00cd06e768}
+
+\item 
+{\bf indexextractor} $\ast$ {\bfseries ie}\label{class_text_extractor_a53dff35095b3b6ac06db8565ed525c31}
+
+\item 
+string {\bfseries mm}\label{class_text_extractor_ab336de8579bd37a2623061457aa2c799}
+
+\item 
+vector$<$ string $>$ {\bfseries a}\label{class_text_extractor_a3b1a87ce7b4c17c085ea51cb7c2e446f}
+
+\item 
+int {\bfseries word\+Count} =0\label{class_text_extractor_ad8e30cc9eb1d54a17ca131b30d216990}
+
+\item 
+string {\bfseries docs\+Name}\label{class_text_extractor_acdf61457e2da0bd6a16db3624ba9ef71}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+The \doxyref{Text\+Extractor}{p.}{class_text_extractor} class. 
+
+\subsection{Constructor \& Destructor Documentation}
+\index{Text\+Extractor@{Text\+Extractor}!Text\+Extractor@{Text\+Extractor}}
+\index{Text\+Extractor@{Text\+Extractor}!Text\+Extractor@{Text\+Extractor}}
+\subsubsection[{Text\+Extractor(\+Index\+Handler $\ast$, indexextractor $\ast$)}]{\setlength{\rightskip}{0pt plus 5cm}Text\+Extractor\+::\+Text\+Extractor (
+\begin{DoxyParamCaption}
+\item[{{\bf Index\+Handler} $\ast$}]{ih, }
+\item[{{\bf indexextractor} $\ast$}]{ie}
+\end{DoxyParamCaption}
+)}\label{class_text_extractor_a10caf1764ade9e474231adf781b367f7}
+
+
+\doxyref{Text\+Extractor\+::\+Text\+Extractor}{p.}{class_text_extractor_a10caf1764ade9e474231adf781b367f7} The \doxyref{Text\+Extractor}{p.}{class_text_extractor} constructor. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em ih} & The \doxyref{Index\+Handler}{p.}{class_index_handler} object. \\
+\hline
+{\em ie} & The \doxyref{Index\+Interface}{p.}{class_index_interface} object. \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\index{Text\+Extractor@{Text\+Extractor}!get\+Doc\+Name@{get\+Doc\+Name}}
+\index{get\+Doc\+Name@{get\+Doc\+Name}!Text\+Extractor@{Text\+Extractor}}
+\subsubsection[{get\+Doc\+Name()}]{\setlength{\rightskip}{0pt plus 5cm}string Text\+Extractor\+::get\+Doc\+Name (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{class_text_extractor_a85ca0ccdb54737c6d5ac8dd681d5b1a8}
+
+
+\doxyref{Text\+Extractor\+::get\+Doc\+Name}{p.}{class_text_extractor_a85ca0ccdb54737c6d5ac8dd681d5b1a8} Returns the P\+DF name. 
+
+\begin{DoxyReturn}{Returns}
+docs\+Name The P\+DF name. 
+\end{DoxyReturn}
+\index{Text\+Extractor@{Text\+Extractor}!get\+Total\+Pages@{get\+Total\+Pages}}
+\index{get\+Total\+Pages@{get\+Total\+Pages}!Text\+Extractor@{Text\+Extractor}}
+\subsubsection[{get\+Total\+Pages()}]{\setlength{\rightskip}{0pt plus 5cm}int Text\+Extractor\+::get\+Total\+Pages (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{class_text_extractor_a66e37d8e8161909dc786aa1a6a5f7637}
+
+
+\doxyref{Text\+Extractor\+::get\+Total\+Pages}{p.}{class_text_extractor_a66e37d8e8161909dc786aa1a6a5f7637} Returns the total number of pages in the pdf. 
+
+\begin{DoxyReturn}{Returns}
+total\+Pages The total number of pages in the pdf. 
+\end{DoxyReturn}
+\index{Text\+Extractor@{Text\+Extractor}!get\+Word\+Count@{get\+Word\+Count}}
+\index{get\+Word\+Count@{get\+Word\+Count}!Text\+Extractor@{Text\+Extractor}}
+\subsubsection[{get\+Word\+Count()}]{\setlength{\rightskip}{0pt plus 5cm}int Text\+Extractor\+::get\+Word\+Count (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{class_text_extractor_a8d3c038e06d44b5c173a53245ef2d7f2}
+
+
+\doxyref{Text\+Extractor\+::get\+Word\+Count}{p.}{class_text_extractor_a8d3c038e06d44b5c173a53245ef2d7f2} Returns the word count. 
+
+\begin{DoxyReturn}{Returns}
+word\+Count The word count. 
+\end{DoxyReturn}
+\index{Text\+Extractor@{Text\+Extractor}!Init@{Init}}
+\index{Init@{Init}!Text\+Extractor@{Text\+Extractor}}
+\subsubsection[{Init(const char $\ast$psz\+Input, string doc\+Name)}]{\setlength{\rightskip}{0pt plus 5cm}void Text\+Extractor\+::\+Init (
+\begin{DoxyParamCaption}
+\item[{const char $\ast$}]{psz\+Input, }
+\item[{string}]{doc\+Name}
+\end{DoxyParamCaption}
+)}\label{class_text_extractor_a5e99ac7195f139e6de81ecb444f220d7}
+
+
+\doxyref{Text\+Extractor\+::\+Init}{p.}{class_text_extractor_a5e99ac7195f139e6de81ecb444f220d7} Uses Podofo to extract the text from the given P\+DF. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em psz\+Input} & The path to the corpus of P\+D\+Fs \\
+\hline
+{\em doc\+Name} & The name of the pdf to extract text from. \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/home/coder/\+C\+S\+E2341-\/17\+S-\/\+Lose-\/lose-\/situation/\+F\+Project/textextractor.\+h\item 
+/home/coder/\+C\+S\+E2341-\/17\+S-\/\+Lose-\/lose-\/situation/\+F\+Project/textextractor.\+cpp\end{DoxyCompactItemize}

@@ -33,7 +33,8 @@ struct item {
 };
 
 /**
- * @brief The hashy class
+ * @brief The hashy class The hashy class has multiple custom insert methods
+ * to allow it to either insert from inverted index or directly from parser
  */
 class hashy : public IndexInterface {
 public:

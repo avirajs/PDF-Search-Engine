@@ -28,6 +28,7 @@ userinterface::userinterface()
  */
 void userinterface::use()
 {
+    cout << endl;
     cout<<"Welcome to the Pdf Search Engine." << endl;
     while(d!='0') {
         cout << endl;
@@ -78,6 +79,16 @@ void userinterface::use()
                 cout<<"Press 'H' to use Hashtable Query and 'A' for AVL Tree Query and press 'B' to see the Basic Statistics Menu."<<endl;
                 cin >> s;
                 cin.ignore(std::numeric_limits<streamsize>::max (), '\n');
+                if (s != 'B' && s != 'A' && s != 'H')
+                {
+                    while((s != 'B' && s != 'A' && s != 'H'))
+                    {
+                        cout << endl;
+                        cout << "Error: Please enter in an appropriate choice." << endl;
+                        cin >> s;
+                        cin.ignore(std::numeric_limits<streamsize>::max (), '\n');
+                    }
+                }
                 if (s == 'B') {
                     cout << endl;
                     se.chooseStructure('H');

@@ -1,0 +1,7 @@
+digraph "Graphical Class Hierarchy"
+{
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="LR";
+  Node1 [label="userinterface",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classuserinterface.html",tooltip="The UserInterface is a command line menu driven class that makes use of the SearchEngine. It allows the user to enter into two modes, Maintainence and Query, allows the user many options including adding a new pdf to the inverted index, clearing the index, searching the PDF, outputting total pages, outputting total words indexed, outputting the top fifty words, outputting the corpus paths, storing and clearing the search history, storing and clearing bookmarks and outputting the raw text from a selected pdf. "];
+}

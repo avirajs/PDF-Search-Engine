@@ -82,7 +82,17 @@ void TextExtractor::Init( const char* pszInput,string docName) {
     //shows page count
     cout << "Page count is: " << nCount << endl;
     cout << endl;
-    totalPages += nCount;
+    totalPages = 0;
+    totalPages = nCount;
+    ofstream write;
+    write.open("total_pages.txt",fstream::app);
+    // checks to see if file can open
+    if(!write) {
+        cout << "File FlightData can't be opened. Exiting Program." << endl;
+        exit (EXIT_FAILURE);
+    }
+    write << totalPages << endl;
+    write.close();
     for( int i=0; i<nCount; i++ ) {
         PdfPage* pPage = document.GetPage( i );
 

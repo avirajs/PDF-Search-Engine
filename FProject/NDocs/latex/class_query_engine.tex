@@ -1,0 +1,220 @@
+\section{Query\+Engine Class Reference}
+\label{class_query_engine}\index{Query\+Engine@{Query\+Engine}}
+
+
+The \doxyref{Query\+Engine}{p.}{class_query_engine} uses the inverted file index and searches it given a properly formatted Boolean query. It also ranks the results using tf/idf statistics.  
+
+
+
+
+{\ttfamily \#include $<$queryengine.\+h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\bf Query\+Engine} ({\bf Index\+Handler} $\ast$, {\bf Document\+Parser} $\ast$)
+\begin{DoxyCompactList}\small\item\em The \doxyref{Query\+Engine}{p.}{class_query_engine} uses the inverted file index and searches it given a properly formatted Boolean query. It also ranks the results using tf/idf statistics. \end{DoxyCompactList}\item 
+vector$<$ {\bf document} $>$ {\bf query\+Search} (string query)
+\begin{DoxyCompactList}\small\item\em \doxyref{Query\+Engine\+::query\+Search}{p.}{class_query_engine_aea1c3b1b81ab4755bb9450c73080ba58} This searches the inverted index file for a given boolean query. It calls the search method to earch for the words and returning the proper results based on whether a union, intersection or difference was required. \end{DoxyCompactList}\item 
+vector$<$ {\bf document} $>$ {\bf search} (string word)
+\begin{DoxyCompactList}\small\item\em \doxyref{Query\+Engine\+::search}{p.}{class_query_engine_a1a9e0cf429284793b690db04de09fd5f} This searches the inverted index file for a word, returning the results. \end{DoxyCompactList}\item 
+vector$<$ {\bf document} $>$ {\bf get\+Intersection} (vector$<$ {\bf document} $>$ l, vector$<$ {\bf document} $>$ r)
+\begin{DoxyCompactList}\small\item\em \doxyref{Query\+Engine\+::get\+Intersection}{p.}{class_query_engine_a5acd0880e616f8a0c4e126294fe516b8} This returns the intersection of two queries. \end{DoxyCompactList}\item 
+vector$<$ {\bf document} $>$ {\bf get\+Union} (vector$<$ {\bf document} $>$ l, vector$<$ {\bf document} $>$ r)
+\begin{DoxyCompactList}\small\item\em \doxyref{Query\+Engine\+::get\+Union}{p.}{class_query_engine_aee8574303264380c75ef2e02b0f76acf} This returns the union of two queries. \end{DoxyCompactList}\item 
+vector$<$ {\bf document} $>$ {\bf get\+Difference} (vector$<$ {\bf document} $>$ r, vector$<$ {\bf document} $>$ l)
+\begin{DoxyCompactList}\small\item\em \doxyref{Query\+Engine\+::get\+Difference}{p.}{class_query_engine_a57ef6547912ba509e2589b7b6cfe0d93} This returns the difference of two queries. \end{DoxyCompactList}\item 
+void {\bf find\+T\+D\+I\+Fs} (vector$<$ {\bf document} $>$ \&currdocs)
+\begin{DoxyCompactList}\small\item\em \doxyref{Query\+Engine\+::find\+T\+D\+I\+Fs}{p.}{class_query_engine_a8f580bd2a38cc08c68a2845f380d9547} This caculates the tf/idf values of the query results. \end{DoxyCompactList}\item 
+void {\bf relevency\+Sort} (vector$<$ {\bf document} $>$ \&currdocs)
+\begin{DoxyCompactList}\small\item\em \doxyref{Query\+Engine\+::relevency\+Sort}{p.}{class_query_engine_a11f70f58daaaa7dee67e52cc415bd13f} This sorts the vector$<$document$>$ by tf/idf value. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+int {\bfseries file\+Size} =0\label{class_query_engine_a562077633097b8ccc4324df971ee23db}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+The \doxyref{Query\+Engine}{p.}{class_query_engine} uses the inverted file index and searches it given a properly formatted Boolean query. It also ranks the results using tf/idf statistics. 
+
+C\+SE 2341 Query\+Engine.\+h \begin{DoxyAuthor}{Author}
+Aviraj Shina (owner) 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+1.\+0 05/07/17 The \doxyref{Query\+Engine}{p.}{class_query_engine} class 
+\end{DoxyVersion}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\index{Query\+Engine@{Query\+Engine}!Query\+Engine@{Query\+Engine}}
+\index{Query\+Engine@{Query\+Engine}!Query\+Engine@{Query\+Engine}}
+\subsubsection[{Query\+Engine(\+Index\+Handler $\ast$, Document\+Parser $\ast$)}]{\setlength{\rightskip}{0pt plus 5cm}Query\+Engine\+::\+Query\+Engine (
+\begin{DoxyParamCaption}
+\item[{{\bf Index\+Handler} $\ast$}]{i, }
+\item[{{\bf Document\+Parser} $\ast$}]{d}
+\end{DoxyParamCaption}
+)}\label{class_query_engine_a4f10c7d88f75039ac139209ad60c4867}
+
+
+The \doxyref{Query\+Engine}{p.}{class_query_engine} uses the inverted file index and searches it given a properly formatted Boolean query. It also ranks the results using tf/idf statistics. 
+
+C\+SE 2341 Query\+Engine.\+h \begin{DoxyAuthor}{Author}
+Aviraj Shina (owner) 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+1.\+0 05/07/17 \doxyref{Query\+Engine\+::\+Query\+Engine}{p.}{class_query_engine_a4f10c7d88f75039ac139209ad60c4867} The constructor for the query engine. 
+\end{DoxyVersion}
+
+\begin{DoxyParams}{Parameters}
+{\em i} & The index handler object. \\
+\hline
+{\em d} & The documpen parser object. \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\index{Query\+Engine@{Query\+Engine}!find\+T\+D\+I\+Fs@{find\+T\+D\+I\+Fs}}
+\index{find\+T\+D\+I\+Fs@{find\+T\+D\+I\+Fs}!Query\+Engine@{Query\+Engine}}
+\subsubsection[{find\+T\+D\+I\+Fs(vector$<$ document $>$ \&currdocs)}]{\setlength{\rightskip}{0pt plus 5cm}void Query\+Engine\+::find\+T\+D\+I\+Fs (
+\begin{DoxyParamCaption}
+\item[{vector$<$ {\bf document} $>$ \&}]{currdocs}
+\end{DoxyParamCaption}
+)}\label{class_query_engine_a8f580bd2a38cc08c68a2845f380d9547}
+
+
+\doxyref{Query\+Engine\+::find\+T\+D\+I\+Fs}{p.}{class_query_engine_a8f580bd2a38cc08c68a2845f380d9547} This caculates the tf/idf values of the query results. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em currdocs} & The vector$<$document$>$ to caculate the tf/idf for. \\
+\hline
+\end{DoxyParams}
+\index{Query\+Engine@{Query\+Engine}!get\+Difference@{get\+Difference}}
+\index{get\+Difference@{get\+Difference}!Query\+Engine@{Query\+Engine}}
+\subsubsection[{get\+Difference(vector$<$ document $>$ r, vector$<$ document $>$ l)}]{\setlength{\rightskip}{0pt plus 5cm}vector$<$ {\bf document} $>$ Query\+Engine\+::get\+Difference (
+\begin{DoxyParamCaption}
+\item[{vector$<$ {\bf document} $>$}]{r, }
+\item[{vector$<$ {\bf document} $>$}]{l}
+\end{DoxyParamCaption}
+)}\label{class_query_engine_a57ef6547912ba509e2589b7b6cfe0d93}
+
+
+\doxyref{Query\+Engine\+::get\+Difference}{p.}{class_query_engine_a57ef6547912ba509e2589b7b6cfe0d93} This returns the difference of two queries. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em l} & The vector$<$document$>$ of the first query. \\
+\hline
+{\em r} & The vector$<$document$>$ of the secnd query. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+vector$<$document$>$ The difference of the first and second query. 
+\end{DoxyReturn}
+\index{Query\+Engine@{Query\+Engine}!get\+Intersection@{get\+Intersection}}
+\index{get\+Intersection@{get\+Intersection}!Query\+Engine@{Query\+Engine}}
+\subsubsection[{get\+Intersection(vector$<$ document $>$ l, vector$<$ document $>$ r)}]{\setlength{\rightskip}{0pt plus 5cm}vector$<$ {\bf document} $>$ Query\+Engine\+::get\+Intersection (
+\begin{DoxyParamCaption}
+\item[{vector$<$ {\bf document} $>$}]{l, }
+\item[{vector$<$ {\bf document} $>$}]{r}
+\end{DoxyParamCaption}
+)}\label{class_query_engine_a5acd0880e616f8a0c4e126294fe516b8}
+
+
+\doxyref{Query\+Engine\+::get\+Intersection}{p.}{class_query_engine_a5acd0880e616f8a0c4e126294fe516b8} This returns the intersection of two queries. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em l} & The vector$<$document$>$ of the first query. \\
+\hline
+{\em r} & The vector$<$document$>$ of the secnd query. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+vector$<$document$>$ The intersection of the first and second query. 
+\end{DoxyReturn}
+\index{Query\+Engine@{Query\+Engine}!get\+Union@{get\+Union}}
+\index{get\+Union@{get\+Union}!Query\+Engine@{Query\+Engine}}
+\subsubsection[{get\+Union(vector$<$ document $>$ l, vector$<$ document $>$ r)}]{\setlength{\rightskip}{0pt plus 5cm}vector$<$ {\bf document} $>$ Query\+Engine\+::get\+Union (
+\begin{DoxyParamCaption}
+\item[{vector$<$ {\bf document} $>$}]{l, }
+\item[{vector$<$ {\bf document} $>$}]{r}
+\end{DoxyParamCaption}
+)}\label{class_query_engine_aee8574303264380c75ef2e02b0f76acf}
+
+
+\doxyref{Query\+Engine\+::get\+Union}{p.}{class_query_engine_aee8574303264380c75ef2e02b0f76acf} This returns the union of two queries. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em l} & The vector$<$document$>$ of the first query. \\
+\hline
+{\em r} & The vector$<$document$>$ of the secnd query. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+vector$<$document$>$ The union of the first and second query. 
+\end{DoxyReturn}
+\index{Query\+Engine@{Query\+Engine}!query\+Search@{query\+Search}}
+\index{query\+Search@{query\+Search}!Query\+Engine@{Query\+Engine}}
+\subsubsection[{query\+Search(string query)}]{\setlength{\rightskip}{0pt plus 5cm}vector$<$ {\bf document} $>$ Query\+Engine\+::query\+Search (
+\begin{DoxyParamCaption}
+\item[{string}]{query}
+\end{DoxyParamCaption}
+)}\label{class_query_engine_aea1c3b1b81ab4755bb9450c73080ba58}
+
+
+\doxyref{Query\+Engine\+::query\+Search}{p.}{class_query_engine_aea1c3b1b81ab4755bb9450c73080ba58} This searches the inverted index file for a given boolean query. It calls the search method to earch for the words and returning the proper results based on whether a union, intersection or difference was required. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em query} & The query to search for. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+vector$<$document$>$ A vector of document objects containing the results of the search sorted by tf/idf values. 
+\end{DoxyReturn}
+\index{Query\+Engine@{Query\+Engine}!relevency\+Sort@{relevency\+Sort}}
+\index{relevency\+Sort@{relevency\+Sort}!Query\+Engine@{Query\+Engine}}
+\subsubsection[{relevency\+Sort(vector$<$ document $>$ \&currdocs)}]{\setlength{\rightskip}{0pt plus 5cm}void Query\+Engine\+::relevency\+Sort (
+\begin{DoxyParamCaption}
+\item[{vector$<$ {\bf document} $>$ \&}]{currdocs}
+\end{DoxyParamCaption}
+)}\label{class_query_engine_a11f70f58daaaa7dee67e52cc415bd13f}
+
+
+\doxyref{Query\+Engine\+::relevency\+Sort}{p.}{class_query_engine_a11f70f58daaaa7dee67e52cc415bd13f} This sorts the vector$<$document$>$ by tf/idf value. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em currdocs} & The vector$<$document$>$ to be sorted. \\
+\hline
+\end{DoxyParams}
+\index{Query\+Engine@{Query\+Engine}!search@{search}}
+\index{search@{search}!Query\+Engine@{Query\+Engine}}
+\subsubsection[{search(string word)}]{\setlength{\rightskip}{0pt plus 5cm}vector$<$ {\bf document} $>$ Query\+Engine\+::search (
+\begin{DoxyParamCaption}
+\item[{string}]{word}
+\end{DoxyParamCaption}
+)}\label{class_query_engine_a1a9e0cf429284793b690db04de09fd5f}
+
+
+\doxyref{Query\+Engine\+::search}{p.}{class_query_engine_a1a9e0cf429284793b690db04de09fd5f} This searches the inverted index file for a word, returning the results. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em word} & The word to search for. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+vector$<$document$>$ A vector of document objects containing the results of the search. 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+queryengine.\+h\item 
+queryengine.\+cpp\end{DoxyCompactItemize}

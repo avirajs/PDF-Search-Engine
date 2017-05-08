@@ -1,0 +1,206 @@
+\section{Utilities}
+\label{group___utilities}\index{Utilities@{Utilities}}
+
+
+Utility classes.  
+
+
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class {\bf within$<$ T $>$}
+\begin{DoxyCompactList}\small\item\em Determines if a value is within a given range. \end{DoxyCompactList}\item 
+class {\bf comparable\+\_\+first\+\_\+pair$<$ T1, T2 $>$}
+\begin{DoxyCompactList}\small\item\em pair interface that compares on the first item \end{DoxyCompactList}\item 
+class {\bf backup\+\_\+variable$<$ T $>$}
+\begin{DoxyCompactList}\small\item\em class that remembers its original value from construction. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define {\bf size\+\_\+of\+\_\+array}(x)~(sizeof(x)/sizeof(x[0]))
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\footnotesize template$<$typename T $>$ }\\T {\bf within\+\_\+range} (const T start, const T end, const T value)
+\item 
+{\footnotesize template$<$typename T $>$ }\\bool {\bf is\+\_\+within} (const T value, const T first, const T second)
+\item 
+{\bf within$<$ T $>$\+::within} (T range\+\_\+begin, T range\+\_\+end)
+\item 
+bool {\bf within$<$ T $>$\+::operator()} (T value) const 
+\item 
+{\bfseries comparable\+\_\+first\+\_\+pair$<$ T1, T2 $>$\+::comparable\+\_\+first\+\_\+pair} (const T1 \&t1, const T2 \&t2)\label{group___utilities_ga2983fa9fde1ab3b1edc13b8dd37a913a}
+
+\item 
+bool {\bfseries comparable\+\_\+first\+\_\+pair$<$ T1, T2 $>$\+::operator$<$} (const {\bf comparable\+\_\+first\+\_\+pair}$<$ T1, T2 $>$ \&that) const \label{group___utilities_ga67562f833f477f952e86f4d6dc39e118}
+
+\item 
+bool {\bfseries comparable\+\_\+first\+\_\+pair$<$ T1, T2 $>$\+::operator==} (const {\bf comparable\+\_\+first\+\_\+pair}$<$ T1, T2 $>$ \&that) const \label{group___utilities_gaeb65ed4ea3789b102e7ef750cb72d875}
+
+\item 
+{\bfseries backup\+\_\+variable$<$ T $>$\+::backup\+\_\+variable} (const T \&value)\label{group___utilities_ga5ffb4ce0ce0f679135ce70d8683a9182}
+
+\item 
+void {\bfseries backup\+\_\+variable$<$ T $>$\+::operator=} (const T \&value)\label{group___utilities_gae4c8c3147d8a341eb268f7b2332098d6}
+
+\item 
+bool {\bfseries backup\+\_\+variable$<$ T $>$\+::operator==} (const T \&value) const \label{group___utilities_gaec3207431e35f74efa6fe2af77ec734d}
+
+\item 
+bool {\bfseries backup\+\_\+variable$<$ T $>$\+::operator$<$} (const T \&value) const \label{group___utilities_gaf6d27d4c48c46816a5f82343609b24db}
+
+\item 
+bool {\bfseries backup\+\_\+variable$<$ T $>$\+::operator$<$=} (const T \&value) const \label{group___utilities_ga60de5d54f02e5d862ae851ab773830db}
+
+\item 
+bool {\bfseries backup\+\_\+variable$<$ T $>$\+::operator$>$} (const T \&value) const \label{group___utilities_ga1956d30f9a5124527ac9d52821ce9d72}
+
+\item 
+bool {\bfseries backup\+\_\+variable$<$ T $>$\+::operator$>$=} (const T \&value) const \label{group___utilities_ga0b749c6e3c84c43d094d1ba50d1a2323}
+
+\item 
+void {\bfseries backup\+\_\+variable$<$ T $>$\+::operator+} (const T \&value)\label{group___utilities_ga1ae3f1fcce3725da51aab2879c523a09}
+
+\item 
+void {\bfseries backup\+\_\+variable$<$ T $>$\+::operator+=} (const T \&value)\label{group___utilities_ga4b5753702dbfdaf23f9eb8b210ed80a2}
+
+\item 
+void {\bfseries backup\+\_\+variable$<$ T $>$\+::operator-\/} (const T \&value)\label{group___utilities_gabc321dce84d827d20d69b96653049739}
+
+\item 
+void {\bfseries backup\+\_\+variable$<$ T $>$\+::operator-\/=} (const T \&value)\label{group___utilities_gadc890d1d8539089e654280bf18e76034}
+
+\item 
+{\bfseries backup\+\_\+variable$<$ T $>$\+::operator const T} () const \label{group___utilities_gacba460a7693d0db536d7f9768ab6cf67}
+
+\item 
+T $\ast$ {\bfseries backup\+\_\+variable$<$ T $>$\+::operator\&} ()\label{group___utilities_ga61a6e2eee207d52e8f80f23595615627}
+
+\item 
+const T \& {\bfseries backup\+\_\+variable$<$ T $>$\+::get\+\_\+value} () const \label{group___utilities_ga636435af2389592a1b96038d83582d8a}
+
+\item 
+T \& {\bfseries backup\+\_\+variable$<$ T $>$\+::get\+\_\+value} ()\label{group___utilities_ga0338d95a730475c9ec88aff25c76b80f}
+
+\item 
+bool {\bfseries backup\+\_\+variable$<$ T $>$\+::has\+\_\+changed} () const \label{group___utilities_ga4d062c1afac850f6e965ccf6ebdca951}
+
+\item 
+{\footnotesize template$<$typename T $>$ }\\bool {\bf is\+\_\+either} (const T value, const T first, const T second)\label{group___utilities_gac6f2ccd7b99680663d017cf5e0091296}
+
+\begin{DoxyCompactList}\small\item\em Determines if a given value is either of two other given values. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename T $>$ }\\bool {\bf is\+\_\+neither} (const T value, const T first, const T second)\label{group___utilities_ga421fad6362dca9b20bc2fb39b85ea27d}
+
+\begin{DoxyCompactList}\small\item\em Determines if a given value is neither of two other given values. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename inT , typename outT , typename member\+\_\+extract\+\_\+functorT $>$ }\\outT {\bf copy\+\_\+member} (inT begin, inT end, outT dest, member\+\_\+extract\+\_\+functorT get\+\_\+value)
+\item 
+{\footnotesize template$<$typename inT , typename outT , typename \+\_\+\+Pr , typename member\+\_\+extract\+\_\+functorT $>$ }\\outT {\bf copy\+\_\+member\+\_\+if} (inT begin, inT end, outT dest, \+\_\+\+Pr meets\+\_\+criteria, member\+\_\+extract\+\_\+functorT get\+\_\+value)\label{group___utilities_gad7072d7de4d9be1c1bb94217b7903fa1}
+
+\begin{DoxyCompactList}\small\item\em Copies a member value between objects based on specified criteria. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Utility classes. 
+
+\begin{DoxyDate}{Date}
+2003-\/2015 
+\end{DoxyDate}
+\begin{DoxyCopyright}{Copyright}
+Oleander Software, Ltd. 
+\end{DoxyCopyright}
+\begin{DoxyAuthor}{Author}
+Oleander Software, Ltd.
+\end{DoxyAuthor}
+This program is free software; you can redistribute it and/or modify it under the terms of the B\+SD License. 
+
+\subsection{Macro Definition Documentation}
+\index{Utilities@{Utilities}!size\+\_\+of\+\_\+array@{size\+\_\+of\+\_\+array}}
+\index{size\+\_\+of\+\_\+array@{size\+\_\+of\+\_\+array}!Utilities@{Utilities}}
+\subsubsection[{size\+\_\+of\+\_\+array}]{\setlength{\rightskip}{0pt plus 5cm}\#define size\+\_\+of\+\_\+array(
+\begin{DoxyParamCaption}
+\item[{}]{x}
+\end{DoxyParamCaption}
+)~(sizeof(x)/sizeof(x[0]))}\label{group___utilities_ga231b89d0acd16abb25a1549c8e32440b}
+\begin{DoxyReturn}{Returns}
+The item count of an array. 
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+Do not call this on an empty array. Also, this is meant for arrays of intrinsic types only. 
+\end{DoxyNote}
+
+
+\subsection{Function Documentation}
+\index{Utilities@{Utilities}!copy\+\_\+member@{copy\+\_\+member}}
+\index{copy\+\_\+member@{copy\+\_\+member}!Utilities@{Utilities}}
+\subsubsection[{copy\+\_\+member(in\+T begin, in\+T end, out\+T dest, member\+\_\+extract\+\_\+functor\+T get\+\_\+value)}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename inT , typename outT , typename member\+\_\+extract\+\_\+functorT $>$ outT copy\+\_\+member (
+\begin{DoxyParamCaption}
+\item[{inT}]{begin, }
+\item[{inT}]{end, }
+\item[{outT}]{dest, }
+\item[{member\+\_\+extract\+\_\+functorT}]{get\+\_\+value}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{group___utilities_ga42e618bb06b450b75b481bb1356364ec}
+calls a member function of elements in a container for each element in another container \index{Utilities@{Utilities}!is\+\_\+within@{is\+\_\+within}}
+\index{is\+\_\+within@{is\+\_\+within}!Utilities@{Utilities}}
+\subsubsection[{is\+\_\+within(const T value, const T first, const T second)}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T $>$ bool is\+\_\+within (
+\begin{DoxyParamCaption}
+\item[{const T}]{value, }
+\item[{const T}]{first, }
+\item[{const T}]{second}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{group___utilities_gacd9825113d0904bf676eb9e82499792a}
+\begin{DoxyReturn}{Returns}
+True if a value is within a given range. 
+\end{DoxyReturn}
+\index{Utilities@{Utilities}!operator()@{operator()}}
+\index{operator()@{operator()}!Utilities@{Utilities}}
+\subsubsection[{operator()(\+T value) const }]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T $>$ bool {\bf within}$<$ T $>$\+::operator() (
+\begin{DoxyParamCaption}
+\item[{T}]{value}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}\label{group___utilities_gaaab5ecca0235613f499bc5e607d23cbd}
+\begin{DoxyReturn}{Returns}
+True if  value is within the valid range of values. 
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+{\em value} & The value to review. \\
+\hline
+\end{DoxyParams}
+\index{Utilities@{Utilities}!within@{within}}
+\index{within@{within}!Utilities@{Utilities}}
+\subsubsection[{within(\+T range\+\_\+begin, T range\+\_\+end)}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T $>$ {\bf within}$<$ T $>$\+::{\bf within} (
+\begin{DoxyParamCaption}
+\item[{T}]{range\+\_\+begin, }
+\item[{T}]{range\+\_\+end}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{group___utilities_gac461f80eef6cbe70a69729fd5b99f751}
+Constructor. 
+\begin{DoxyParams}{Parameters}
+{\em range\+\_\+begin} & The beginning of the valid range. \\
+\hline
+{\em range\+\_\+end} & The end of the valid range. \\
+\hline
+\end{DoxyParams}
+\index{Utilities@{Utilities}!within\+\_\+range@{within\+\_\+range}}
+\index{within\+\_\+range@{within\+\_\+range}!Utilities@{Utilities}}
+\subsubsection[{within\+\_\+range(const T start, const T end, const T value)}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T $>$ T within\+\_\+range (
+\begin{DoxyParamCaption}
+\item[{const T}]{start, }
+\item[{const T}]{end, }
+\item[{const T}]{value}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{group___utilities_gaf9e2d064d6e8bbf70908f48cd15f730c}
+Range checks a given value and truncates it if it is too high or low. 
+\begin{DoxyParams}{Parameters}
+{\em start} & The start of the valid range. \\
+\hline
+{\em end} & The end of the valid range. \\
+\hline
+{\em value} & The value to be range checked. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The value if within the valid range. If it was too large, then the end of the range is returned. If too low, then the start of the range is returned. 
+\end{DoxyReturn}
